@@ -1,0 +1,38 @@
+
+map $http_host $MAGE_RUN_CODE {
+    snowgoose.worlddigital.com.au snowgoose;
+    bockersandpony.worlddigital.com.au bockersandpony;
+}
+map $http_host $MAGE_RUN_TYPE {
+    snowgoose.worlddigital.com.au website;
+    bockersandpony.worlddigital.com.au website;
+}
+
+
+server {
+	listen 80;
+	# listen [::]:80;
+
+	# SSL configuration
+	# listen 443 ssl default_server;
+	# listen [::]:443 ssl default_server;
+
+	server_name     bockersandpony.gndctl.local snowgoose.gndctl.local;
+	
+	set $MAGE_ROOT /var/www/worlddigital/magento2;
+
+	include /var/www/worlddigital/magento2/nginx.conf;
+
+	index index.html index.htm index.php;
+
+	# pass PHP to php-fpm
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+	}
+
+	# deny .ht*
+	location ~ /\.ht {
+		deny all;
+	}
+}
