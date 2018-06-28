@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blackbird EstimateTimeShipping Module
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ *
+ * @category        Blackbird
+ * @package         Blackbird_EstimateTimeShipping
+ * @copyright       Copyright (c) 2018 Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         https://store.bird.eu/license/
+ * @support         help@bird.eu
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="blackbird_extensions" translate="label" sortOrder="300">
+            <label>Blackbird Extensions</label>
+        </tab>
+        <section id="ets" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Estimated Delivery Date</label>
+            <tab>blackbird_extensions</tab>
+            <resource>Blackbird_EstimateTimeShipping::config_estimate_time_shipping</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Shipping Preferences Configuration</label>
+                <comment><![CDATA[<div class="message message-notice notice"><p>Here you can choose how to display the estimated dates. You have 2 choices according to shipping preferences: </br> <strong>Display Date per Product:</strong> displays one date for each product of the order. (that supposed that  items can be sent separately if they are not available at the same time) </br> <strong>Display Only the Last Date:</strong> displays one expected delivery date per order, corresponding to the last product available. The same date appears in the cart and on each product page.</p></div>]]></comment>
+                <field id="display_how" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>How to Display Estimated Date</label>
+                    <source_model>Blackbird\EstimateTimeShipping\Model\Config\Source\DateDisplay</source_model>
+                </field>
+                <field id="date_format" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose a date format</label>
+                    <source_model>Blackbird\EstimateTimeShipping\Model\Config\Source\DateFormat</source_model>
+                </field>
+                <field id="display_if_not_exist" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display If No Date are Estimable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If Yes, the message defined in Text configuration/ If No Date are Calculable</comment>
+                </field>
+            </group>
+            <group id="messages" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Text configuration</label>
+                <comment><![CDATA[<div class="message message-notice notice"><p>You can personalize the message displayed along with the estimated date. Use ‘%1’ to display the date in your message.</p></div>]]></comment>
+                <field id="product_shipping_date" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>For Product Shipping Date</label>
+                    <comment>Default message: Estimated Shipping Date for this Product : %1</comment>
+                </field>
+                <field id="product_delivery_date" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>For Product Delivery Date</label>
+                    <comment>Default message: Estimated Delivery Date for this Product : %1</comment>
+                </field>
+                <field id="order_shipping_date" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>For Order Shipping Date</label>
+                    <comment>Default message: Estimated Shipping Date : %1</comment>
+                    <depends>
+                        <field id="ets/general/display_how">1</field>
+                    </depends>
+                </field>
+                <field id="order_delivery_date" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>For Order Delivery Date</label>
+                    <comment>Default message: Estimated Delivery Date : %1</comment>
+                    <depends>
+                        <field id="ets/general/display_how">1</field>
+                    </depends>
+                </field>
+                <field id="no_date" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>If No Date are Calculable</label>
+                    <comment>Default message: No Computable Estimated Shipping/Delivery Date.</comment>
+                </field>
+            </group>
+            <group id="display" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Display location configuration</label>
+                <comment><![CDATA[<div class="message message-notice notice"><p>Here you can choose where the estimated date will appear.</p></div>]]></comment>
+                <field id="display_on_product" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>On Product Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="display_on_cart_products" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Under Each Cart Items</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">0</field>
+                    </depends>
+                </field>
+                <field id="display_on_cart_totals" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>In Cart Totals</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">1</field>
+                    </depends>
+                </field>
+                <field id="display_on_order_history" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>In Order History in Client Dashboard</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">1</field>
+                    </depends>
+                </field>
+                <field id="display_on_order_details" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>In Order Details in Client Dashboard</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">1</field>
+                    </depends>
+                </field>
+                <field id="display_on_order_product_details" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>In Order Product Details in Client Dashboard</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">0</field>
+                    </depends>
+                </field>
+                <field id="display_on_mail_product_details" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Under Each Product in Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">0</field>
+                    </depends>
+                </field>
+                <field id="display_on_checkout_items" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Under Each Product in Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">0</field>
+                    </depends>
+                </field>
+                <field id="display_on_checkout" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>In Checkout Order Details</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">1</field>
+                    </depends>
+                </field>
+                <field id="display_on_success" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>On Success Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="ets/general/display_how">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

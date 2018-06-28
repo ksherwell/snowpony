@@ -1,0 +1,14 @@
+<?php
+/** @var \Magento\Catalog\Block\Product\View $block */
+?>
+<div id="preparation-time" class="message edd-date">
+
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "dateForm": {"divId": "#preparation-time", "type": "product", "currentSku": "<?= $block->getProduct()->getSku(); ?>"}
+        }
+    }
+
+</script>

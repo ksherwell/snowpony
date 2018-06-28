@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blackbird EstimateTimeShipping Module
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ *
+ * @category        Blackbird
+ * @package         Blackbird_EstimateTimeShipping
+ * @copyright       Copyright (c) 2018 Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         https://store.bird.eu/license/
+ * @support         help@bird.eu
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">estimatetimeshipping_shippingtimerule_form.shippingtimerule_form_data_source</item>
+            <item name="deps" xsi:type="string">estimatetimeshipping_shippingtimerule_form.shippingtimerule_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Shipping Time Rule Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">estimatetimeshipping_shippingtimerule_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Blackbird\EstimateTimeShipping\Block\Adminhtml\ShippingTimeRule\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">Blackbird\EstimateTimeShipping\Block\Adminhtml\ShippingTimeRule\Edit\DeleteButton</item>
+            <item name="reset" xsi:type="string">Blackbird\EstimateTimeShipping\Block\Adminhtml\ShippingTimeRule\Edit\ResetButton</item>
+            <item name="save" xsi:type="string">Blackbird\EstimateTimeShipping\Block\Adminhtml\ShippingTimeRule\Edit\SaveButton</item>
+            <item name="save_and_continue" xsi:type="string">Blackbird\EstimateTimeShipping\Block\Adminhtml\ShippingTimeRule\Edit\SaveAndContinue</item>
+        </item>
+    </argument>
+    <dataSource name="shippingtimerule_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Blackbird\EstimateTimeShipping\Model\ShippingTimeRule\DataProvider</argument>
+            <argument name="name" xsi:type="string">shippingtimerule_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">shipping_time_rule_id</argument>
+            <argument name="requestFieldName" xsi:type="string">shipping_time_rule_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="estimatetimeshipping/shippingtimerule/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string"/>
+            </item>
+        </argument>
+        <field name="shipping_time_rule_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">shippingtimerule</item>
+                    <item name="dataScope" xsi:type="string">shipping_time_rule_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">shippingtimerule</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">shippingtimerule</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">description</item>
+                </item>
+            </argument>
+        </field>
+        <field name="is_active" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">sales_rule</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>boolean</dataType>
+                <label translate="true">Active</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="website_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\CatalogRule\Model\Rule\WebsitesOptionsProvider</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Websites</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="source" xsi:type="string">website</item>
+                    <item name="dataScope" xsi:type="string">website_id</item>
+                    <item name="tooltip" xsi:type="array">
+                        <item name="link" xsi:type="string">http://docs.magento.com/m2/ce/user_guide/configuration/scope.html</item>
+                        <item name="description" xsi:type="string">What is this?</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="public_holidays">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Blackbird\EstimateTimeShipping\Ui\Component\Listing\Column\HolidayGroup\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Holidays Group</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">publicholiday</item>
+                    <item name="dataScope" xsi:type="string">holidays_group_id</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="shipping_days">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Locale\Weekdays</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">multiselect</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping Day</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="dataScope" xsi:type="string">shipping_days</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="shipping_time">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping Time</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">shippingtimerule</item>
+                    <item name="dataScope" xsi:type="string">shipping_time</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <notice translate="true">
+                    In days, e.g. :  ‘1’ means ready for delivery the next day
+                </notice>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="conditions">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Conditions</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <container name="conditions_apply_to" >
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Blackbird\EstimateTimeShipping\Block\Adminhtml\ShippingTimeRule\Edit\Tab\Conditions</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

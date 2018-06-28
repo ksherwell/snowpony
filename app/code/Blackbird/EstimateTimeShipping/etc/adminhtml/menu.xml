@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blackbird EstimateTimeShipping Module
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ *
+ * @category        Blackbird
+ * @package         Blackbird_EstimateTimeShipping
+ * @copyright       Copyright (c) 2018 Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         https://store.bird.eu/license/
+ * @support         help@bird.eu
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Blackbird_EstimateTimeShipping::estimate_time_shipping"
+             title="Estimated Delivery Date"
+             module="Blackbird_EstimateTimeShipping"
+             sortOrder="9999"
+             parent="Magento_Sales::sales"
+             resource="Blackbird_EstimateTimeShipping::estimate_time_shipping" />
+        <add id="Blackbird_EstimateTimeShipping::holidays_groups"
+             title="Grouping Holidays"
+             module="Blackbird_EstimateTimeShipping"
+             sortOrder="10"
+             action="estimatetimeshipping/holidaysgroup"
+             parent="Blackbird_EstimateTimeShipping::estimate_time_shipping"
+             resource="Blackbird_EstimateTimeShipping::holidays_groups" />
+        <add id="Blackbird_EstimateTimeShipping::public_holidays"
+             title="Setting Holidays"
+             module="Blackbird_EstimateTimeShipping"
+             sortOrder="20"
+             action="estimatetimeshipping/publicholiday"
+             parent="Blackbird_EstimateTimeShipping::estimate_time_shipping"
+             resource="Blackbird_EstimateTimeShipping::public_holidays" />
+        <add id="Blackbird_EstimateTimeShipping::preparation_time_rules"
+             title="Preparation Time Rules"
+             module="Blackbird_EstimateTimeShipping"
+             sortOrder="30"
+             action="estimatetimeshipping/preparationtimerule"
+             parent="Blackbird_EstimateTimeShipping::estimate_time_shipping"
+             resource="Blackbird_EstimateTimeShipping::preparation_time_rules" />
+        <add id="Blackbird_EstimateTimeShipping::shipping_time_rules"
+             title="Shipping Time Rules"
+             module="Blackbird_EstimateTimeShipping"
+             sortOrder="40"
+             action="estimatetimeshipping/shippingtimerule"
+             parent="Blackbird_EstimateTimeShipping::estimate_time_shipping"
+             resource="Blackbird_EstimateTimeShipping::shipping_time_rules" />
+    </menu>
+</config>

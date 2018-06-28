@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blackbird EstimateTimeShipping Module
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ *
+ * @category        Blackbird
+ * @package         Blackbird_EstimateTimeShipping
+ * @copyright       Copyright (c) 2018 Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         https://store.bird.eu/license/
+ * @support         help@bird.eu
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ets>
+            <general>
+                <display_how>1</display_how>
+                <date_format>3</date_format>
+                <display_if_not_exist>0</display_if_not_exist>
+            </general>
+            <messages>
+                <product_shipping_date>Estimated Shipping Date for this Product : %1</product_shipping_date>
+                <product_delivery_date>Estimated Delivery Date for this Product : %1</product_delivery_date>
+                <order_shipping_date>Estimated Shipping Date : %1</order_shipping_date>
+                <order_delivery_date>Estimated Delivery Date : %1</order_delivery_date>
+                <no_date>No Computable Estimated Shipping/Delivery Date.</no_date>
+            </messages>
+            <display>
+                <display_on_product>1</display_on_product>
+                <display_on_cart_products>1</display_on_cart_products>
+                <display_on_cart_totals>1</display_on_cart_totals>
+                <display_on_order_history>1</display_on_order_history>
+                <display_on_order_details>1</display_on_order_details>
+                <display_on_order_product_details>1</display_on_order_product_details>
+                <display_on_mail_details>1</display_on_mail_details>
+                <display_on_checkout_items>1</display_on_checkout_items>
+                <display_on_checkout>1</display_on_checkout>
+                <display_on_mail_product_details>1</display_on_mail_product_details>
+            </display>
+        </ets>
+    </default>
+</config>

@@ -1,0 +1,90 @@
+<?php
+/**
+ * Blackbird EstimateTimeShipping Module
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ *
+ * @category        Blackbird
+ * @package         Blackbird_EstimateTimeShipping
+ * @copyright       Copyright (c) 2018 Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         https://store.bird.eu/license/
+ * @support         help@bird.eu
+ */
+?>
+<?php $daysInMonth = $this->getHelper()->getDaysInMonth(); ?>
+<?php $daysInWeek = $this->getDaysInWeek(); ?>
+<?php $months = $this->getHelper()->getMonths(); ?>
+<?php $years = $this->getHelper()->getYears(); ?>
+<?php $entityDayInMonth = $this->getEntityDayInMonth(); ?>
+<?php $entityDayInWeek = $this->getEntityDayInWeek(); ?>
+<?php $entityMonth = $this->getEntityMonth(); ?>
+<?php $entityYear = $this->getEntityYear(); ?>
+<label class="admin__field-label" id="VariableDateSelect">
+    <span><?php echo __('Variable Date'); ?></span>
+</label>
+<div class="admin__field-control">
+    <select class="admin__control-select" name="variable_date_day_in_month"
+            data-form-part="estimatetimeshipping_publicholiday_form">
+        <?php foreach ($daysInMonth as $val => $label): ?>
+            <?php if ($val == $entityDayInMonth): ?>
+                <option value="<?= $val ?>" selected><?= $label ?></option>
+            <?php else: ?>
+                <option value="<?= $val ?>"><?= $label ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </select>
+
+    <select class="admin__control-select" name="variable_date_day_in_week"
+            data-form-part="estimatetimeshipping_publicholiday_form">
+        <?php foreach ($daysInWeek as $day): ?>
+            <?php if ($day['value'] == $entityDayInWeek): ?>
+                <option value="<?= $day['value'] ?>" selected><?= __($day['label']) ?></option>
+            <?php else: ?>
+                <option value="<?= $day['value'] ?>"><?= __($day['label']) ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </select>
+    of
+    <select class="admin__control-select" name="variable_date_month"
+            data-form-part="estimatetimeshipping_publicholiday_form">
+        <?php foreach ($months as $val => $label): ?>
+            <?php if ($val == $entityMonth): ?>
+                <option value="<?= $val ?>" selected><?= $label ?></option>
+            <?php else: ?>
+                <option value="<?= $val ?>"><?= $label ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </select>
+
+    <select class="admin__control-select" name="variable_date_year"
+            data-form-part="estimatetimeshipping_publicholiday_form">
+        <?php foreach ($years as $val => $label): ?>
+            <?php if ($val == $entityYear): ?>
+                <option value="<?= $val ?>" selected><?= $label ?></option>
+            <?php else: ?>
+                <option value="<?= $val ?>"><?= $label ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'jquery/ui'
+    ], function ($) {
+        var elem = $("#VariableDateSelect").parent();
+        elem.addClass("admin__field");
+        elem.addClass("_required");
+        elem.attr("id", "VariableDateInput");
+        elem.attr("data-index", "variable_date");
+        //TODO Optimise the display of component
+        <?php if (!$this->getDateType()): ?>
+            elem.hide();
+        <?php endif;?>
+    });
+</script>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blackbird EstimateTimeShipping Module
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ *
+ * @category        Blackbird
+ * @package         Blackbird_EstimateTimeShipping
+ * @copyright       Copyright (c) 2018 Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         https://store.bird.eu/license/
+ * @support         help@bird.eu
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <referenceBlock name="checkout.root">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="checkout" xsi:type="array">
+                                <item name="children" xsi:type="array">
+                                    <item name="sidebar" xsi:type="array">
+                                        <item name="children" xsi:type="array">
+                                            <item name="summary" xsi:type="array">
+                                                <item name="children" xsi:type="array">
+                                                    <item name="itemsBefore" xsi:type="array">
+                                                        <item name="component" xsi:type="string">uiComponent</item>
+                                                        <item name="children" xsi:type="array">
+                                                            <!-- Layout is extended here by estimatetimeShipping -->
+                                                            <item name="estimatedDate" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Blackbird_EstimateTimeShipping/js/view/summary/estimated-date</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                    <item name="cart_items" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Magento_Checkout/js/view/summary/cart-items</item>
+                                                        <item name="children" xsi:type="array">
+                                                            <item name="details" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Checkout/js/view/summary/item/details</item>
+                                                                <item name="children" xsi:type="array">
+                                                                    <item name="thumbnail" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Checkout/js/view/summary/item/details/thumbnail</item>
+                                                                        <item name="displayArea" xsi:type="string">before_details</item>
+                                                                    </item>
+                                                                    <item name="subtotal" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Checkout/js/view/summary/item/details/subtotal</item>
+                                                                        <item name="displayArea" xsi:type="string">after_details</item>
+                                                                    </item>
+                                                                    <item name="date" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Blackbird_EstimateTimeShipping/js/view/summary/items/date</item>
+                                                                        <item name="displayArea" xsi:type="string">after_details</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

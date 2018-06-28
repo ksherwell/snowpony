@@ -1,0 +1,77 @@
+<?php
+/**
+ * Blackbird EstimateTimeShipping Module
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ *
+ * @category        Blackbird
+ * @package         Blackbird_EstimateTimeShipping
+ * @copyright       Copyright (c) 2018 Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         https://store.bird.eu/license/
+ * @support         help@bird.eu
+ */
+?>
+<?php $days = $this->getHelper()->getDays(); ?>
+<?php $months = $this->getHelper()->getMonths(); ?>
+<?php $years = $this->getHelper()->getYears(); ?>
+<?php $entityDay = $this->getEntityDay(); ?>
+<?php $entityMonth = $this->getEntityMonth(); ?>
+<?php $entityYear = $this->getEntityYear(); ?>
+<label class="admin__field-label" id="FixedDateSelect">
+    <span><?php echo __('Fixed Date'); ?></span>
+</label>
+<div class="admin__field-control">
+    <select class="admin__control-select" name="fixed_date_day"
+            data-form-part="estimatetimeshipping_publicholiday_form">
+        <?php foreach ($days as $val => $label): ?>
+            <?php if ($val == $entityDay): ?>
+                <option value="<?= $val ?>" selected><?= $label ?></option>
+            <?php else: ?>
+                <option value="<?= $val ?>"><?= $label ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </select>
+
+    <select class="admin__control-select" name="fixed_date_month"
+            data-form-part="estimatetimeshipping_publicholiday_form">
+        <?php foreach ($months as $val => $label): ?>
+            <?php if ($val == $entityMonth): ?>
+                <option value="<?= $val ?>" selected><?= $label ?></option>
+            <?php else: ?>
+                <option value="<?= $val ?>"><?= $label ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </select>
+
+    <select class="admin__control-select" name="fixed_date_year"
+            data-form-part="estimatetimeshipping_publicholiday_form">
+        <?php foreach ($years as $val => $label): ?>
+            <?php if ($val == $entityYear): ?>
+                <option value="<?= $val ?>" selected><?= $label ?></option>
+            <?php else: ?>
+                <option value="<?= $val ?>"><?= $label ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'jquery/ui'
+    ], function ($) {
+        var elem = $("#FixedDateSelect").parent();
+        elem.addClass("admin__field");
+        elem.addClass("_required");
+        elem.attr("id", "FixedDateInput");
+        elem.attr("data-index", "fixed_date");
+        //TODO Optimise the display of component
+        <?php if ($this->getDateType()): ?>
+            elem.hide();
+        <?php endif;?>
+    });
+</script>

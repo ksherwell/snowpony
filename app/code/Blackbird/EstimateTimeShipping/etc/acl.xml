@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blackbird EstimateTimeShipping Module
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ *
+ * @category        Blackbird
+ * @package         Blackbird_EstimateTimeShipping
+ * @copyright       Copyright (c) 2018 Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         https://store.bird.eu/license/
+ * @support         help@bird.eu
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Sales::sales">
+                    <resource id="Blackbird_EstimateTimeShipping::estimate_time_shipping" title="Estimate Time Shipping" sortOrder="51">
+                        <resource id="Blackbird_EstimateTimeShipping::public_holidays" title="Setting Holidays" sortOrder="10"/>
+                        <resource id="Blackbird_EstimateTimeShipping::holidays_groups" title="Grouping Holidays" sortOrder="20" />
+                        <resource id="Blackbird_EstimateTimeShipping::preparation_time_rules" title="Preparation Time Rules" sortOrder="30" />
+                        <resource id="Blackbird_EstimateTimeShipping::shipping_time_rules" title="Shipping Time Rules" sortOrder="40" />
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Blackbird_EstimateTimeShipping::config_estimate_time_shipping" title="Estimate Time Shipping"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
