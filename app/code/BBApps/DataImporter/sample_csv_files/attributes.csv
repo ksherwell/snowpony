@@ -1,0 +1,9 @@
+attribute_set,attribute_code,attribute_group_name,is_global,is_user_defined,is_searchable,is_filterable,is_filterable_in_search,is_visible,is_required,is_visible_on_front,used_in_product_listing,used_for_sort_by,position,is_unique,frontend_class,is_visible_in_advanced_search,is_comparable,is_used_for_price_rules,is_used_for_promo_rules,sort_order,frontend_input,default_label,frontend_labels,apply_to,is_wysiwyg_enabled,is_required_in_admin_store,is_used_in_grid,is_visible_in_grid,is_filterable_in_grid,search_weight,additional_data,attribute_options
+4711,47110,Filtres,0,1,1,1,1,1,0,1,1,0,0,0,,0,0,1,1,1,select,4711,4711,,0,0,0,0,0,1,,4711 Nouveau Cologne|4711 Eau de Cologne|Acqua Colonia
+ABSOLUMENT PARFUMEUR,absolument-parfumeur-test,Filtres,0,1,1,1,1,1,0,1,1,0,0,0,,0,0,1,1,1,select,Absolument Parfumeur,Absolument Parfumeur,,0,0,0,0,0,1,,Absolument Absinthe|Luxury Overdose
+GUERLAIN,accessoires-test,Filtres,0,1,1,1,1,1,0,1,1,0,0,0,,0,0,1,1,1,select,Accessoires,Accessoires,,0,0,0,0,0,1,,Pinceaux|Faux-Ongles|Faux-Cils|Stickers Ongles|Autres|Eponges|Papiers Matifiants
+ALAÏA,alaïa-test,Filtres,0,1,1,1,1,1,0,1,1,0,0,0,,0,0,1,1,1,select,Alaïa,Alaïa,,0,0,0,0,0,1,,Alaïa Paris
+ALAÏA,alaïa-paris-test,Filtres,0,1,1,1,1,1,0,1,1,0,0,0,,0,0,1,1,1,select,Alaïa Paris,Alaïa Paris,,0,0,0,0,0,1,,Alaïa Paris
+ALYSSA ASHLEY,alyssa-ashley-test,Filtres,0,1,1,1,1,1,0,1,1,0,0,0,,0,0,1,1,1,select,Alyssa Ashley,Alyssa Ashley,,0,0,0,0,0,1,,Musk
+AYSSE|BIOTHERM[CLARINS|DECLEOR|DOCTEUR RENAUD|ESTEE LAUDER|JEAN AVEZE|MENARD|PAYOT|PUPA MILANO|SISLEY|TALIKA,anti-âge-test,Filtres,0,1,1,1,1,1,0,1,1,0,0,0,,0,0,1,1,1,select,Anti-Âge,Anti-Âge,,0,0,0,0,0,1,,Soin de Jour|Soin de Nuit|Yeux & Lèvres|Maquillage|Sérums & Spécifiques
+all,test-all,Filtres,0,1,1,1,1,1,0,1,1,0,0,0,,0,0,1,1,1,select,Anti-Âge,Anti-Âge,,0,0,0,0,0,1,,Soin de Jour|Soin de Nuit|Yeux & Lèvres|Maquillage|Sérums & Spécifiques
