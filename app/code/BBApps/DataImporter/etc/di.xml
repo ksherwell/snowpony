@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="bbImportAttribute" xsi:type="object">BBApps\DataImporter\Command\Product\Attribute</item>
+                <item name="bbImportAttributeOption" xsi:type="object">BBApps\DataImporter\Command\Product\AttributeOption</item>
+                <item name="bbBulkImportAttributeOption" xsi:type="object">BBApps\DataImporter\Command\Product\BulkAttributeOption</item>
+                <item name="bbExportAttribute" xsi:type="object">BBApps\DataImporter\Command\Product\ExportAttributeSample</item>
+                <item name="bbImportCategory" xsi:type="object">BBApps\DataImporter\Command\Category\Category</item>
+                <item name="bbAssignAttribute" xsi:type="object">BBApps\DataImporter\Command\Product\AssignAttribute</item>
+                <item name="bbAssignAssociatedProduct" xsi:type="object">BBApps\DataImporter\Command\Product\AssignAssociatedProduct</item>
+                <item name="bbCheckImage" xsi:type="object">BBApps\DataImporter\Command\Product\CheckImage</item>
+                <item name="bbCollectAdditionalAttributes" xsi:type="object">BBApps\DataImporter\Command\Product\CollectAdditionalAttributes</item>
+                <item name="bbCollectCategories" xsi:type="object">BBApps\DataImporter\Command\Category\CollectCategories</item>
+                <item name="bbAssignProductLinks" xsi:type="object">BBApps\DataImporter\Command\Product\AssignProductLinks</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Magento\ImportExport\Block\Adminhtml\Import\Edit\Form" type="BBApps\DataImporter\Block\Adminhtml\Import\Edit\Form"/>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="bbapps_dataimporter_trackingnumber_import" instance="BBApps\DataImporter\Cron\TrackingNumber" method="execute">
+            <schedule>0 9 * * *</schedule>
+        </job>
+    </group>
+</config>
