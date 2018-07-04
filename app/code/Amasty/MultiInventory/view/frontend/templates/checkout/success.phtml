@@ -1,0 +1,43 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_MultiInventory
+ */
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<?php /** @see \Amasty\MultiInventory\Plugin\Checkout\Block\Onepage\SuccessPlugin::beforeFetchView */ ?>
+<div class="checkout-success">
+    <?php if ($block->getIsMultipleOrders()) :?>
+        <div class="success-messages">
+            <?php foreach ($block->getMultipleOrders() as $orderData) : ?>
+                <?php if ($orderData->getCanViewOrder()) :?>
+                    <p><?php echo __('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($orderData->getViewOrderUrl()), $block->escapeHtml($orderData->getOrderId()))) ?></p>
+                <?php else :?>
+                    <p><?php echo __('Your order # is: <span>%1</span>.', $block->escapeHtml($orderData->getOrderId())) ?></p>
+                <?php endif;?>
+            <?php endforeach; ?>
+            <p><?php echo __('We\'ll email you an order confirmation with details and tracking info.') ?></p>
+        </div>
+        <?php echo $block->getChildHtml('details') ?>
+    <?php elseif ($block->getOrderId()) :?>
+        <div class="success-messages">
+            <?php if ($block->getCanViewOrder()) :?>
+                <p><?php echo __('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
+            <?php else :?>
+                <p><?php echo __('Your order # is: <span>%1</span>.', $block->escapeHtml($block->getOrderId())) ?></p>
+            <?php endif;?>
+            <p><?php echo __('We\'ll email you an order confirmation with details and tracking info.') ?></p>
+        </div>
+        <?php echo $block->getChildHtml('details') ?>
+    <?php endif;?>
+
+    <?php echo $block->getAdditionalInfoHtml() ?>
+    <?php echo $block->getChildHtml('cms') ?>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary continue" href="<?php echo $block->getUrl() ?>"><span><?php echo __('Continue Shopping') ?></span></a>
+        </div>
+    </div>
+</div>

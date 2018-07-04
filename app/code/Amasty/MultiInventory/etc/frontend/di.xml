@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_MultiInventory
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\CatalogInventory\Api\Data\StockStatusInterface">
+        <plugin name="amastyMultiInventoryStockStatusInterface" type="Amasty\MultiInventory\Plugin\Inventory\Api\Data\StockStatusInterfacePlugin"/>
+    </type>
+    <type name="Magento\CatalogInventory\Model\ResourceModel\Stock\Status">
+        <plugin name="amastyMultiInventoryStatus" type="Amasty\MultiInventory\Plugin\Inventory\Model\ResourceModel\Stock\StatusPlugin"/>
+    </type>
+    <type name="Magento\ConfigurableProduct\Model\Product\Type\Configurable">
+        <plugin name="amastyMultiInventoryConfigurableSwatches" type="Amasty\MultiInventory\Plugin\ConfigurableProduct\Model\Product\Type\Configurable" />
+    </type>
+    <type name="Amasty\Sorting\Model\ResourceModel\Method\Instock">
+        <plugin name="amastyMultiInventorySortingStock" type="Amasty\MultiInventory\Plugin\Sorting\Method\Instock" />
+    </type>
+</config>

@@ -1,0 +1,22 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_MultiInventory
+ */
+?>
+<?php /** @var $block \Amasty\MultiInventory\Block\Adminhtml\Shipping\Items\AfterRenderer */ ?>
+<?php $options = $block->getOptions(); ?>
+<script>
+    require(['Amasty_MultiInventory/js/sales/multi-order'], function(multi) {
+        multi.globals.data = <?php /* @escapeNotVerified */echo $block->jsonData(); ?>;
+        multi.globals.classTable = '<?php  /* @escapeNotVerified */ echo $options['classTable']; ?>';
+        multi.globals.regexp = '<?php  /* @escapeNotVerified */ echo $options['regexp']; ?>';
+        multi.globals.findRegexp = '<?php  /* @escapeNotVerified */ echo $options['findRegexp']; ?>';
+        multi.globals.attrRegexp = '<?php  /* @escapeNotVerified */ echo $options['attrRegexp']; ?>';
+        multi.globals.numberRegexp =<?php  /* @escapeNotVerified */ echo $options['numberRegexp']; ?>;
+        multi.globals.addSelect = <?php  /* @escapeNotVerified */ echo $options['addSelect']; ?>;
+        multi.addData();
+    });
+
+</script>

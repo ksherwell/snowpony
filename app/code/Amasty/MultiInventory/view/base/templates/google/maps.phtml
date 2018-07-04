@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_MultiInventory
+ */
+?>
+<?php
+/** @var $block \Amasty\MultiInventory\Block\Script\Google */
+?>
+
+<?php if ($block->isAddressSuggestionEnabled()): ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo /* @escapeNotVerified */ $block->getApiKey() ?>&signed_in=true&libraries=places" async defer></script>
+<?php endif?>
+
+<script>
+    window.isAddressSuggestionEnabled = <?php echo (int)$block->isAddressSuggestionEnabled(); ?>;
+</script>

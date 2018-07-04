@@ -1,0 +1,38 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_MultiInventory
+ */
+?>
+<?php
+
+?>
+<?php
+/** @var $block \Amasty\MultiInventory\Block\Adminhtml\Import\Edit\Before */
+?>
+<script>
+require([
+    'Amasty_MultiInventory/js/import/varien-import'
+], function(Import) {
+    type = 'file_type';
+    separator = 'import_field_separator';
+    varienImport = Import;
+    varienImport.init({
+        type: type,
+        separator: separator,
+        urlForm: '<?php /* @escapeNotVerified */ echo $block->getUrlUploader(); ?>',
+        maxSize: <?php /* @escapeNotVerified */ echo $block->getMaxSize(); ?>,
+        list: {
+            identifier: <?php /* @escapeNotVerified */ echo $block->listIdentifier(); ?>,
+            fileType: <?php /* @escapeNotVerified */ echo $block->listFileType(); ?>
+        },
+        urlClear: '<?php /* @escapeNotVerified */ echo $block->getClearUrl(); ?>',
+        urlNext: '<?php /* @escapeNotVerified */ echo $block->getNextUrl(); ?>',
+        urlSend: '<?php /* @escapeNotVerified */ echo $block->getSendUrl(); ?>',
+        urlDeleteFile: '<?php /* @escapeNotVerified */ echo $block->getDeleteFileUrl(); ?>',
+        codes: <?php /* @escapeNotVerified */ echo $block->listCodes(); ?>,
+        products: <?php /* @escapeNotVerified */ echo $block->listProducts(); ?>
+    });
+});
+</script>
