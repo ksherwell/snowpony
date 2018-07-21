@@ -25,6 +25,7 @@ atlassian*
 /node_modules
 /.grunt
 
+/pub/media/catalog/cache/*
 
 /pub/media/tmp/*
 !/pub/media/tmp/.htaccess
