@@ -1,0 +1,58 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="product" data-bind="attr: {'id': 'product_' + $parent.item_id } ">
+	<span class="product-image-container" >
+		<span class="product-image-wrapper">
+			<img data-bind="attr: {'src': getSrc($parent.item_id), 'alt': $parent.name }" />
+		</span>
+	</span>
+	<div class="product-item-details">
+
+		<div class="product-item-inner">
+			<div class="product-item-name-block">
+				<strong class="product-item-name" data-bind="text: $parent.name"></strong>
+				<div class="details-qty">
+					<p><!-- ko i18n: 'Quantity' --><!-- /ko --></p>
+					<div class="qty-item-group">
+						<input type="input" name="item-qty" data-bind="value: $parent.qty, attr: {'id': 'item_' + $parent.item_id } "/>
+						<div class="qty-item-group-button">
+							<button type="button" data-bind="click: decreaseItem.bind(this, $parent.item_id)" class="item-button decrease"><i class="fa fa-minus"></i></button>
+							<button type="button" data-bind="click: increaseItem.bind(this, $parent.item_id)" class="item-button increase"><i  class="fa fa-plus"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item-remove" ><i data-bind="click: deleteItem.bind(this, $parent.item_id)" class="fa fa-trash"></i></div>
+		</div>
+
+		<!-- ko if: (JSON.parse($parent.options).length > 0)-->
+		<div class="product options" data-bind="mageInit: {'collapsible':{'openedState': 'active'}}">
+			<span data-role="title" class="toggle"><!-- ko i18n: 'View Details' --><!-- /ko --></span>
+			<div data-role="content" class="content">
+				<strong class="subtitle"><!-- ko i18n: 'Options Details' --><!-- /ko --></strong>
+				<dl class="item-options">
+					<!--ko foreach: JSON.parse($parent.options)-->
+					<dt class="label" data-bind="text: label"></dt>
+						<!-- ko if: ($data.full_view)-->
+						<dd class="values" data-bind="html: full_view"></dd>
+						<!-- /ko -->
+						<!-- ko ifnot: ($data.full_view)-->
+						<dd class="values" data-bind="html: value"></dd>
+						<!-- /ko -->
+					<!-- /ko -->
+				</dl>
+			</div>
+		</div>
+		<!-- /ko -->
+		<div data-bind="attr: {'id': 'gift-options-item-' + $parent.item_id } " class="gift-options-cart-item">
+			<!-- ko foreach: getRegion('after_details') -->
+				<!-- ko template: getTemplate() --><!-- /ko -->
+			<!-- /ko -->
+		</div>
+		
+	</div>
+</div>

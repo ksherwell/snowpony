@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Widget that adds Olark Live Chat to Magento stores.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@olark.com so we can send you a copy immediately.
+ *
+ * @category    Olark
+ * @package     Olark_Chatbox
+ * @copyright   Copyright 2012. Habla, Inc. (http://www.olark.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="olark_chatbox" class="Olark\Chatbox\Block\Widget\Chatbox">
+        <label translate="true">Olark Live Chat</label>
+        <description translate="true">Adds Olark Live Chat to your website.</description>
+        <parameters>
+            <parameter name="site_id" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Olark Site-ID</label>
+                <block class="Olark\Chatbox\Block\Adminhtml\SiteId\Comment"/>
+            </parameter>
+            <!--<parameter name="custom_config" xsi:type="textarea" visible="true" required="false" sort_order="20">-->
+            <!--<label translate="true">Developer API snippets</label>-->
+            <!--<description />-->
+            <!--</parameter>-->
+        </parameters>
+    </widget>
+</widgets>

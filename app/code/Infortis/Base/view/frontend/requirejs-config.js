@@ -3,7 +3,8 @@ var config = {
         'smartheader': 'Infortis_Base/js/smartheader',
         'stickyheader': 'Infortis_Base/js/stickyheader',
         'qtycontrol': 'Infortis_Base/js/qtycontrol',
-        'expandingsearch': 'Infortis_Base/js/expandingsearch'
+        'expandingsearch': 'Infortis_Base/js/expandingsearch',
+        'select2': 'Infortis_Base/js/select2'
     },
     shim: {
         'smartheader': {
@@ -16,6 +17,9 @@ var config = {
             deps: ['jquery', 'jquery/ui']
         },
         'expandingsearch': {
+            deps: ['jquery', 'jquery/ui']
+        },
+        'select2': {
             deps: ['jquery', 'jquery/ui']
         }
     }

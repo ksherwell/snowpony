@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="block discount" id="block-discount" data-mage-init='{"collapsible":{"openedState": "active", "saveState": false}}'>
+    <div class="title" data-role="title">
+        <strong id="block-discount-heading" role="heading" aria-level="2"><i class="fa fa-tag fa-rotate-90" aria-hidden="true" style="color: #c1c1c1;"></i>&nbsp;&nbsp;<?= /* @escapeNotVerified */ __('Apply Discount Code') ?></strong>
+    </div>
+	<p><?= __('If you have coupon or discount code enterit below.') ?></p>
+    <div class="content" data-role="content" aria-labelledby="block-discount-heading">
+        <form id="discount-coupon-form"
+              action="<?= /* @escapeNotVerified */ $block->getUrl('checkout/cart/couponPost') ?>"
+              method="post"
+              data-mage-init='{"discountCode":{"couponCodeSelector": "#coupon_code",
+                                               "removeCouponSelector": "#remove-coupon",
+                                               "applyButton": "button.action.apply",
+                                               "cancelButton": "button.action.cancel"}}'>
+            <div class="fieldset coupon<?= strlen($block->getCouponCode()) ? ' applied' : '' ?>">
+                <input type="hidden" name="remove" id="remove-coupon" value="0" />
+                <div class="field">
+                    <div class="">
+                        <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?= $block->escapeHtml($block->getCouponCode()) ?>" placeholder="<?= $block->escapeHtml(__('Enter discount code')) ?>" <?php if (strlen($block->getCouponCode())): ?> disabled="disabled" <?php endif; ?> />
+                    </div>
+                </div>
+                <div class="">
+                    <?php if (!strlen($block->getCouponCode())): ?>
+                    <div class="">
+                        <button class="action apply " type="button" value="<?= /* @escapeNotVerified */ __('Apply Discount') ?>">
+                            <span><?= /* @escapeNotVerified */ __('Apply coupon code') ?></span>
+                        </button>
+                    </div>
+                    <?php else: ?>
+                        <div class="">
+                            <button  type="button" class="action cancel " value="<?= /* @escapeNotVerified */ __('Cancel Coupon') ?>"><span><?= /* @escapeNotVerified */ __('Cancel Coupon') ?></span></button>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

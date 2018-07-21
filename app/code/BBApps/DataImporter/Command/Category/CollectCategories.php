@@ -6,7 +6,7 @@
  * -- From: size=125ml|color=green
  * -- To: 2 columns with the values of size and color
  *
- * @copyright  Copyright (c) 2017 BBApps (https://doublebapps.com/)
+ * @copyright  Copyright (c) 2018 BBApps (https://doublebapps.com/)
  */
 
 namespace BBApps\DataImporter\Command\Category;

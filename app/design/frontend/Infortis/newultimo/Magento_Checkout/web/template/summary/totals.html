@@ -1,0 +1,25 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko if: isDisplayed() -->
+<div class="checkout-totals">
+<table class="data table table-totals">	
+	<div class="checkout-list-ul-icon">
+		<i class="fa fa-list-ul" aria-hidden="true"></i>
+	</div>
+	<span data-bind="i18n: 'Your Order'" class="title"></span>
+    <caption class="table-caption" data-bind="i18n: 'Order Summary'"></caption>
+    <tbody>
+    <!-- ko foreach: elems() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+    </tbody>
+</table>
+<div class="order-bottom-img">
+<img data-bind="attr: { src: require.toUrl('')+'img/order-bottom.png' }" width="100%" alt="">
+</div>
+</div>
+<!-- /ko -->

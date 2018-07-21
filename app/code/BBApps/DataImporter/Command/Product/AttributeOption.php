@@ -2,7 +2,7 @@
 /**
  * BBApps DataImporter
  *
- * @copyright  Copyright (c) 2017 BBApps (https://doublebapps.com/)
+ * @copyright  Copyright (c) 2018 BBApps (https://doublebapps.com/)
  */
 
 namespace BBApps\DataImporter\Command\Product;

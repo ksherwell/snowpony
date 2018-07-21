@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @var $block \Magento\Checkout\Block\Cart
+ */
+
+	if ($block->getItemsCount()):
+		echo $block->getChildHtml('with-items');
+?>
+	<div class="row total-cart">
+		<div class="col-md-4"><?php echo $block->getChildHtml('coupon'); ?></div>
+		<div class="col-md-8">
+			<?php echo $block->getChildHtml('cart.summary'); ?>
+			<div class="checkout-redirect">
+			<?php //echo $block->getChildHtml('checkout.cart.methods.bottom'); ?>
+			<button type="button" data-role="proceed-to-checkout" title="Go to Checkout" class="checkout_bottom buy-now-btn">
+			    <span><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;CHECKOUT NOW</span>
+			</button>
+			</div>
+		</div>
+	</div>
+
+<?php 
+	else :
+		echo $block->getChildHtml('no-items');
+	endif;
+?>

@@ -3,7 +3,7 @@
  * BBApps DataImporter
  *
  * @useProtected
- * @copyright  Copyright (c) 2017 BBApps (https://doublebapps.com/)
+ * @copyright  Copyright (c) 2018 BBApps (https://doublebapps.com/)
  */
 
 namespace BBApps\DataImporter\Model\Import;
@@ -25,11 +25,7 @@ class StrikePrice extends ExtendedAbstractEntity
      * @array
      */
     protected $validColumnNames = [
-        'sku'             => 'sku',
-        'code_client'     => 'code_client',
-        'price_ttc'       => 'price_ttc',
-        'striked_price'   => 'strike_price',
-        'store_view_code' => 'store_view_code'
+        'sku' => 'sku'
     ];
 
     /**

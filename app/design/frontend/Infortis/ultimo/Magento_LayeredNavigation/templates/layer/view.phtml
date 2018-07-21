@@ -1,0 +1,83 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+/**
+ * Category layered navigation
+ * Changed: added modifications from Luma theme to make the block collapsible
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation
+ */
+?>
+
+<?php if ($block->canShowBlock()): ?>
+    <?php
+        $theme = $this->helper('Infortis\Base\Helper\Data');
+        $isMultipleCollapsible = $theme->getCfg('layered_navigation/accordion_mode') ? 'false' : 'true'; // In accordion mode only one filter can be expanded
+        $expandedOnLoad = $theme->getCfg('layered_navigation/expanded_on_load'); // Specifies which filters are expanded on load
+        $showCategoryFilter = $theme->getCfg('layered_navigation/category_filter'); // Specifies if category filter should be displayed or removed
+
+        // In accordion mode and if no filters expanded on load, add special class
+        $blockClasses = ($expandedOnLoad === 'false' && $isMultipleCollapsible === 'false') ? ' filters-collapsed' : '';
+    ?>
+    <div class="block filter<?php echo $blockClasses; ?>" id="layered-filter-block" data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": false, "collateral": { "openedState": "filter-active", "element": "body" } }}'>
+        <?php $filtered = count($block->getLayer()->getState()->getFilters()) ?>
+        <div class="block-title filter-title" data-count="<?php /* @escapeNotVerified */ echo $filtered; ?>">
+            <strong data-role="title"><?php /* @escapeNotVerified */ echo __('Shop By') ?></strong>
+        </div>
+        <div class="block-content filter-content">
+			<?php if(@$_GET["product_list_limit"] != 'all'): ?>
+			<a class="btn btn-action" style="position: absolute;" href="?product_list_limit=all"><?php echo __('SEE ALL HAMPERS ON ONE PAGE') ?></a>
+			<?php endif; ?>
+		    <?php echo $block->getChildHtml('state') ?>
+			
+            <?php if ($block->getLayer()->getState()->getFilters()): ?>
+                <div class="block-actions filter-actions">
+                    <a href="<?php /* @escapeNotVerified */ echo $block->getClearUrl() ?>" class="action clear filter-clear"><span><?php /* @escapeNotVerified */ echo __('Clear All') ?></span></a>
+                </div>
+            <?php endif; ?>
+            <?php $wrapOptions = false; ?>
+            <?php foreach ($block->getFilters() as $filter): ?>
+                <?php if ($filter->getItemsCount()): ?>
+                    <?php if (!$wrapOptions): ?>
+                        <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?php /* @escapeNotVerified */ echo __('Shopping Options') ?></strong>
+                        <div class="filter-options" style="text-align:right;" id="narrow-by-list" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": <?php echo $expandedOnLoad; ?>, "multipleCollapsible": <?php echo $isMultipleCollapsible; ?> , "openOnFocus": true }}'>
+                    <?php  $wrapOptions = true; endif; ?>
+                    <?php // Display, if not a category filter or if category filter allowed ?>
+                    <?php if ($filter->getRequestVar() != 'cat' || $showCategoryFilter): ?>
+                        <div data-role="collapsible" class="filter-options-item">
+                            <div data-role="title" class="filter-options-title"><?php /* @escapeNotVerified */ echo __($filter->getName()) ?></div>
+                            <div data-role="content" class="filter-options-content"><?php /* @escapeNotVerified */ echo $block->getChildBlock('renderer')->render($filter); ?></div>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php if ($wrapOptions): ?>
+					<div class="search-box" style="float: right;">
+						<div class="input-group">
+							<form class="form minisearch" id="search_mini_form" action="<?php echo $this->getUrl('catalogsearch/result') ?>" method="get">
+							<input type="text" style="padding-right:35px;" name="q" class="form-control" placeholder="<?php echo __('Name') ?>" value="">
+							<span class="input-group-btn"  style="position: absolute;z-index:10;right: 35px;;top:-1px">
+								<button type="submit" class="btn btn-action"><i class="fa fa-search"></i></button>
+							</span>
+							</form>
+						</div>
+					</div>
+                </div>
+            <?php else: ?>
+                <script>
+                    require([
+                        'jquery'
+                    ], function ($) {
+                        $('#layered-filter-block').addClass('filter-no-options');
+                    });
+                </script>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>

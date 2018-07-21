@@ -56,7 +56,7 @@ class Collection extends AbstractCollection
     public function addActiveWarehouseFilter()
     {
         return $this->join(['wh' => 'amasty_multiinventory_warehouse'], 'wh.warehouse_id = main_table.warehouse_id', [])
-            ->addFieldToFilter('wh.stock_id', ['null' => true]) // only default warehaouse have stock_id
+            ->addFieldToFilter('wh.stock_id', ['null' => true]) // only default warehouse have stock_id
             ->addFieldToFilter('wh.manage', 1);
     }
 }

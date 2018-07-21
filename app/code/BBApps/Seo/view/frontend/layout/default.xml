@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="require.js">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">BBApps_Seo::require_js.phtml</argument>
+            </action>
+            <block name="gtm_script" class="Magento\Framework\View\Element\Template"
+                   template="BBApps_Seo::gtm.phtml"/>
+        </referenceBlock>
+        <referenceContainer name="after.body.start">
+            <block name="gtm_noscript" class="Magento\Framework\View\Element\Template"
+                   template="BBApps_Seo::gtm-noscript.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

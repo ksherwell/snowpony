@@ -3,7 +3,7 @@
  * BBApps DataImporter
  *
  * @useProtected
- * @copyright  Copyright (c) 2017 BBApps (https://doublebapps.com/)
+ * @copyright  Copyright (c) 2018 BBApps (https://doublebapps.com/)
  */
 
 namespace BBApps\DataImporter\Model\Import;

@@ -1,0 +1,49 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * Widget that adds Olark Live Chat to Magento stores.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@olark.com so we can send you a copy immediately.
+ *
+ * @category    Olark
+ * @package     Olark_Chatbox
+ * @copyright   Copyright 2012. Habla, Inc. (http://www.olark.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="olark" translate="label" sortOrder="1000000">
+            <label>Olark</label>
+        </tab>
+        <section id="olark_chatbox" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Chatbox</label>
+            <tab>olark</tab>
+            <resource>Olark_Chatbox::config_olark_chatbox</resource>
+            <group id="settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <field id="insert_on_all_pages" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Insert on all pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="site_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Olark Site-ID</label>
+                    <comment>
+                        <model>Olark\Chatbox\Model\Config\Comment\SiteId</model>
+                    </comment>
+                </field>
+                <field id="custom_config" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Developer API snippets</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

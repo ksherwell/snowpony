@@ -1,0 +1,278 @@
+<?php
+/**
+ * @var \Infortis\Base\Block\Catalog\Product\View $block
+ */
+?>
+<?php
+    $theme = $block->getHelperTheme();
+    $helperProductView = $block->getHelperProductView();
+    $helperLabels = $this->helper('Infortis\Base\Helper\Labels');
+    $helperAddToLinks = $this->helper('Infortis\Base\Helper\AddToLinks');
+
+    // Get grid classes for product page sections
+    $grid = $helperProductView->getGridClasses();
+
+    // Get positions of blocks
+    $position = $helperProductView->getPositions();
+
+    // Brand info
+    $brandHtml = $block->getChildHtml('brand-info');
+    if (!empty($brandHtml)) {
+        if (isset($p[$position['brand']])) {
+            $p[$position['brand']] = $p[$position['brand']] . $brandHtml;
+        } else {
+            $p[$position['brand']] = $brandHtml;
+        }
+    }
+
+    // Product collateral data
+    $collateralHtml = $block->getChildHtml('product.info.details');
+    if (!empty($collateralHtml)) {
+        if (isset($p[$position['collateral']])) {
+            $p[$position['collateral']] = $p[$position['collateral']] . $collateralHtml;
+        } else {
+            $p[$position['collateral']] = $collateralHtml;
+        }
+    }
+
+    // Related products
+    $relatedProductsHtml = $block->getChildHtml('catalog.product.related');
+    if (!empty($relatedProductsHtml)) {
+        if (isset($p[$position['related']])) {
+            $p[$position['related']] = $p[$position['related']] . $relatedProductsHtml;
+        } else {
+            $p[$position['related']] = $relatedProductsHtml;
+        }
+    }
+
+    // Up-sell products
+    $upsellProductsHtml = $block->getChildHtml('product.info.upsell');
+    if (!empty($upsellProductsHtml)) {
+        if (isset($p[$position['upsell']])) {
+            $p[$position['upsell']] = $p[$position['upsell']] . $upsellProductsHtml;
+        } else {
+            $p[$position['upsell']] = $upsellProductsHtml;
+        }
+    }
+?>
+<div class="product-view product-columns-wrapper">
+
+
+	<?php echo $block->getChildHtml('page.main.title'); ?>
+    <div class="product-img-column <?php echo $grid['imgCol']; ?> no-left-gutter product media <?php echo $helperLabels->getLabelsClasses(); ?>">
+
+        <?php echo $block->getChildHtml('product.info.media'); ?>
+        <?php echo $helperLabels->getLabels($block->getProduct()); ?>
+        <?php if (isset($p['imgCol_1'])) echo $p['imgCol_1']; ?>
+
+        <?php // Container at the bottom ?>
+        <?php echo $block->getChildHtml('container_product_image_1'); ?>
+
+        <div class="non-collapsing-column-placeholder"></div>
+
+    </div>
+
+    <?php // TODO: remove old classes such as "product-shop" ?>
+    <div class="product-primary-column product-shop <?php echo $grid['primCol']; ?> product-info-main">
+        <?php //echo $block->getChildHtml('product.info.review'); ?>
+		
+        <?php if (isset($p['primCol_1'])) echo $p['primCol_1']; ?>
+        <?php echo $block->getChildHtml('product.info.main'); ?>
+        <?php if (isset($p['primCol_2'])) echo $p['primCol_2']; ?>
+
+        <?php // Container at the bottom ?>
+        <?php echo $block->getChildHtml('container_product_primary_2'); ?>
+		<div id="postcode-check-alert" class="alert alert-success hidden" role="alert">
+		</div>
+		<div class="product-postcode">
+			<form method="post">
+				<p>This Gift of Taste features orchard-fresh produce. Enter your postcode here to check we
+					can deliver it to your address.</p>
+				<div class="input-group">
+					<input type="number" class="form-control" name="postcode" id="postode-input">
+					<span class="input-group-btn">
+						<button type="submit" id="postcode-check" class="btn btn-action" href="#">check</button>
+					</span>
+				</div>
+			</form>
+		</div>
+		
+		<div class="size-guide">
+			<div>
+				<a data-target="#sizeguideModal" data-toggle="modal"><?php echo __('Size Guide') ?></a>
+			</div>
+		</div>
+		<div class="modal fade" id="sizeguideModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title" id="myModalLabel">Size Guide</h4>
+					</div>
+					<div class="modal-body">
+						<div>
+							<div class="table-responsive">
+								<table class="table table-bordered">
+								<thead>
+								<tr><th>
+								<h5><span style="color: #000000;">Box Size</span></h5>
+								</th><th>
+								<h5><span style="color: #000000;">Width(Deep)</span></h5>
+								</th><th>
+								<h5><span style="color: #000000;">Length <br></span></h5>
+								</th><th>
+								<h5><span style="color: #000000;">Height</span></h5>
+								</th></tr>
+								</thead>
+								<tbody>
+								<tr><th scope="row">
+								<h5><span style="color: #000000;">Regular</span></h5>
+								</th>
+								<td>
+								<h5><span style="color: #000000;">29cm</span></h5>
+								</td>
+								<td>
+								<h5><span style="color: #000000;">38cm</span></h5>
+								</td>
+								<td>
+								<h5><span style="color: #000000;">15cm</span></h5>
+								</td>
+								</tr>
+								<tr><th scope="row">
+								<h5><span style="color: #000000;">Large</span></h5>
+								</th>
+								<td>
+								<h5><span style="color: #000000;">38cm</span></h5>
+								</td>
+								<td>
+								<h5><span style="color: #000000;">47cm</span></h5>
+								</td>
+								<td>
+								<h5><span style="color: #000000;">15cm</span></h5>
+								</td>
+								</tr>
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+    </div>
+    
+    <?php if (isset($grid['secCol'])): ?>
+
+        <div class="product-secondary-column custom-sidebar-right <?php echo $grid['secCol']; ?> no-right-gutter">
+            <div class="inner">
+
+                <?php // Container at the top ?>
+                <?php echo $block->getChildHtml('container_product_secondary_1'); ?>
+
+                <?php if (isset($p['secCol_1'])) echo $p['secCol_1']; ?>
+                <?php echo $block->getChildHtml('block_product_secondary_bottom'); ?>
+                <?php if (isset($p['secCol_2'])) echo $p['secCol_2']; ?>
+
+                <?php // Container at the bottom ?>
+                <?php echo $block->getChildHtml('container_product_secondary_2'); ?>
+
+                <?php //if (isset($p['secCol_3'])) echo $p['secCol_3']; ?>
+
+                <?php // TODO: ?>
+                <?php if ($tmpHtml = $block->getChildHtml('product_secondary_top_placeholder')): ?>
+                    <div class="feature-wrapper bottom-border"><?php echo $tmpHtml; ?></div>
+                <?php endif; ?>
+
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if($block->getProduct()->getInfoContent1() || $block->getProduct()->getInfoContent2() || $block->getProduct
+    ()->getInfoContent3()): ?>
+	<div class="white-box">
+        <div class="white-box-inner">
+            <div class="row">
+                <div class="col-md-4">
+                    <?php
+                    echo $block->getProduct()->getInfoContent1();
+                    ?>
+                </div>
+                <div class="col-md-4">
+                    <?php
+                    echo $block->getProduct()->getInfoContent2();
+                    ?>
+                </div>
+                <div class="col-md-4">
+                    <?php
+                    echo $block->getProduct()->getInfoContent3();
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+	<?php if($relatedProductsHtml): ?>
+	<?php echo $relatedProductsHtml ?>
+	<?php endif; ?>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+    requirejs(['jquery','qtycontrol','select2'], function(jQuery, qtycontrol, select2) {
+		
+		jQuery(document).ready(function() {
+			if(jQuery('select').length > 0){
+				jQuery('select').select2();
+			}
+		});
+		
+        jQuery(function($) {
+            $('input.qty').qtycontrol();
+        }); //end: on document ready
+		
+		jQuery('.size-guide a').click(function(){
+			jQuery('#sizeguideModal').addClass('in').show();
+		});
+		
+		jQuery('#sizeguideModal .modal-header .close').click(function(){
+			jQuery('#sizeguideModal').removeClass('in').hide();
+		});
+		jQuery('#postcode-check').click(function(e){
+			e.preventDefault();
+			return jQuery.ajax({
+			    url: '/checkpostcode',
+			    type: 'POST',
+			    async: false,
+			    data: {postcode: jQuery("#postode-input").val(), dairy: 1},
+			    success: function(data){
+			        if (data == '1') {
+			        	jQuery('#postcode-check-alert').removeClass('alert-danger', function() {
+		        			jQuery('#postcode-check-alert').addClass('alert-success');
+		        			jQuery('#postcode-check-alert').html('We can deliver to this postcode');
+			        	});
+			        }
+			        else if (data === '0') {
+			        	jQuery('#postcode-check-alert').removeClass('alert-success', function() {
+		        			jQuery('#postcode-check-alert').addClass('alert-danger');
+		        			jQuery('#postcode-check-alert').html('Unfortunately we don’t deliver to this postcode. Please call 1800 803 570 for further assistance.');
+			        	});
+			        }
+			        else {
+			        	jQuery('#postcode-check-alert').removeClass('alert-success', function() {
+		        			jQuery('#postcode-check-alert').addClass('alert-danger');
+		        			jQuery('#postcode-check-alert').html('Invalid postcode');
+			        	});
+			        }
+			        setTimeout(function() {jQuery('#postcode-check-alert').removeClass('hidden')},200);
+			    }
+			});
+		});
+
+
+    });
+
+//]]>
+</script>
+

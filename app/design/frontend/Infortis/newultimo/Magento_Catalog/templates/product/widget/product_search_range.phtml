@@ -1,0 +1,86 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Catalog advanced search form
+ *
+ * @var $block \Magento\Catalog\Block\Product\Widget\NewWidget
+ */
+?>
+<?php $helperImage = $this->helper('Infortis\Infortis\Helper\Image');
+if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())) {
+    $type = 'widget-new-grid';
+
+    $mode = 'grid';
+
+    $image = 'itemgrid_category_page_grid';
+    $title = __('New Products');
+    $items = $block->getProductCollection()->getItems();
+
+    $showWishlist = false;
+    $showCompare = false;
+    $showCart = false;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::DEFAULT_VIEW;
+    $description = false;
+	$imgWidth = 320;
+	$imgHeight = 230;
+}
+?>
+
+<?php if ($exist):?>
+    <div class="row block widget block-new-products grid product-search-range">
+    	<h1>browse our complete range here</h1>
+        <div class="block-content">            
+            <div class="products-grid">
+                <ol class="product-items widget-new-grid">                    
+                    <li class="productitem col-md-6 col-sm-6 col-xs-12" style="clear: left;">
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/for-her-range.png'); ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title">Gourmet Hampers</p>
+                                <a href="#" class="btn_seemore">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="productitem col-md-6 col-sm-6 col-xs-12">
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/for-him-range.png'); ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title">Chocolate Hampers</p>
+                                <a href="#" class="btn_seemore">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="productitem col-md-6 col-sm-6 col-xs-12">
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/chocolate-range.png'); ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title">For Her</p>
+                                <a href="#" class="btn_seemore">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="productitem col-md-6 col-sm-6 col-xs-12">
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/motherday-range.png'); ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title">For Him</p>
+                                <a href="#" class="btn_seemore">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                </ol>
+            </div>
+            <?= $block->getPagerHtml() ?>
+        </div>
+    </div>
+<?php endif;?>
+

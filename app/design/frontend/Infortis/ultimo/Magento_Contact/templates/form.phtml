@@ -1,0 +1,91 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var \Magento\Contact\Block\ContactForm $block */
+?>
+<div class="row ">
+	<div class="col-md-12 alpha omega">
+	<p>Need help? We’d love to hear from you!</p>
+	<p>&nbsp;</p>
+	<p>Leave us a note here, and we’ll be back to you shortly:</p>
+	<p>&nbsp;</p>	
+	</div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="white-box white-box-form">
+            <div class="white-box-inner">
+				<div id="form_component_68">
+					<form id="contact-form" method="post" class="form" action="<?= $block->escapeUrl($block->getFormAction()) ?>" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>" data-mage-init='{"validation":{}}'>
+					<div class="response"></div>
+					<div class="fields">
+							<div class="form-group">
+							<label class="control-label" for="question_12"><?= $block->escapeHtml(__('Name')) ?><span class="required"> *</span></label>
+
+							<div class="row">
+
+								<div class="col-md-6">
+									<input class="form-control"  name="fname" id="fname">
+									<p class="help-block"><?= $block->escapeHtml(__('First Name')) ?></p>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="lname" id="lname">
+									<p class="help-block"><?= $block->escapeHtml(__('Last Name')) ?></p>
+								</div>
+
+							</div>                       
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="question_28"><?= $block->escapeHtml(__('Company')) ?></label>
+							<div class="controls">
+								<input class="form-control" name="company" id="company">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="question_18"><?= $block->escapeHtml(__('Email Address')) ?><span class="required"> *</span></label>
+							<div class="controls">
+								<input name="email" id="email" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="question_25"><?= $block->escapeHtml(__('Contact Number')) ?><span class="required"> *</span></label>
+							<div class="controls">
+								<input name="telephone" id="telephone" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="question_26"><?= $block->escapeHtml(__('State')) ?><span class="required"> *</span></label>
+							<div class="controls">
+								<input name="state" id="state" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="question_27"><?= $block->escapeHtml(__('Your Enquiry')) ?></label>
+							<div class="controls">
+								<input name="question" id="question" class="form-control">
+							</div>
+						</div>
+						<div class="">
+							<button id="submit_1" type="submit" class="btn btn-primary"><?= $block->escapeHtml(__('Submit')) ?></button>
+						</div>
+						
+						<input type="hidden" name="hideit" id="hideit" value="" />
+					</div>
+					</form>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ">
+	<div class="col-md-12 alpha omega">
+		<div class="hr-line hr-line-home"></div>
+		<h2>Customer Reviews</h2>
+		<div class="trustpilot-widget" data-locale="en-AU" data-template-id="53aa8912dec7e10d38f59f36" data-businessunit-id="583527580000ff000597f238" data-style-height="130px" data-style-width="100%" data-theme="dark" data-schema-type="Organization" data-stars="4,5" style="position: relative;"><iframe frameborder="0" scrolling="no" title="Customer reviews powered by Trustpilot" src="https://widget.trustpilot.com/trustboxes/53aa8912dec7e10d38f59f36/index.html?locale=en-AU&amp;templateId=53aa8912dec7e10d38f59f36&amp;businessunitId=583527580000ff000597f238&amp;styleHeight=130px&amp;styleWidth=100%25&amp;theme=dark&amp;schemaType=Organization&amp;stars=4%2C5" style="position: relative; height: 130px; width: 100%; border-style: none; display: block; overflow: hidden;"></iframe></div>
+		<div class="hr-line hr-line-home"></div>	
+	</div>
+</div>

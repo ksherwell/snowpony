@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <payway>
+                <active>1</active>
+                <model>PL\Payway\Model\Payway</model>
+                <title>Credit Card (via St.George Bank PayWay)</title>
+                <merchant_id>TEST</merchant_id>
+                <threedsecure>0</threedsecure>
+                <cctypes>VI,MC</cctypes>
+                <payment_action>authorize_capture</payment_action>
+                <allowspecific>0</allowspecific>
+                <debug>0</debug>
+            </payway>
+            <payway_net>
+                <active>0</active>
+                <model>PL\Payway\Model\Net</model>
+                <title>Hosted Payment Page (St.George Bank)</title>
+                <payment_action>order</payment_action>
+                <merchant_id>TEST</merchant_id>
+                <paypal_email>test@example.com</paypal_email>
+                <debug>0</debug>
+            </payway_net>
+        </payment>
+    </default>
+</config>

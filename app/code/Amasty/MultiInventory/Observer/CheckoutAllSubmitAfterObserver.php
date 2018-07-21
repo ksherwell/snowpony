@@ -118,7 +118,7 @@ class CheckoutAllSubmitAfterObserver implements ObserverInterface
      * @param EventObserver $observer
      * @return $this
      */
-    public function execute(EventObserver $observer) // TODO $order->getShippingAddress()->getData('postcode')
+    public function execute(EventObserver $observer)
     {
         if (!$this->system->isMultiEnabled()) {
             return $this;

@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+?>
+<?php if ($_description = $block->getCurrentCategory()->getDescription()): ?>
+    <div class="category-description">
+        <?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($block->getCurrentCategory(), $_description, 'description') ?>
+    </div>
+<?php endif; ?>
+<a class="read_more" style="display: inline;">Read More</a>
+<div class="row read_more">
+	<div class="col-md-12 alpha omega">
+		<div class="hr-line hr-line-home"></div>
+		<h2>Customer Reviews</h2>
+		<div class="trustpilot-widget" data-locale="en-AU" data-template-id="53aa8912dec7e10d38f59f36" data-businessunit-id="583527580000ff000597f238" data-style-height="130px" data-style-width="100%" data-theme="dark" data-schema-type="Organization" data-stars="4,5" style="position: relative;"><iframe frameborder="0" scrolling="no" title="Customer reviews powered by Trustpilot" src="https://widget.trustpilot.com/trustboxes/53aa8912dec7e10d38f59f36/index.html?locale=en-AU&amp;templateId=53aa8912dec7e10d38f59f36&amp;businessunitId=583527580000ff000597f238&amp;styleHeight=130px&amp;styleWidth=100%25&amp;theme=dark&amp;schemaType=Organization&amp;stars=4%2C5" style="position: relative; height: 130px; width: 100%; border-style: none; display: block; overflow: hidden;"></iframe></div>
+		<div class="hr-line hr-line-home"></div>
+		<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('categories_static_content')->toHtml();?>
+	</div>
+	<div class="col-xs-12">
+		<a class="read_less">Less</a>
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+requirejs(['jquery'], function(jQuery) {
+	jQuery('a.read_more').click(function(){
+		jQuery('div.read_more').show();
+	});
+	jQuery('a.read_less').click(function(){
+		jQuery('div.read_more').hide();
+	});
+}); //end: requirejs
+//]]>
+</script>

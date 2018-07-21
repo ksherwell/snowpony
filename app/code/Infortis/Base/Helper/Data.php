@@ -238,4 +238,35 @@ class Data extends AbstractHelper
         return $html;
     }
 
+	public function getExtrasProduct(){
+		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+		$quote = $objectManager->get('Magento\Checkout\Model\Session')->getQuote();
+		$items = $quote->getAllVisibleItems(); 
+		$crossellIds = array();
+		$quoteProductIds = array();
+		foreach($items as $_item){
+			$productId = $_item->getProduct()->getId();
+			$quoteProductIds[] = $productId;
+			$_product = $objectManager->create('Magento\Catalog\Model\Product')->load($productId);
+			$crossellIds = array_merge($crossellIds,$_product->getCrossSellProductIds());
+		}
+		$crossellIds = array_unique($crossellIds, SORT_REGULAR);
+		$crossellProduct = array();
+		foreach($crossellIds as $_crossellId){
+			$_product = $objectManager->create('Magento\Catalog\Model\Product')->load($_crossellId);
+			if(!in_array($objectManager->create('Magento\Store\Model\StoreManagerInterface')->getStore()->getId(),$_product->getStoreIds())) return;
+			$imageUrl = $objectManager->get('Magento\Catalog\Helper\ImageFactory')->create()->init($_product, 'product_thumbnail_image')->getUrl();
+			$productData = $_product->getData();
+			$productData['thumbnail'] = $imageUrl;
+			if(in_array($_crossellId,$quoteProductIds)){
+				$quoteItem = $quote->getItemByProduct($_product);
+				$productData['qtyQuote'] = $quoteItem->getQty();
+				$productData['itemId'] = $quoteItem->getId();
+			}else{
+				$productData['qtyQuote'] = 0;
+			}
+			$crossellProduct[] = $productData;
+		}
+		return $crossellProduct;
+	}
 }

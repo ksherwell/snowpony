@@ -1,0 +1,13 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="opc-block-summary opc-block-extras" data-bind="blockLoader: isLoading, visible: getCrossellData().length > 0">
+    <span data-bind="i18n: 'Add Extras to this box'" class="title"></span>
+	<p>Please Note: You may only include 1 bottle of wine or juice per box.</p>
+    <!-- ko foreach: elems() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+</div>

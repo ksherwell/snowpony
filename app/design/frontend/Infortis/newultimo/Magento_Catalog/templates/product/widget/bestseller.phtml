@@ -1,0 +1,108 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Template for displaying new products widget
+ *
+ * @var $block \Magento\Catalog\Block\Product\Widget\NewWidget
+ */
+$helperImage = $this->helper('Infortis\Infortis\Helper\Image');
+if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())) {
+    $type = 'widget-new-grid';
+
+    $mode = 'grid';
+
+    $image = 'itemgrid_category_page_grid';
+    $title = __('New Products');
+    $items = $block->getProductCollection()->getItems();
+
+    $showWishlist = false;
+    $showCompare = false;
+    $showCart = false;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::DEFAULT_VIEW;
+    $description = false;
+	$imgWidth = 320;
+	$imgHeight = 230;
+}
+?>
+
+<?php if ($exist):?>
+    <div class="row block widget block-new-products grid">
+        <div class="block-content">            
+            <div class="products-grid">
+                <ol class="product-items widget-new-grid">
+                    <li class="productitem col-md-7 col-sm-6 col-xs-12 active">
+                        <h3>Mother's Day Hampers</h3>
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/mothers-day.png') ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title">Mother's Day Hampers</p>
+                                <a href="#" class="btn_seemore">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="productitem col-md-5 col-sm-6 col-xs-12">
+                        <h3>Corporate Gifts</h3>
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/chocolate-gift.png') ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title">Corporate Gifts</p>
+                                <a href="#" class="btn_seemore">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="productitem col-md-3 col-sm-6 col-xs-12" style="clear: left;">
+                        <h3>Gourmet Hampers</h3>
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/gourmet-hampers.png'); ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title" style="float: initial;">Gourmet Hampers</p>
+                                <a href="#" class="btn_seemore" style="float: initial;">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="productitem col-md-3 col-sm-6 col-xs-12">
+                        <h3>Chocolate Hampers</h3>
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/chocolate.png'); ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title" style="float: initial;">Chocolate Hampers</p>
+                                <a href="#" class="btn_seemore" style="float: initial;">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="productitem col-md-3 col-sm-6 col-xs-12">
+                        <h3>For Her</h3>
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/for-her.png'); ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title" style="float: initial;">For Her</p>
+                                <a href="#" class="btn_seemore" style="float: initial;">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="productitem col-md-3 col-sm-6 col-xs-12">
+                        <h3>For Him</h3>
+                        <div class="bestseller-product-info">
+                            <img src="<?php echo $this->getViewFileUrl('img/for-him.png'); ?>" alt="">
+                            <div class="bestseller-product-content">
+                                <p class="product-title" style="float: initial;">For Him</p>
+                                <a href="#" class="btn_seemore" style="float: initial;">SEE MORE &nbsp ></a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                </ol>
+            </div>
+            <?= $block->getPagerHtml() ?>
+        </div>
+    </div>
+<?php endif;?>

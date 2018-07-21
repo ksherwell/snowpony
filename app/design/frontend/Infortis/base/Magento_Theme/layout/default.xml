@@ -18,7 +18,7 @@
             <!-- Header
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-            <block class="Infortis\Base\Block\Html\Header" name="base-header-container" before="-" template="html/header.phtml">
+            <block class="Infortis\Base\Block\Html\Header" name="base-header-container" before="-" template="Infortis_Base::html/header.phtml">
 
                 <!-- Logo -->
                 <block class="Infortis\Base\Block\Html\Header\Logo" name="site-logo" template="html/header/logo.phtml">

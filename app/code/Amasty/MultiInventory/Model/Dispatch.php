@@ -8,6 +8,7 @@
 
 namespace Amasty\MultiInventory\Model;
 
+use Amasty\MultiInventory\Api\WarehouseRepositoryInterface;
 use Amasty\MultiInventory\Model\Warehouse\StoreFactory;
 use Magento\Directory\Model\RegionFactory;
 use Magento\Framework\Api\SimpleDataObjectConverter;
@@ -445,11 +446,47 @@ class Dispatch extends \Magento\Framework\DataObject
      * @return int[]
      * @since 1.3.0 added new criteria "Stock"
      */
-    public function searchWh()
+    public function searchWh(/*$customerZip = null*/)
     {
         $this->warehouses = [];
         $this->getGeneral();
         if (count($this->warehouses) > 0) {
+            /*Filter Warehouses by Post Code-------*/
+//            $customerZip = null;
+//            switch ($this->getDirection()) {
+//                case self::DIRECTION_ORDER:
+////                    $customerZip =  $this->getOrderItem()->getOrder()->getShippingAddress()->getPostcode();
+////                    $customerZip =  4000;
+//                    break;
+//                case self::DIRECTION_QUOTE:
+////                    $customerZip =  $this->getQuoteItem()->getQuote()->getShippingAddress()->getPostcode();
+////                    $customerZip =  4000;
+////                    $customerZip = null;
+//                    break;
+//                default:
+////                    $customerZip = null;
+//            }
+////            $customerZip = 3000;
+//            if ($customerZip) {
+//                $warehousesFilterByPostCode = [];
+//                foreach ($this->warehouses as $warehouse) {
+//                    try {
+//                        $warehouseZips = $this->repository->getById($warehouse)->getWhDeliveryPostcodes();
+////                        $warehouseZips = null;
+//                    } catch (\Exception $ex) {
+//                        break;
+//                    }
+//
+//                    $warehouseZips = str_replace(' ','',$warehouseZips);
+//                    $warehouseZips = explode(',', $warehouseZips);
+//                    if (in_array($customerZip,$warehouseZips)) {
+//                        $warehousesFilterByPostCode[] = $warehouse;
+//                        $this->warehouses = $warehousesFilterByPostCode;
+//                    }
+//                }
+//            }
+            /*-------Filter Warehouses by Post Code*/
+
             $callables = $this->getCallables();
             foreach ($callables as $key => $options) {
                 if ($this->checkCount()) {

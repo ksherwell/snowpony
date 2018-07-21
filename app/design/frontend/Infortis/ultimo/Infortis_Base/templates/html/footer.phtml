@@ -1,0 +1,44 @@
+<div class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5 col-xs-12">
+				<h3>Our Partners</h3>
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('sister_brands')->toHtml();?>
+				
+			</div>
+			<div class="col-sm-3 col-xs-12 follow-box">
+				<h3>Follow Us</h3>
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('social_links')->toHtml();?>
+			</div>
+			<div class="clearfix visible-xs-block"></div>
+			<div class="col-sm-4 col-xs-12">
+				<form class="form subscribe" novalidate="novalidate" action="<?php echo $this->getUrl('newsletter/subscriber/new') ?>" method="post" id="newsletter-validate-detail">
+						
+					<h3><img src="<?php echo $this->getViewFileUrl('images/footer-new.png') ?>"/>Snowgoose news</h3>
+					<div class="input-group">
+						<input name="email" type="email" class="form-control" id="newsletter" placeholder="<?php echo __('Your email address') ?>" data-validate="{required:true, 'validate-email':true}">
+							
+						<div class="input-group-btn">
+							<button class="btn btn-primary btn-subscribe" title="<?php echo __('Subscribe') ?>" type="submit">
+								<span><?php echo __('Subscribe') ?></span>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-12"><div class="border-footer"></div></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 section-footer-bottom">
+				<p class="copyright">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('copyright_info')->toHtml();?>
+					<span class="footer-bottom-icon1"><img src="<?php echo $this->getViewFileUrl('images/footer-icon1.png') ?>"/></span>
+				</p>
+				<br/>
+				<p class="fineprint">Disclaimer: All gift boxes are subject to stock availability. If due to unforeseen circumstances it is nescessary to substitute an item.<br/>
+					Snowgoose gurantees that such substitution will be of equal value. Customers will be notified of any changes.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

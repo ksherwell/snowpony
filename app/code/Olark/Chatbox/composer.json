@@ -1,0 +1,12 @@
+{
+    "name": "olark/chatbox",
+    "description": "Widget that adds Olark Live Chat to Magento stores.",
+    "type": "magento2-module",
+    "version": "0.0.1",
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Olark\\Chatbox\\": ""
+        }
+    }
+}

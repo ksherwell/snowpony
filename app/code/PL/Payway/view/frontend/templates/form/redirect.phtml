@@ -1,0 +1,14 @@
+<form name="paywaynet" id="payway-net-form" method="get"
+      action="<?php echo $block->getFormUrl()?>" accept-charset="utf-8">
+
+    <?php foreach ($block->getFormFields() as $field => $value) : ?>
+        <input type="hidden" name="<?php echo($field); ?>" value="<?php echo($value); ?>" />
+    <?php endforeach;?>
+    <input type="submit"
+           value="<?php echo __('You will be redirected to the payment gateway in a few seconds.'); ?>"/>
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    document.getElementById('payway-net-form').submit();
+    //]]>
+</script>

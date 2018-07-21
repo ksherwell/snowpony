@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="payway" translate="label" type="text" sortOrder="450" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>St.George Bank - PayWay API</label>
+                <comment>It allows your customer to purchase directly from your website </comment>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+                <field id="merchant_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Merchant ID</label>
+                </field>
+                <field id="username" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Username</label>
+                </field>
+                <field id="password" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Password</label>
+                </field>
+                <field id="order_prefix" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Order Prefix</label>
+                    <comment>Order Prefix does not exceed 8 characters OR leave the blank</comment>
+                </field>
+                <field id="threedsecure" translate="label" type="select" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled 3D Secure</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cctypes" translate="label" type="multiselect" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Credit Card Types</label>
+                    <source_model>PL\Payway\Model\Source\Cctype</source_model>
+                </field>
+
+                <field id="payment_action" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Action</label>
+                    <source_model>PL\Payway\Model\Source\PaymentAction</source_model>
+                </field>
+                <field id="allowspecific" translate="label" type="allowspecific" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment from Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                </field>
+            </group>
+
+            <group id="payway_net" translate="label" type="text" sortOrder="451" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>St.George Bank - PayWay Net</label>
+                <comment>It redirects to payment gateway</comment>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Title</label>
+                </field>
+                <field id="merchant_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Merchant ID</label>
+                </field>
+                <field id="biller_code" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Biller Code</label>
+                </field>
+                <field id="paypal_email" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Paypal Email Address</label>
+                </field>
+                <field id="security_username" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Security Username</label>
+                </field>
+                <field id="security_password" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Security Password</label>
+                </field>
+                <field id="encryption_key" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Encryption Key</label>
+                </field>
+                <field id="debug" translate="label" type="select" sortOrder="85" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Debug</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="proxy_host" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Proxy Host</label>
+                </field>
+                <field id="proxy_port" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Proxy Port</label>
+                </field>
+                <field id="proxy_username" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Proxy Username</label>
+                </field>
+                <field id="proxy_password" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Proxy Password</label>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

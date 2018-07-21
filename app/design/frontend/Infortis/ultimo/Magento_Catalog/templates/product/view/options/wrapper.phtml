@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$required = '';
+if ($block->hasRequiredOptions()) {
+    $required = ' data-hasrequired="' . __('* Required Fields') . '"';
+}
+?>
+<div class="col-md-4 col-xs-12">
+	<?php echo $this->getLayout()->createBlock('Magento\Catalog\Pricing\Render',
+		  "product.price.final",
+			[
+				'data' => [
+					'price_render' => 'product.price.render.default',
+					'price_type_code' => 'final_price',
+					'zone' => 'item_view'
+				]
+		   ]
+		  )
+	->toHtml();?>
+	<div class="product-options-wrapper" id="product-options-wrapper"<?= /* @escapeNotVerified */ $required ?>>
+		<div class="fieldset" tabindex="0">
+			<?= $block->getChildHtml('', true) ?>
+		</div>
+	</div>
+</div>

@@ -2,7 +2,7 @@
 /**
  * BBApps DataImporter
  *
- * @copyright  Copyright (c) 2017 BBApps (https://doublebapps.com/)
+ * @copyright  Copyright (c) 2018 BBApps (https://doublebapps.com/)
  */
 
 namespace BBApps\DataImporter\Model;
@@ -36,6 +36,11 @@ class ProductImport extends AbstractModel
     private $productAction;
 
     /**
+     * @var \Magento\Weee\Model\ResourceModel\Attribute\Backend\Weee\Tax
+     */
+    protected $_attributeTax;
+
+    /**
      * ProductImport constructor.
      * @param LoggerInterface $logger
      * @param Filesystem $filesystem
@@ -49,10 +54,12 @@ class ProductImport extends AbstractModel
         ProductRepositoryInterface $productRepository,
         ImportHelper $helper,
         \Magento\Catalog\Model\Product\Action $productAction,
+        \Magento\Weee\Model\ResourceModel\Attribute\Backend\Weee\Tax $attributeTax,
         array $data = []
     ) {
         parent::__construct($logger, $filesystem, $data);
 
+        $this->_attributeTax     = $attributeTax;
         $this->productRepository = $productRepository;
         $this->helper            = $helper;
         $this->productAction     = $productAction;
@@ -60,49 +67,51 @@ class ProductImport extends AbstractModel
 
     public function import($data, $storeId)
     {
+        $sku = str_replace('01-', '', $data['sku']);
+        $sku = explode('-', $sku);
+        if (count($sku) == 4) {
+            $sku = implode('-', [$sku[0], $sku[1], $sku[3]]);
+            try {
+                /** @var Product $product */
+                $product = $this->productRepository->get($sku);
+                $newData = $this->_prepareData($data);
 
-        try {
-            /** @var Product $product */
-            $product = $this->productRepository->get($data['sku']);
-            $data    = $this->_prepareData($data);
+                if ($product->getId()) {
+                    $attributeModel = \Magento\Framework\App\ObjectManager::getInstance()->get
+                    (\Magento\Catalog\Model\ResourceModel\Product\Action::class);
+                    $attribute      = $attributeModel->getAttribute('fpt');
+                    //                    $orig           = $product->getOrigData('fpt');
+                    //                    $current        = $product->getData('fpt');
 
-            if ($product->getId()) {
-                $this->productAction->updateAttributes(
-                    [$product->getId()],
-                    $data,
-                    $storeId
-                );
+                    $this->_attributeTax->deleteProductData($product, $attribute);
+
+                    $newData['attribute_id'] = $attribute->getId();
+                    $newData['value']        = round($data['rate'] * $product->getPrice() / 100, 2);
+                    $this->_attributeTax->insertProductData($product, $newData);
+                    //                    }
+                    //                    $this->productAction->updateAttributes(
+                    //                        [$product->getId()],
+                    //                        $data,
+                    //                        1
+                    //                    );
+                }
+            } catch (\Exception $e) {
+                $this->_logger->critical($sku . '-' . $e->getMessage());
+                //                $this->_logger->error($e->getMessage());
+                //                return false;
             }
-        } catch (\Exception $e) {
-            $this->_logger->error($e->getMessage());
-            return false;
         }
-
         return true;
     }
 
     private function _prepareData($data)
     {
-        /* remove code client */
-        if (! empty($data['code_client'])) {
-            unset($data['code_client']);
-        }
 
-        /* remove sku from data */
-        if (! empty($data['sku'])) {
-            unset($data['sku']);
-        }
-
-        if (! empty($data['price_ttc'])) {
-            $data['special_price'] = $data['price_ttc'];
-            unset($data['price_ttc']);
-        }
-
-        if (! empty($data['strike_price'])) {
-            $data['price'] = $data['strike_price'];
-            unset($data['strike_price']);
-        }
-
-        return $data;
+        return [
+            "website_id" => '1',
+            "country"    => "AU",
+            "state"      => "", // optional
+            "value"      => 0
+        ];
     }
 }

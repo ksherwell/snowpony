@@ -93,15 +93,13 @@
                                 <!-- /ko -->
                                 <!--ko ifnot: ($parent.rates().length == 1)-->
                                 <input name="shipping_method" type="radio"
-                                       data-bind="
-                                                value: method.carrier_code + '_' + method.method_code,
-                                                checked: $parent.isSelected,
-                                                attr: {
-                                                    'id': 's_method_' + method.carrier_code + '_' + method.method_code,
-                                                    'aria-labelledby': 'label_method_' + method.method_code + '_' + method.carrier_code + ' ' + 'label_carrier_' + method.method_code + '_' + method.carrier_code
-                                                },
-                                                click: $parent.selectShippingMethod"
-                                       class="radio"/>
+                                       class="radio"
+                                       ifnot="method.error_message"
+                                       ko-checked="element.isSelected"
+                                       ko-value="method.carrier_code + '_' + method.method_code"
+                                       attr="'aria-labelledby': 'label_method_' + method.method_code + '_' + method.carrier_code + ' ' + 'label_carrier_' + method.method_code + '_' + method.carrier_code,
+                                'checked': element.rates().length == 1 || element.isSelected" />
+
                                 <!--/ko-->
                                 <!-- /ko -->
                             </td>

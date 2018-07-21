@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Shopping cart totals template
+ * @var $block \Magento\Checkout\Block\Cart\Totals
+ */
+?>
+<div id="cart-totals" class="cart-totals" data-bind="scope:'block-totals'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+            {
+                "#cart-totals": {
+                    "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+                }
+            }
+
+    </script>
+
+
+	<div class="table-wrapper shopping-total">
+	    <table class="data table totals">
+	        <caption class="table-caption">Total</caption>
+	        <tbody>
+	        
+			<tr class="totals sub">
+			    <th class="mark" scope="row">Subtotal</th>
+			    <td class="amount">
+			        <span class="price">$80</span>
+			    </td>
+			</tr>
+
+			<tr class="totals-tax">
+			    <th class="mark" colspan="1" scope="row">Free standard Delivery wide. Express premium delivery options are available in checkout</th>
+			    <td class="amount">
+			        <span class="price"></span>
+			    </td>
+			</tr>
+
+			<tr class="totals-tax">
+			    <th class="mark" colspan="1" scope="row">GST Inc.</th>
+			    <td class="amount">
+			        <span class="price">$7</span>
+			    </td>
+			</tr>
+
+			<tr class="grand totals">
+			    <th class="mark" scope="row">
+			        <strong>Order Total</strong>
+			    </th>
+			    <td class="amount">
+			        <strong><span class="price">$87</span></strong>
+			    </td>
+			</tr>
+	        </tbody>
+	    </table>
+	</div>
+
+</div>

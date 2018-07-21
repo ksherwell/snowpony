@@ -2,7 +2,7 @@
 /**
  * Main menu bar
  *
- * @var Infortis_UltraMegamenu_Block_Mainmenu $this
+ * @var \Infortis\UltraMegamenu\Block\Mainmenu $this
  */
 ?>
 <?php
@@ -202,7 +202,7 @@
             <?php if ($showCategories): ?>
                 <?php echo $this->getChildHtml('catalog.topnav.navigation'); ?>
             <?php endif; ?>
-        
+
             <?php //Static block as a dropdown ?>
             <?php if ($tmpHtml = $this->getChildHtml('block_nav_dropdown')): ?>
                 <li class="nav-item nav-item--parent nav-item--only-blocks level0 level-top parent nav-custom-link<?php if ($helper->getCfg('mainmenu/custom_block_floating')) echo ' right'; ?>">
@@ -218,7 +218,7 @@
                     </div>
                 </li>
             <?php endif; ?>
-            
+
             <?php //Display custom links inside block of categories only if vertical menu type not enabled ?>
             <?php if ($isTypeVerticalDropdown == false): ?>
                 <?php echo $linksHtml; ?>

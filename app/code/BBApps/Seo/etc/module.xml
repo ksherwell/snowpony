@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<!--This Module is used to store all the 'module-wide' configurations, helpers, ... Another modules should be depended on it-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="BBApps_Seo" setup_version="0.0.2"/>
+</config>

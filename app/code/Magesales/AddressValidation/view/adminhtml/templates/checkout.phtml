@@ -1,0 +1,19 @@
+<script type="text/javascript">
+    // <![CDATA[
+    require(['Magesales_AddressValidation/js/checkout'],
+        function(magesalesAddressValidation) {
+            var addressValidation = new magesalesAddressValidation();
+            addressValidation.init({
+                urlValidation: '<?php echo $this->getValidateUrl(); ?>',
+                allowInvalidAddress: '<?php echo $this->getAllowNotValidAddress(); ?>',
+                content: {
+                    'header' : '<?php echo __($this->getHelper()->getContentHeader()) ?>',
+                    'makeChoice' : 'Please select an option',
+                    'updateAddress' : 'Please, recheck and update address before continue.',
+                    'validatingAddress' : 'Validating address ...'
+                }
+            });
+        }
+    );
+    // ]]>
+</script>

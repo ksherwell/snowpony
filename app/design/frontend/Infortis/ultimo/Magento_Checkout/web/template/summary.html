@@ -1,0 +1,30 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="opc-block-summary" data-bind="blockLoader: isLoading">
+    <span data-bind="i18n: 'Your Order'" class="title"></span>
+    <!-- ko foreach: elems() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+</div>
+
+<!-- ko if: (isVisible()) -->
+<div class="actions-toolbar-trigger" id="place-order-trigger-wrapper">
+    <button type="button" class="button action primary" id="place-order-trigger" value="Place Order" >
+        <span>&nbsp;</span>
+    </button>
+</div>
+<!-- /ko -->
+
+<div class="caddie-payment-help">
+	<h5>Need help with this order?</h5>
+	<h2><a href="tel:1800 803 570"><i class="fa fa-phone"></i> 1800 803 570 </a></h2>
+	<h2><a href="tel:1800 803 570"></a><a href="#" onclick="olark('api.box.expand');return false;"><i class="fa fa-comment"></i> Live Chat </a></h2>
+</div>
+
+<!-- ko foreach: getRegion('after-place-agreements') -->
+<!-- ko template: getTemplate() -->
+<!-- /ko -->

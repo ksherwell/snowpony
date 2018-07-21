@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sgbp_shipping>
+            <general>
+                <debug>0</debug>
+            </general>
+        </sgbp_shipping>
+
+        <carriers>
+            <smshipping>
+                <active>1</active>
+                <title>Sydney Metro Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>Sydney Metro shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\SmShipping</model>
+            </smshipping>
+            <mmshipping>
+                <active>1</active>
+                <title>Melbourne Metro Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>Melbourne Metro shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\MmShipping</model>
+            </mmshipping>
+            <bmshipping>
+                <active>1</active>
+                <title>Brisbane Metro Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>Brisbane Metro shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\BmShipping</model>
+            </bmshipping>
+            <pmshipping>
+                <active>1</active>
+                <title>Perth Metro Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>Perth Metro shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\PmShipping</model>
+            </pmshipping>
+            <amshipping>
+                <active>1</active>
+                <title>Adelaide Metro Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>Adelaide Metro shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\AmShipping</model>
+            </amshipping>
+            <cmshipping>
+                <active>1</active>
+                <title>Canberra Metro Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>Canberra Metro shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\CmShipping</model>
+            </cmshipping>
+            <ncshipping>
+                <active>1</active>
+                <title>NSW Country Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>NSW Country shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\NcShipping</model>
+            </ncshipping>
+            <nfshipping>
+                <active>1</active>
+                <title>NSW Far Country Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>NSW Far Country shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\NfShipping</model>
+            </nfshipping>
+            <vrfshipping>
+                <active>1</active>
+                <title>Victoria Regional Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>Victoria Regional shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\VrShipping</model>
+            </vrfshipping>
+            <qrfshipping>
+                <active>1</active>
+                <title>Queensland Regional Shipping</title>
+                <name>Fixed</name>
+                <price>0</price>
+                <specificerrmsg>Queensland Regional shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AU</specificcountry>
+                <model>Sgbp\Shipping\Model\Carrier\QrShipping</model>
+            </qrfshipping>
+        </carriers>
+
+    </default>
+</config>

@@ -1,0 +1,87 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\CatalogWidget\Block\Product\ProductsList $block */
+?>
+<?php if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())): ?>
+    <?php
+    $type        = 'widget-product-grid';
+    $imageTypeId = 'itemgrid_category_page_grid';
+    $mode        = 'grid';
+
+    $theme = $this->helper('Infortis\Base\Helper\Data');
+    $image = 'new_products_content_widget_grid';
+    $items = $block->getProductCollection()->getItems();
+
+    $helperImage  = $this->helper('Infortis\Infortis\Helper\Image');
+    $showWishlist = true;
+    $showCompare  = true;
+    $showCart     = true;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::DEFAULT_VIEW;
+    $description  = false;
+    $imgWidth     = intval($theme->getCfg('category_grid/image_width'));
+    $imgHeight    = intval($theme->getCfg('category_grid/image_height'));
+    ?>
+    <div class="block widget block-products-list <?= /* @noEscape */
+    $mode ?>">
+        <?php if ($block->getTitle()): ?>
+            <div class="block-title">
+                <strong><?= $block->escapeHtml(__($block->getTitle())) ?></strong>
+            </div>
+        <?php endif ?>
+        <div class="block-content">
+            <?= /* @noEscape */
+            '<!-- ' . $image . '-->' ?>
+            <div class="row products-<?= /* @noEscape */
+            $mode ?> <?= /* @noEscape */
+            $mode ?>">
+                <ol class="product-items itemgrid <?= /* @noEscape */
+                $type ?>">
+                    <?php $iterator = 1; ?>
+                    <?php foreach ($items as $_item): ?>
+                        <?= /* @noEscape */
+                        ($iterator++ == 1) ? '<li class="productitem col-md-4 col-sm-6 col-xs-12">' : '</li><li class="productitem col-md-4 col-sm-6 col-xs-12">' ?>
+                        <div class="product-item-info">
+                            <div class="product-info-content">
+                                <div class="product-item-img">
+                                    <a href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>"
+                                       class="product-item-photo">
+                                        <img class="product-image-photo"
+                                             src="<?php echo $helperImage->getImageUrl($_item, $imageTypeId,
+                                                 $imgWidth, $imgHeight); ?>"
+                                             width="<?php echo $imgWidth; ?>"
+                                             height="<?php echo $imgHeight; ?>"
+                                             alt="<?php /* @escapeNotVerified */
+                                             echo $block->escapeHtml($_item->getName()); ?>"/>
+                                    </a>
+                                </div>
+                                <div class="product-item-details">
+                                    <strong class="product-item-name">
+                                        <a title="<?= $block->escapeHtml($_item->getName()) ?>"
+                                           href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>"
+                                           class="product-item-link">
+                                            <?= $block->escapeHtml($_item->getName()) ?>
+                                        </a>
+                                    </strong>
+
+                                    <div class="action-box">
+                                        <a class="view-product btn-primary"
+                                           href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>">
+                                            <?php echo __('Buy Now') ?>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?= ($iterator == count($items) + 1) ? '</li>' : '' ?>
+                    <?php endforeach ?>
+                </ol>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

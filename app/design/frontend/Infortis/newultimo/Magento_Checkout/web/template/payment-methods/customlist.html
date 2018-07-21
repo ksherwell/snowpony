@@ -1,0 +1,22 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+ -->
+<div if="isPaymentMethodsAvailable()"
+     class="items payment-methods">
+    <div repeat="foreach: paymentGroupsList, item: '$group'"
+         class="payment-group">
+		<select data-bind="change: selectPaymentMethod">	
+			<option data-bind="text: 'Select Payment Method'"></option>
+			<!-- ko foreach: {data: getRegion($group().displayArea), as: 'method'} -->
+			<option data-bind="text: getTitle(), attr: {'id': getCode()}, value: getCode(), selected: isChecked,  visible: isRadioButtonVisible()"/></option>
+			<!-- /ko -->
+		</select>
+    </div>
+</div>
+<div ifnot="isPaymentMethodsAvailable()"
+     class="no-payments-block"
+     translate="'No Payment Methods'">
+</div>

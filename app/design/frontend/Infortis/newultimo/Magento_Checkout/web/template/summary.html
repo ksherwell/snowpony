@@ -1,0 +1,31 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="opc-block-summary" data-bind="blockLoader: isLoading">    
+    <!-- ko foreach: elems() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+</div>
+
+<!-- ko if: (isVisible()) -->
+<div class="actions-toolbar-trigger" id="place-order-trigger-wrapper">
+    <button type="button" class="button action primary" id="place-order-trigger" value="Place Order" >
+        <span data-bind="i18n: 'Confirm & Process order'">
+            <i class="fa fa-lock" aria-hidden="true" style="color: #fff"></i>&nbsp;CONFIRM & PROCESS ORDER &nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="color: #fff"></i>
+        </span>
+    </button>
+</div>
+<!-- /ko -->
+
+<div class="caddie-payment-help">
+	<h5>Need help with this order?</h5>
+	<h2><a href="tel:1300 132 663"><i class="fa fa-phone"></i> 1300 132 663 </a></h2>
+	<h2><a href="tel:1300 132 663"></a><a href="#" onclick="olark('api.box.expand');return false;"><i class="fa fa-comment fa-rotate-270"></i> Live Chat </a></h2>
+</div>
+
+<!-- ko foreach: getRegion('after-place-agreements') -->
+<!-- ko template: getTemplate() -->
+<!-- /ko -->

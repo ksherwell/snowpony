@@ -1,0 +1,20 @@
+{
+    "name": "magesales/module-addressvalidation",
+    "description": "Validate Shipping Address During Checkout",
+    "version": "1.0.0",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0"
+    },
+    "type": "magento2-module",
+    "license": [
+    	"OSL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Magesales\\AddressValidation\\": ""
+        }
+    }
+}

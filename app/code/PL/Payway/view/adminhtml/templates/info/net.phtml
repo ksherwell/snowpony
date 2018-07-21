@@ -1,0 +1,47 @@
+<?php
+/**
+ * PL Development.
+ *
+ * @category    PL
+ * @author      Linh Pham <plinh5@gmail.com>
+ * @copyright   Copyright (c) 2016 PL Development. (http://www.polacin.com)
+ */
+?>
+<?php $jsonHelper = $this->helper('\Magento\Framework\Json\Helper\Data');?>
+<?php $_info = $this->getInfo();?>
+<div><?php echo $block->escapeHtml($block->getMethod()->getTitle()) ?></div>
+<table class="data-table admin__table-secondary">
+    <?php
+    if ($_info->getAdditionalInformation('payment_additional_info')):
+        $paymentInfo = $jsonHelper->jsonDecode($_info->getAdditionalInformation('payment_additional_info'));
+        ?>
+
+        <?php if (isset($paymentInfo['payment_number'])):?>
+        <tr>
+            <th>Payment Number: </th>
+            <td><?php echo $paymentInfo['payment_number']?></td>
+        </tr>
+    <?php endif;?>
+        <?php if (isset($paymentInfo['card_type'])):?>
+        <tr>
+            <th>Card Type: </th>
+            <td> <?php echo $paymentInfo['card_type']?></td>
+        </tr>
+    <?php endif;?>
+        <?php if (isset($paymentInfo['response_text'])):?>
+        <tr>
+            <th>Response Text: </th>
+            <td> <?php echo $paymentInfo['response_text']?></td>
+        </tr>
+    <?php endif;?>
+        <?php if (isset($paymentInfo['payment_status'])):?>
+        <tr>
+            <th>Payment Status: </th>
+            <td> <?php echo $paymentInfo['payment_status']?></td>
+        </tr>
+    <?php endif;?>
+
+
+    <?php endif;?>
+</table>
+

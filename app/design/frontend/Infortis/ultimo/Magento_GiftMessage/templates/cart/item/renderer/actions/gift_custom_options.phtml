@@ -1,0 +1,76 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\GiftMessage\Block\Cart\Item\Renderer\Actions\GiftOptions */
+?>
+<?php if (!$block->isVirtual()): ?>
+    <div id="gift-options-cart-item-<?= /* @escapeNotVerified */ $block->getItem()->getId() ?>" data-bind="scope:'giftOptionsCartItem-<?= /* @escapeNotVerified */ $block->getItem()->getId() ?>'"  class="gift-options-cart-item">
+        <button class="action action-gift">
+			<span>Gift options</span>
+		</button>
+		<div class="gift-content _active" data-bind="css: {_active: formBlockVisibility() || resultBlockVisibility()}"> 
+			<div class="gift-options">
+				<div class="gift-message">
+					<div class="gift-options-title">
+						<span data-bind="i18n: 'Gift Message (optional)'">Gift Message (optional)</span>
+					</div>
+					<div class="gift-options-content">
+						<fieldset class="fieldset">
+							<div class="field field-to">
+								<label for="gift-message-whole-to" class="label">
+									<span>To:</span>
+								</label>
+								<div class="control">
+									<input type="text" id="gift-message-whole-to" class="input-text"/>
+								</div>
+							</div>
+							<div class="field field-from">
+								<label for="gift-message-whole-from" class="label">
+									<span>From:</span>
+								</label>
+								<div class="control">
+									<input type="text" id="gift-message-whole-from" class="input-text"/>
+								</div>
+							</div>
+							<div class="field text">
+								<label for="gift-message-whole-message" class="label">
+									<span>Message:</span>
+								</label>
+								<div class="control">
+									<textarea id="gift-message-whole-message" class="input-text" rows="5" cols="10"></textarea>
+								</div>
+							</div>
+						</fieldset>
+
+					</div>
+				</div>
+				<div class="actions-toolbar">
+					<div class="secondary">
+						<button type="submit" class="action secondary action-update" data-bind="
+									attr: {title: $t('Update')},
+									click: $data.submitOptions.bind($data)" title="Update">
+							<span data-bind="i18n: 'Update'">Update</span>
+						</button>
+						<button class="action action-cancel" data-bind="
+									attr: {title: $t('Cancel')},
+									click: $data.hideFormBlock.bind($data)" title="Cancel">
+							<span data-bind="i18n: 'Cancel'">Cancel</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+        <script type="text/x-magento-init">
+            {
+                "#gift-options-cart-item-<?= /* @escapeNotVerified */ $block->getItem()->getId() ?>": {
+                    "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+                }
+            }
+        </script>
+    </div>
+<?php endif ?>

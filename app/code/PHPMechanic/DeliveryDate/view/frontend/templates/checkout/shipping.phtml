@@ -1,0 +1,187 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Multishipping checkout shipping template
+ *
+ * @var $block \Magento\Multishipping\Block\Checkout\Shipping
+ */
+?>
+<form action="<?= /* @escapeNotVerified */ $block->getPostActionUrl() ?>" method="post" id="shipping_method_form" class="form multicheckout shipping">
+    <?php foreach ($block->getAddresses() as $_index => $_address): ?>
+    <div class="block block-shipping">
+        <div class="block-title"><strong><?= /* @escapeNotVerified */ __('Address %1 <span>of %2</span>', ($_index+1), $block->getAddressCount()) ?></strong></div>
+        <div class="block-content">
+            <div class="box box-shipping-address">
+                <strong class="box-title">
+                    <span><?= /* @escapeNotVerified */ __('Shipping To') ?></span>
+                    <a href="<?= /* @escapeNotVerified */ $block->getAddressEditUrl($_address) ?>" class="action edit"><span><?= /* @escapeNotVerified */ __('Change') ?></span></a>
+                </strong>
+                <div class="box-content">
+                    <address><?= /* @escapeNotVerified */ $_address->format('html') ?></address>
+                </div>
+            </div>
+            <div class="box">
+                <strong class="box-title">
+                    <span><?= /* @escapeNotVerified */ __('Shipping Method') ?></span>
+                </strong>
+                <div class="box-content">
+                    <?php if (!($_shippingRateGroups = $block->getShippingRates($_address))): ?>
+                        <p><?= /* @escapeNotVerified */ __('Sorry, no quotes are available for this order right now.') ?></p>
+                    <?php else: ?>
+                    <dl class="items methods-shipping">
+                        <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates): ?>
+                            <dt class="item-title"><?= $block->escapeHtml($block->getCarrierName($code)) ?></dt>
+                            <dd class="item-content">
+                                <fieldset class="fieldset">
+                                    <legend class="legend">
+                                        <span><?= $block->escapeHtml($block->getCarrierName($code)) ?></span>
+                                    </legend><br>
+                                    <?php $_sole = $_sole && count($_rates) == 1; foreach ($_rates as $_rate): ?>
+                                    <div class="field choice">
+                                    <?php if ($_rate->getErrorMessage()): ?>
+                                        <strong><?= $block->escapeHtml($_rate->getCarrierTitle()) ?>: <?= $block->escapeHtml($_rate->getErrorMessage()) ?></strong>
+                                    <?php else: ?>
+                                        <div class="control">
+                                            <?php if ($_sole) : ?>
+                                                <input type="radio" name="shipping_method[<?= /* @escapeNotVerified */ $_address->getId() ?>]" value="<?= $block->escapeHtml($_rate->getCode()) ?>" id="s_method_<?= /* @escapeNotVerified */ $_address->getId() ?>_<?= /* @escapeNotVerified */ $_rate->getCode() ?>" class="radio solo method" checked="checked"/>
+                                            <?php else: ?>
+                                                <input type="radio" name="shipping_method[<?= /* @escapeNotVerified */ $_address->getId() ?>]" value="<?= /* @escapeNotVerified */ $_rate->getCode() ?>" id="s_method_<?= /* @escapeNotVerified */ $_address->getId() ?>_<?= /* @escapeNotVerified */ $_rate->getCode() ?>"<?php if($_rate->getCode()===$block->getAddressShippingMethod($_address)) echo ' checked="checked"' ?> class="radio" />
+                                            <?php endif; ?>
+                                        </div>
+                                        <label for="s_method_<?= /* @escapeNotVerified */ $_address->getId() ?>_<?= /* @escapeNotVerified */ $_rate->getCode() ?>"><?= $block->escapeHtml($_rate->getMethodTitle()) ?>
+                                            <?php $_excl = $block->getShippingPrice($_address, $_rate->getPrice(), $this->helper('Magento\Tax\Helper\Data')->displayShippingPriceIncludingTax()); ?>
+                                            <?php $_incl = $block->getShippingPrice($_address, $_rate->getPrice(), true); ?>
+                                        <?php if ($this->helper('Magento\Tax\Helper\Data')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                            <span class="price-including-tax" data-label="<?= /* @escapeNotVerified */ __('Incl. Tax') ?>">
+                                        <?php endif; ?>
+                                            <?= /* @escapeNotVerified */ $_incl ?>
+                                        <?php if ($this->helper('Magento\Tax\Helper\Data')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                            </span>
+                                        <?php endif; ?>
+                                        <?php if ($this->helper('Magento\Tax\Helper\Data')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                            <span class="price-excluding-tax" data-label="<?= /* @escapeNotVerified */ __('Excl. Tax') ?>"><?= /* @escapeNotVerified */ $_excl ?></span>
+                                        <?php endif; ?>
+                                        </label>
+                                    <?php endif ?>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </fieldset>
+                            </dd>
+                        <?php endforeach; ?>
+                    </dl>
+                    <?php endif; ?>
+                    <?= /* @escapeNotVerified */ $block->getItemsBoxTextAfter($_address) ?>
+                </div>
+            </div>
+            <div class="box box-delivery-date">
+                <fieldset class="fieldset">    
+                    <div class="field field-name-delivery_date required">
+                        <strong class="box-title">
+                            <span>Delivery Date</span>
+                        </strong>
+                        <div class="control">
+                            <input name="delivery_date[<?= /* @escapeNotVerified */ $_address->getId() ?>]" class="datepicker input-text required-entry" data-validate="{required:true}" aria-required="true" id="delivery_date_<?= /* @escapeNotVerified */ $_address->getId() ?>" title="Delivery Date" value="<?php echo ($_address->getDeliveryDate() == '0000-00-00 00:00:00')? '' : date('d-m-Y',strtotime($_address->getDeliveryDate())) ?>" type="text">
+                            <script type="text/javascript">
+                            require([
+                                "jquery",
+                                "mage/calendar"
+                                ], function($){
+                                  var format = '<?php echo $block->getFormat() ?>';
+                                  if (format !== '') format = '<?php echo $block->getFormat() ?>';
+                                  else format = 'dd-mm-yy'; 
+                                  var dateToday = new Date();
+                                  var disabledCustom = [<?php echo $block->getAdditionalDisabled() ?>];
+                                  var disabledDays = [<?php echo $block->getDisabled() ?>];  
+                                  $('.datepicker').datepicker({
+                                        showTime: false,
+                                        showHour: false,
+                                        showMinute: false,
+                                        showAnim: "",
+                                        changeMonth: true,
+                                        changeYear: true,
+                                        buttonImageOnly: null,
+                                        buttonImage: null,
+                                        showButtonPanel: false,
+                                        showMonthAfterYear: false,
+                                        dateFormat: format,
+                                        minDate: dateToday,
+                                        beforeShowDay: function(date){
+                                            var day = date.getDay();
+                                            var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                                            var myDisabledCustom = (jQuery.inArray(string, disabledCustom) != -1);
+                                  console.log(string); 
+                                  console.log(disabledCustom); 
+                                            var myDisabledDays = ($.inArray(day, disabledDays) != -1);
+                                            return [!myDisabledDays && !myDisabledCustom];
+                                        }
+                                    } 
+                                  );
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="field authority_to required">
+                        <strong>
+                            Authority to leave if no one is at the address?
+                        </strong>
+                        <input type="radio" name="authority_to[<?= /* @escapeNotVerified */ $_address->getId() ?>]" value="1" id="authority_to_yes_<?= /* @escapeNotVerified */ $_address->getId() ?>" class="radio" <?php echo ($_address->getAuthorityTo()) ? 'checked' : '' ?>/>
+                        <label for="authority_to_yes">Yes</label>
+                        <input type="radio" name="authority_to[<?= /* @escapeNotVerified */ $_address->getId() ?>]" value="0" id="authority_to_no_<?= /* @escapeNotVerified */ $_address->getId() ?>" class="radio" <?php echo (!$_address->getAuthorityTo()) ? 'checked' : '' ?>/>    
+                        <label for="authority_to_no">No</label>
+                    </div>    
+                    <div class="field authority_to required">
+                        <strong>
+                            Message
+                        </strong>
+                        <textarea name="delivery_comment[<?= /* @escapeNotVerified */ $_address->getId() ?>]" id="delivery_comment_<?= /* @escapeNotVerified */ $_address->getId() ?>"><?php echo $_address->getDeliveryComment() ?></textarea>
+                    </div>    
+                </fieldset>
+            </div>
+            <div class="box box-items">
+                <strong class="box-title">
+                    <span><?= /* @escapeNotVerified */ __('Items') ?></span>
+                    <a href="<?= /* @escapeNotVerified */ $block->getItemsEditUrl($_address) ?>" class="action edit"><span><?= /* @escapeNotVerified */ __('Edit Items') ?></span></a>
+                </strong>
+                <div class="box-content">
+                    <div class="table-wrapper">
+                        <table class="items data table" id="shipping-table-<?= /* @escapeNotVerified */ $_address->getId() ?>">
+                            <caption class="table-caption"><?= /* @escapeNotVerified */ __('Items') ?></caption>
+                            <thead>
+                            <tr>
+                                <th class="col item" scope="col"><?= /* @escapeNotVerified */ __('Product Name') ?></th>
+                                <th class="col qty" scope="col"><?= /* @escapeNotVerified */ __('Qty') ?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($block->getAddressItems($_address) as $_item): ?>
+                                <tr>
+                                    <td class="col item" data-th="<?= $block->escapeHtml(__('Product Name')) ?>"><?= $block->getItemHtml($_item->getQuoteItem()) ?></td>
+                                    <td class="col qty" data-th="<?= $block->escapeHtml(__('Qty')) ?>"><?= /* @escapeNotVerified */ $_item->getQty() ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
+    <?= $block->getChildHtml('checkout_billing_items') ?>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button class="action primary continue" type="submit"><span><?= /* @escapeNotVerified */ __('Continue to Billing Information') ?></span></button>
+        </div>
+        <div class="secondary">
+            <a href="<?= /* @escapeNotVerified */ $block->getBackUrl() ?>" class="action back"><span><?= /* @escapeNotVerified */ __('Back to Select Addresses') ?></span></a>
+        </div>
+    </div>
+</form>

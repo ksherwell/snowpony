@@ -25,6 +25,8 @@
 
             // Insert plus/minus buttons
             this.inputField.after('<div class="qty-buttons-wrapper"><div class="qty-button increase"></div><div class="qty-button decrease"></div></div>');
+            // this.inputField.before('<div class="qty-button increase"></div>');
+            // this.inputField.after('<div class="qty-button decrease"></div>');
 
             // Activate plus/minus buttons
             this.qtyButtons = this.inputField.next(this.options.qtyButtonsWrapperSelector).find(this.options.qtyButtonSelector);

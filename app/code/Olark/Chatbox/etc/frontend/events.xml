@@ -1,0 +1,147 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * Widget that adds Olark Live Chat to Magento stores.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@olark.com so we can send you a copy immediately.
+ *
+ * @category    Olark
+ * @package     Olark_Chatbox
+ * @copyright   Copyright 2012. Habla, Inc. (http://www.olark.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Event/etc/events.xsd">
+    <event name="checkout_quote_destroy">
+        <observer
+            name="olark_chatbox_checkout_quote_destroy"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer
+            name="olark_chatbox_controller_action_predispatch_checkout_index_index"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="controller_action_predispatch_checkout_onepage_success">
+        <observer
+            name="olark_chatbox_controller_action_predispatch_checkout_onepage_success"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="controller_action_predispatch_multishipping_checkout_index">
+        <observer
+            name="olark_chatbox_controller_action_predispatch_multishipping_checkout_index"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <!-- ???? -->
+    <event name="controller_action_predispatch_checkout_controller_action_index">
+        <observer
+            name="olark_chatbox_controller_action_predispatch_checkout_controller_action_index"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <!-- ???? -->
+    <event name="googlecheckout_checkout_before">
+        <observer
+            name="olark_chatbox_googlecheckout_checkout_before"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <!-- ???? -->
+    <event name="controller_action_layout_render_before_onestepcheckout_index_index">
+        <observer
+            name="olark_chatbox_controller_action_layout_render_before_onestepcheckout_index_index"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <!-- ???? -->
+    <event name="paypal_prepare_line_items">
+        <observer
+            name="olark_chatbox_paypal_prepare_line_items"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="sales_order_place_after">
+        <observer
+            name="olark_chatbox_sales_order_place_after"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="sales_quote_delete_after">
+        <observer
+            name="olark_chatbox_sales_quote_delete_after"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="checkout_type_onepage_save_order">
+        <observer
+            name="olark_chatbox_checkout_type_onepage_save_order"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="checkout_submit_all_after">
+        <observer
+            name="olark_chatbox_checkout_submit_all_after"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="sales_order_payment_cancel">
+        <observer
+            name="olark_chatbox_sales_order_payment_cancel"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="order_cancel_after">
+        <observer
+            name="olark_chatbox_order_cancel_after"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="sales_order_payment_cancel_invoice">
+        <observer
+            name="olark_chatbox_sales_order_payment_cancel_invoice"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="sales_order_payment_void">
+        <observer
+            name="olark_chatbox_sales_order_payment_void"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="sales_order_payment_refund">
+        <observer
+            name="olark_chatbox_sales_order_payment_refund"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <!--<event name="sales_order_payment_cancel">-->
+        <!--<observer-->
+            <!--name="olark_chatbox_sales_order_payment_cancel"-->
+            <!--instance="Olark\Chatbox\Observer\RecordEventObserver"-->
+        <!--/>-->
+    <!--</event>-->
+    <event name="sales_order_invoice_cancel">
+        <observer
+            name="olark_chatbox_sales_order_invoice_cancel"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+    <event name="sales_order_item_cancel">
+        <observer
+            name="olark_chatbox_sales_order_item_cancel"
+            instance="Olark\Chatbox\Observer\RecordEventObserver"
+        />
+    </event>
+</config>

@@ -187,13 +187,30 @@ class Cart extends \Magento\Framework\DataObject
     public function getWarehouses()
     {
         $warehouses = [];
+//        $warehouses = $this->warehouseCollection->getAllIds();
+//        $buffer_ware = $this->quoteItemWhCollection->create()->getWarehousesFromQuote($this->getQuote()->getId());
+//        $buffer_ware = $this->quoteItemWhCollection->create()->getAllIds();
+//        $buffer_ware = $this->warehouseCollection->getData();
 
+//        $this->repository->getById(2)->getProducts();
+//        $itemsCollection = $this->quoteItemWhCollection->create()->addFieldToFilter('quote_id', $this->getQuote()->getId());
+//        $this->quoteItemWhCollection->create()->getSelect()->columns('warehouse_id')->getData();
         $itemsCollection = $this->getItems();
         $itemsCollection->getSelect()->group('warehouse_id');
         foreach ($itemsCollection->getData() as $itemData) {
             $warehouses[] = $itemData['warehouse_id'];
         }
+//        $reswarehouses = [];
+//        foreach($warehouses as $warehouse) {
+//            $warehouseZip = $this->repository->getById($warehouse)->getZip();
+//            $customerZip = $this->getQuote()->getShippingAddress()->getPostcode();
+//
+//            if($customerZip == 2000){
+//                $reswarehouses[] = $warehouse;
+//            }
+//        }
 
+//        return $reswarehouses;
         return $warehouses;
     }
 
