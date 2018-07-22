@@ -1700,6 +1700,11 @@ h1.logo{margin:0}
     /*background: #EFF0E8;*/
     /*border: 2px solid #000;*/
 }
+
+.nav-regular .nav-submenu--mega .nav-item.level1 > a {
+    background: transparent url(../img/menu-line-lg.png) no-repeat scroll right bottom / 100% 4px;
+}
+
 .nav-submenu li{padding:0;}
 .nav-submenu li a { padding: 0 5px;text-transform: initial !important;}
 /* catalog product style */
