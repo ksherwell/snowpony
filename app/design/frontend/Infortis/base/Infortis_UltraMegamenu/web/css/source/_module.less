@@ -765,7 +765,7 @@ li.level2 > a > span > .cat-label {
 /* Level 1 only
 -------------------------------------------------------------- */
 .nav-regular li.level0 { float: left; }
-.nav-regular li.level0 > a { padding: 0 12px; }
+.nav-regular li.level0 > a { padding: 0 10px; }
 .nav-regular li.level0 > a > span { display: inline-block; white-space: nowrap; }
 
 /* Top-level item on hover */
@@ -814,9 +814,11 @@ li.level2 > a > span > .cat-label {
 
 /* Inner wrapper of the dropdown (for additional padding etc.)
 -------------------------------------------------------------- */
-.navi .nav-panel-inner { padding: 20px; } /* Required value in pixels to keep padding consistent in different dropdowns */
+.navi .nav-panel-inner {
+    padding: 10px;
+} /* Required value in pixels to keep padding consistent in different dropdowns */
 .navi .nav-panel-inner:before,
-.navi .nav-panel-inner:after { display: table; line-height: 0; content: ""; }
+//.navi .nav-panel-inner:after { display: table; line-height: 0; content: ""; }
 .navi .nav-panel-inner:after { clear: both; }
 
 
@@ -951,24 +953,24 @@ li.level2 > a > span > .cat-label {
 /* Added ":not(.nav-item--parent)" to not display bullet if the item is inside a dropdown
    (e.g. if type "classic" was applied to 2nd-level cat, 3rd level cats will be inside a dropdown so remove bullets from 3rd level cats) */
 .nav-regular.with-bullets .nav-submenu--mega > li:not(.nav-item--parent) > ul > li > a {
-    padding-left: 28px;
+    //padding-left: 28px;
     position: relative;
 }
 .nav-regular.with-bullets .nav-submenu--mega > li:not(.nav-item--parent) > ul > li > a:before {
-    content: "\e263";
-    line-height: 24px; /* The same as actual height of the item */
-    left: 0px;
-    position: absolute;
-    top: 0px;
-    text-align: center;
-    width: 24px; /* Not larger than the left padding of the item */
-    transition:         left 150ms ease-out;
-    -moz-transition:    left 150ms ease-out;
-    -webkit-transition: left 150ms ease-out;
-    -o-transition:      left 150ms ease-out;
+    //content: "\e263";
+    //line-height: 24px; /* The same as actual height of the item */
+    //left: 0px;
+    //position: absolute;
+    //top: 0px;
+    //text-align: center;
+    //width: 24px; /* Not larger than the left padding of the item */
+    //transition:         left 150ms ease-out;
+    //-moz-transition:    left 150ms ease-out;
+    //-webkit-transition: left 150ms ease-out;
+    //-o-transition:      left 150ms ease-out;
 }
 .nav-regular.with-bullets .nav-submenu--mega > li:not(.nav-item--parent) > ul > li > a:hover:before {
-    left: 4px;
+    //left: 4px;
 }
 
 /* If there's an icon inside mega dropdown, it needs to have the same line height as the item  */
