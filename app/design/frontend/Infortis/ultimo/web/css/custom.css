@@ -2259,8 +2259,20 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 .footer .subscribe input{border-radius: 4px !important;height: 38px;background: #eff1e7;}
 .footer .border-footer{display:inline-block;width:100%;border-top:1px solid #938c79;}
 .footer .section-footer-bottom{padding:10px 15px 45px}
-.footer .section-footer-bottom,
-.footer .section-footer-bottom a{color:#fff;}
+
+.footer .section-footer-bottom .links li {
+    padding-right: 7px;
+}
+
+.footer .section-footer-bottom .links a {
+    padding-left: 0;
+    padding-right: 7px;
+    border-right: 1px solid #c5c7bf;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    font-family: "open sans" sans-serif;
+}
+
 .footer .section-footer-bottom .copyright{font-size:16px}
 .footer .footer-bottom-icon1{float: right;margin-top: -6px;}
 .footer .fineprint{font-style: italic;}
