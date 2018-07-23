@@ -1438,6 +1438,7 @@ p, .category-view a{
 }
 .size-guide a{
     color: #fff!important;
+    cursor: pointer;
     text-decoration: underline;
 }
 .product-sidebar .product-available span{
@@ -2436,6 +2437,10 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 
 #sizeguideModal .modal-header .close:hover {
     background-color: transparent;
+}
+
+#sizeguideModal .modal-header .close:active {
+    box-shadow: none;
 }
 
 #sizeguideModal.modal h4, #sizeguideModal.modal h5 {
