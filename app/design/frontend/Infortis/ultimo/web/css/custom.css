@@ -2428,3 +2428,16 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 		margin: 5px 0 12px  !important;
 	}
 }
+
+#sizeguideModal .modal-header .close {
+    background-image: none !important;
+    opacity: 1;
+}
+
+#sizeguideModal .modal-header .close:hover {
+    background-color: transparent;
+}
+
+#sizeguideModal.modal h4, #sizeguideModal.modal h5 {
+    font-family: 'Open Sans', sans-serif!important;
+}
