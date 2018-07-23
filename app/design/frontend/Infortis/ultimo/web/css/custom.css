@@ -1943,6 +1943,11 @@ button.tocart{
 .box-tocart .box-qty input{color:#fff;}
 .product-social-links{display:none;}
 .product-postcode{border: 0;padding: 10px 0;}
+
+.product-postcode .input-group-btn{float:left;}
+
+.product-postcode .input-group .form-control{width: 70px;}
+
 .product-postcode input{    height: 34px;}
 .fotorama__nav.fotorama__nav--thumbs{text-align:center;}
 .fotorama__nav__frame--thumb,.fotorama__thumb-border{display:none !important}
