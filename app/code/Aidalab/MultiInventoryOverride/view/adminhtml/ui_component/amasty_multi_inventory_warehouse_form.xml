@@ -7,7 +7,7 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Warehouse Delivery Postcodes</item>
-                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
                     <item name="source" xsi:type="string">warehouse</item>
                     <item name="sortOrder" xsi:type="number">130</item>
                     <item name="dataScope" xsi:type="string">wh_delivery_postcodes</item>
