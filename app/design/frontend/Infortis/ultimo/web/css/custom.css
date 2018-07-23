@@ -1846,7 +1846,7 @@ div.read_more{display:none;}
 .price-default{margin-top:50px;}
 .qty-buttons-wrapper{margin-top:8px;}
 .qty-buttons-wrapper .qty-button{
-	display: table;
+	display: inline-block;
     float: right;
 	box-shadow: none;
     text-transform: uppercase;
@@ -1860,6 +1860,8 @@ div.read_more{display:none;}
     margin-bottom: 0;
     font-size: 16px;
     font-weight: 400;
+    width: 39px;
+    height: 39px;
 }
 .qty-buttons-wrapper .qty-button:hover{
 	background-color: #ba1b25;
@@ -1871,14 +1873,14 @@ div.read_more{display:none;}
     color: white;
 }
 .qty-button.increase{border-radius: 0 4px 4px 0;}
-.qty-button.increase:before{font-family: FontAwesome;content: "\f067";}
+.qty-button.increase:before{font-family: FontAwesome;content: "\f067";line-height: 29px;}
 .qty-button.decrease{border-radius: 4px 0 0 4px;}
-.qty-button.decrease:before{font-family: FontAwesome;content: "\f068";}
+.qty-button.decrease:before{font-family: FontAwesome;content: "\f068";line-height: 29px;}
 .box-tocart{width:100%;}
 .prices-tier.items{display:none !important;}
 button.tocart{    
 	margin-top: 8px;
-	padding: 7px 15px 8px!important;
+	padding: 9px 15px 8px!important;
     min-width: 105px !important;
     border-radius: 4px;
 }
@@ -2216,7 +2218,15 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
     line-height: 37px;
     height: 37px;
 	color: #fff;
+    font-family: "Open Sans", sans-serif;
 }
+
+.product-info-main .box-tocart .action.tocart {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .product-options-wrapper  .select2-container--default .select2-selection--single .select2-selection__arrow{
 	height: 36px;
 }
