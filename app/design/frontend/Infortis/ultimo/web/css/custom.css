@@ -1674,6 +1674,7 @@ h1.logo{margin:0}
     padding: 1px;
     left: 0;
     background: transparent url(../img/bg-image.jpg) repeat fixed center top / contain;
+    font-family: 'Open Sans', sans-serif;
 }
 .nav-item--parent  .caret:before{display:none}
 .nav-item--parent  .nav-panel--dropdown.nav-panel.full-width{left:0;}
