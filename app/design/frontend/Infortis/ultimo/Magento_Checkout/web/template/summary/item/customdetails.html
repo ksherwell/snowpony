@@ -31,8 +31,8 @@
 
 		<!-- ko if: (JSON.parse($parent.options).length > 0)-->
 		<div class="product options" data-bind="mageInit: {'collapsible':{'openedState': 'active'}}">
-			<span data-role="title" class="toggle"><!-- ko i18n: 'View Details' --><!-- /ko --></span>
-			<div data-role="content" class="content">
+			<!--<span data-role="title" class="toggle">&lt;!&ndash; ko i18n: 'View Details' &ndash;&gt;&lt;!&ndash; /ko &ndash;&gt;</span>-->
+			<div data-role="" class="content">
 				<strong class="subtitle"><!-- ko i18n: 'Options Details' --><!-- /ko --></strong>
 				<dl class="item-options">
 					<!--ko foreach: JSON.parse($parent.options)-->
