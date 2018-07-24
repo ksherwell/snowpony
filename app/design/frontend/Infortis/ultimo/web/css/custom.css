@@ -2125,7 +2125,10 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 .opc-sidebar .discount-code .form-discount .actions-toolbar,
 .opc-sidebar .discount-code .form-discount label.label{display:none;}
 .opc-sidebar .discount-code .form-discount .control{margin:10px 0;}
-.opc-sidebar .checkout-totals{padding: 10px 0;margin: 0 0 10px;}
+.opc-sidebar .checkout-totals{padding: 10px 0;margin: 0 0 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 .opc-sidebar .checkout-totals tr.grand.totals{border-top: 2px solid #000;}
 .opc-sidebar .checkout-totals tr td,
 .opc-sidebar .checkout-totals tr th{padding:5px 15px !important}
