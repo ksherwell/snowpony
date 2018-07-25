@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="snowgoose_thank_you" label="Thank you" file="snowgoose_thank_you.html" type="html" module="Aidalab_EmailTemplates" area="frontend"/>
+    <template id="snowgoose_order" label="SnowGoose Order" file="snowgoose_order.html" type="html" module="Aidalab_EmailTemplates" area="frontend"/>
+    <template id="bap_cart_recovery" label="BaP Cart Recovery" file="bap_cart_recovery.html" type="html" module="Aidalab_EmailTemplates" area="frontend"/>
+</config>
