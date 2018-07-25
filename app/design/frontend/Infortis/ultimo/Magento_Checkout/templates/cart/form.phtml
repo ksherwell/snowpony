@@ -45,64 +45,64 @@
 			<?php endif ?>
 
             <!--Extras START-->
-            <?php
-            // @codingStandardsIgnoreFile
-            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-            $crossellProduct = $objectManager->get('Infortis\Base\Helper\Data')->getExtrasProduct();
-            $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
-            if(count($crossellProduct)):
-            ?>
-            <div id="extrasbox" class="opc-block-summary opc-block-extras" style="background-color: inherit">
-                <span class="title" style="border-bottom: inherit;">ADD EXTRAS TO THIS BOX</span>
-                <p>Please Note: You may only include 1 bottle of wine or juice per box.</p>
-                <div class="block items-in-cart" >
-                    <div class="content minicart-items">
-                        <div class="minicart-items-wrapper overflowed">
-                            <ol class="row minicart-items">
-                                <?php foreach($crossellProduct as $crossell): ?>
-                                    <li class="col-md-4 col-sm-6" data-id="<?php echo $crossell["entity_id"] ?>">
-                                        <div class="caddie-extra" style="display: flex">
-                                            <div>
-                                                <p>
-                                                    <img src="<?php echo $crossell["thumbnail"] ?>" alt="<?php echo $crossell["name"] ?>">
-                                                </p>
-                                            </div>
-                                            <div style="margin-left: 15px">
-                                                <span class="package-item-title"><?php echo $crossell["name"] ?></span>
-                                                <div class="caddie-extra-cart">
-                                                    <div class="caddie-extra-cart-item extra-item"><input type="input" name="item-qty" value="<?php echo $crossell["qtyQuote"] ?>" id="item_<?php echo $crossell["entity_id"] ?>"></div>
-                                                    <div class="caddie-extra-cart-item btn-group">
-                                                        <button type="button" class="item-button decrease"><i class="fa fa-minus"></i></button>
-                                                        <button type="button" class="item-button increase"><i class="fa fa-plus"></i></button>
-                                                    </div>
-                                                    <div class="caddie-extra-cart-item caddie-extra-price">
-                                                        <span class="subtotal"><?php echo array_key_exists('special_price',$crossell) ? $priceHelper->currency($crossell["special_price"], true, false) : $priceHelper->currency($crossell["price"], true, false) ?></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <script type="text/x-magento-init">
-                    {
-                        "#extrasbox": {
-                            "Magento_Ui/js/core/app": {
-                               "components": {
-                                    "extrascomponent": {
-                                        "component": "Infortis_Base/js/view/cart/totals",
-                                        "template" : "Magento_Checkout/cart/totals"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                </script>
-            <?php endif; ?>
+<!--            --><?php
+//            // @codingStandardsIgnoreFile
+//            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+//            $crossellProduct = $objectManager->get('Infortis\Base\Helper\Data')->getExtrasProduct();
+//            $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+//            if(count($crossellProduct)):
+//            ?>
+<!--            <div id="extrasbox" class="opc-block-summary opc-block-extras" style="background-color: inherit">-->
+<!--                <span class="title" style="border-bottom: inherit;">ADD EXTRAS TO THIS BOX</span>-->
+<!--                <p>Please Note: You may only include 1 bottle of wine or juice per box.</p>-->
+<!--                <div class="block items-in-cart" >-->
+<!--                    <div class="content minicart-items">-->
+<!--                        <div class="minicart-items-wrapper overflowed">-->
+<!--                            <ol class="row minicart-items">-->
+<!--                                --><?php //foreach($crossellProduct as $crossell): ?>
+<!--                                    <li class="col-md-4 col-sm-6" data-id="--><?php //echo $crossell["entity_id"] ?><!--">-->
+<!--                                        <div class="caddie-extra" style="display: flex">-->
+<!--                                            <div>-->
+<!--                                                <p>-->
+<!--                                                    <img src="--><?php //echo $crossell["thumbnail"] ?><!--" alt="--><?php //echo $crossell["name"] ?><!--">-->
+<!--                                                </p>-->
+<!--                                            </div>-->
+<!--                                            <div style="margin-left: 15px">-->
+<!--                                                <span class="package-item-title">--><?php //echo $crossell["name"] ?><!--</span>-->
+<!--                                                <div class="caddie-extra-cart">-->
+<!--                                                    <div class="caddie-extra-cart-item extra-item"><input type="input" name="item-qty" value="--><?php //echo $crossell["qtyQuote"] ?><!--" id="item_--><?php //echo $crossell["entity_id"] ?><!--"></div>-->
+<!--                                                    <div class="caddie-extra-cart-item btn-group">-->
+<!--                                                        <button type="button" class="item-button decrease"><i class="fa fa-minus"></i></button>-->
+<!--                                                        <button type="button" class="item-button increase"><i class="fa fa-plus"></i></button>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="caddie-extra-cart-item caddie-extra-price">-->
+<!--                                                        <span class="subtotal">--><?php //echo array_key_exists('special_price',$crossell) ? $priceHelper->currency($crossell["special_price"], true, false) : $priceHelper->currency($crossell["price"], true, false) ?><!--</span>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                --><?php //endforeach; ?>
+<!--                            </ol>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--                <script type="text/x-magento-init">-->
+<!--                    {-->
+<!--                        "#extrasbox": {-->
+<!--                            "Magento_Ui/js/core/app": {-->
+<!--                               "components": {-->
+<!--                                    "extrascomponent": {-->
+<!--                                        "component": "Infortis_Base/js/view/cart/totals",-->
+<!--                                        "template" : "Magento_Checkout/cart/totals"-->
+<!--                                    }-->
+<!--                                }-->
+<!--                            }-->
+<!--                        }-->
+<!--                    }-->
+<!--                </script>-->
+<!--            --><?php //endif; ?>
             <!-- END Extras-->
 
         </div>
@@ -135,48 +135,48 @@
         </button>
         <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>
     </div>
-<!--	--><?php //
-//		// @codingStandardsIgnoreFile
-//		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-//		$crossellProduct = $objectManager->get('Infortis\Base\Helper\Data')->getExtrasProduct();
-//		$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
-//		if(count($crossellProduct)):
-//	?>
+	<?php
+		// @codingStandardsIgnoreFile
+		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+		$crossellProduct = $objectManager->get('Infortis\Base\Helper\Data')->getExtrasProduct();
+		$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+		if(count($crossellProduct)):
+	?>
 </form>
-<!--<div class="clearer"></div>-->
-<!--<div id="extrasbox" class="opc-block-summary opc-block-extras">
+<div class="clearer"></div>
+<div id="extrasbox" class="opc-block-summary opc-block-extras">
 	<span class="title">Add Extras to this box</span>
 	<p>Please Note: You may only include 1 bottle of wine or juice per box.</p>
 	<div class="block items-in-cart" >
 		<div class="content minicart-items">
 			<div class="minicart-items-wrapper overflowed">
 				<ol class="row minicart-items">
-					<?php /*foreach($crossellProduct as $crossell): */?>
-					<li class="col-md-4 col-sm-6" data-id="<?php /*echo $crossell["entity_id"] */?>">
+					<?php foreach($crossellProduct as $crossell): ?>
+					<li class="col-md-4 col-sm-6" data-id="<?php echo $crossell["entity_id"] ?>">
 						<div class="caddie-extra">
 							<p>
-								<img src="<?php /*echo $crossell["thumbnail"] */?>" alt="<?php /*echo $crossell["name"] */?>">
+								<img src="<?php echo $crossell["thumbnail"] ?>" alt="<?php echo $crossell["name"] ?>">
 							</p>
-							<span class="package-item-title"><?php /*echo $crossell["name"] */?></span>
+							<span class="package-item-title"><?php echo $crossell["name"] ?></span>
 							<div class="caddie-extra-cart">
-								<div class="caddie-extra-cart-item extra-item"><input type="input" name="item-qty" value="<?php /*echo $crossell["qtyQuote"] */?>" id="item_<?php /*echo $crossell["entity_id"] */?>"></div>
+								<div class="caddie-extra-cart-item extra-item"><input type="input" name="item-qty" value="<?php echo $crossell["qtyQuote"] ?>" id="item_<?php echo $crossell["entity_id"] ?>"></div>
 								<div class="caddie-extra-cart-item btn-group">
 									<button type="button" class="item-button decrease"><i class="fa fa-minus"></i></button>
 									<button type="button" class="item-button increase"><i class="fa fa-plus"></i></button>
 								</div>
 								<div class="caddie-extra-cart-item caddie-extra-price">
-									<span class="subtotal"><?php /*echo array_key_exists('special_price',$crossell) ? $priceHelper->currency($crossell["special_price"], true, false) : $priceHelper->currency($crossell["price"], true, false) */?></span>
+									<span class="subtotal"><?php echo array_key_exists('special_price',$crossell) ? $priceHelper->currency($crossell["special_price"], true, false) : $priceHelper->currency($crossell["price"], true, false) ?></span>
 								</div>
 							</div>
 						</div>
 					</li>
-					<?php /*endforeach; */?>
+					<?php endforeach; ?>
 				</ol>
 			</div>
 		</div>
 	</div>
-</div>-->
-<!--<script type="text/x-magento-init">
+</div>
+<script type="text/x-magento-init">
 	{
 		"#extrasbox": {
 			"Magento_Ui/js/core/app": {
@@ -188,9 +188,9 @@
 				}
 			}
 		}
-	} 
-</script>-->
-<?php //endif; ?>
+	}
+</script>
+<?php endif; ?>
 <?= $block->getChildHtml('checkout.cart.order.actions') ?>
 <?= $block->getChildHtml('shopping.cart.table.after') ?>
 

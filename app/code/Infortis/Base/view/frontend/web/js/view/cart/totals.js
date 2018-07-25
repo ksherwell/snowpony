@@ -35,7 +35,11 @@
 		decreaseExtraItem: function (item_id) {
 			var newVal, candidateNewValue;
 			var oldValue = parseFloat($('.caddie-extra-cart input#item_' + item_id).val());
-			newVal = oldValue - 1;
+			if(oldValue > 0 ) {
+                newVal = oldValue - 1;
+            } else {
+				newVal = 0;
+			}
 			$('.caddie-extra-cart input#item_' + item_id).val(newVal);
 			if (newVal > 0){
 				self.ajaxUpdateItem('/infortis/extras/update',item_id ,newVal);
