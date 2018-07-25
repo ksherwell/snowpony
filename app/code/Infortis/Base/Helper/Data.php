@@ -254,14 +254,18 @@ class Data extends AbstractHelper
 		$crossellProduct = array();
 		foreach($crossellIds as $_crossellId){
 			$_product = $objectManager->create('Magento\Catalog\Model\Product')->load($_crossellId);
-			if(!in_array($objectManager->create('Magento\Store\Model\StoreManagerInterface')->getStore()->getId(),$_product->getStoreIds())) return;
+			if(!in_array($objectManager->create('Magento\Store\Model\StoreManagerInterface')->getStore()->getId(),$_product->getStoreIds())) continue; //If Product from other Store skip him
 			$imageUrl = $objectManager->get('Magento\Catalog\Helper\ImageFactory')->create()->init($_product, 'product_thumbnail_image')->getUrl();
 			$productData = $_product->getData();
 			$productData['thumbnail'] = $imageUrl;
 			if(in_array($_crossellId,$quoteProductIds)){
 				$quoteItem = $quote->getItemByProduct($_product);
-				$productData['qtyQuote'] = $quoteItem->getQty();
-				$productData['itemId'] = $quoteItem->getId();
+				if($quoteItem) {
+                    $productData['qtyQuote'] = $quoteItem->getQty();
+                    $productData['itemId'] = $quoteItem->getId();
+                }else{ //If $quoteItem == false (not object)
+                    $productData['qtyQuote'] = 0;
+                }
 			}else{
 				$productData['qtyQuote'] = 0;
 			}

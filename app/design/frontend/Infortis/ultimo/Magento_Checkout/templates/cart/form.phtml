@@ -44,6 +44,7 @@
 				<div class="cart-products-toolbar cart-products-toolbar-bottom toolbar" data-attribute="cart-products-toolbar-bottom"><?= $block->getPagerHtml() ?></div>
 			<?php endif ?>
 
+            <!--Extras START-->
             <?php
             // @codingStandardsIgnoreFile
             $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
@@ -87,7 +88,24 @@
                     </div>
                 </div>
             </div>
-		</div>
+                <script type="text/x-magento-init">
+                    {
+                        "#extrasbox": {
+                            "Magento_Ui/js/core/app": {
+                               "components": {
+                                    "extrascomponent": {
+                                        "component": "Infortis_Base/js/view/cart/totals",
+                                        "template" : "Magento_Checkout/cart/totals"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                </script>
+            <?php endif; ?>
+            <!-- END Extras-->
+
+        </div>
 	</div>
     <div class="cart main actions">
 		<!--
@@ -125,7 +143,7 @@
 //		if(count($crossellProduct)):
 //	?>
 </form>
-<div class="clearer"></div>
+<!--<div class="clearer"></div>-->
 <!--<div id="extrasbox" class="opc-block-summary opc-block-extras">
 	<span class="title">Add Extras to this box</span>
 	<p>Please Note: You may only include 1 bottle of wine or juice per box.</p>
@@ -158,7 +176,7 @@
 		</div>
 	</div>
 </div>-->
-<script type="text/x-magento-init">
+<!--<script type="text/x-magento-init">
 	{
 		"#extrasbox": {
 			"Magento_Ui/js/core/app": {
@@ -171,8 +189,8 @@
 			}
 		}
 	} 
-</script>
-<?php endif; ?>
+</script>-->
+<?php //endif; ?>
 <?= $block->getChildHtml('checkout.cart.order.actions') ?>
 <?= $block->getChildHtml('shopping.cart.table.after') ?>
 
