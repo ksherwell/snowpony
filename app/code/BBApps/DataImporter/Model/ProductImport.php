@@ -77,17 +77,24 @@ class ProductImport extends AbstractModel
                 $newData = $this->_prepareData($data);
 
                 if ($product->getId()) {
-                    $attributeModel = \Magento\Framework\App\ObjectManager::getInstance()->get
-                    (\Magento\Catalog\Model\ResourceModel\Product\Action::class);
-                    $attribute      = $attributeModel->getAttribute('fpt');
-                    //                    $orig           = $product->getOrigData('fpt');
-                    //                    $current        = $product->getData('fpt');
 
-                    $this->_attributeTax->deleteProductData($product, $attribute);
+                    $children = $product->getTypeInstance()->getUsedProducts($product);
+                    if (! empty($children)) {
+                        foreach ($children as $child) {
+                            $attributeModel = \Magento\Framework\App\ObjectManager::getInstance()->get
+                            (\Magento\Catalog\Model\ResourceModel\Product\Action::class);
+                            $attribute      = $attributeModel->getAttribute('fpt');
 
-                    $newData['attribute_id'] = $attribute->getId();
-                    $newData['value']        = round($data['rate'] * $product->getPrice() / 100, 2);
-                    $this->_attributeTax->insertProductData($product, $newData);
+                            $this->_attributeTax->deleteProductData($product, $attribute);
+
+                            $newData['attribute_id'] = $attribute->getId();
+                            $newData['value']        = round($data['rate'] * $child->getPrice() / 100, 2);
+                            $this->_attributeTax->insertProductData($product, $newData);
+                            break;
+                        }
+                    }
+
+
                     //                    }
                     //                    $this->productAction->updateAttributes(
                     //                        [$product->getId()],
