@@ -7,25 +7,34 @@ class Update extends \Magento\Checkout\Controller\Cart
     {
 		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 		$params = $this->getRequest()->getParams(); 
-		$giftModel = $objectManager->get('Magento\GiftMessage\Model\Save');
-		
-		$giftmessage = $params[''];
-		// $entityType = quote_item
-		$giftModel->_saveOne($entityId, $giftmessage, 'quote_item');
-		print_r($params); die();
-		/* $quoteItem = $this->cart->getQuote()->getItemById($itemId);
-		if ($quoteItem->getId()) {
-			$quoteItem->setQty((double) $qty);
-			$quoteItem->getProduct()->setIsSuperMode(true);
-			$quoteItem->save(); 
-			$this->cart->getQuote()->collectTotals();
+		$itemId = $params['itemId'];
+		$quoteItem = $this->cart->getQuote()->getItemById($itemId);
+		$customerId = $this->cart->getQuote()->getCustomer()->getId();
+		$giftmessageModel = $objectManager->get('\Magento\GiftMessage\Model\Message');
+		try{
+			/* 
+				[gift_message_id] => 11 [customer_id] => 0 [sender] => ad11 [recipient] => dad [message] => testteka11
+			*/
+			if ($quoteItem->getGiftMessageId()) {
+				$giftmessageModel->load($quoteItem->getGiftMessageId());
+			}
+			$giftmessageModel->setRecipient($params['gift-message-whole-to']);
+			$giftmessageModel->setSender($params['gift-message-whole-from']);
+			$giftmessageModel->setMessage($params['gift-message-whole-message']);
+			$giftmessageModel->setCustomerId($customerId);
+			
+			$giftmessageModel->save();
+			// save quote id gift message
+			$quoteItem->setGiftMessageId($giftmessageModel->getId());
+			$quoteItem->save();
+			$response['status'] = true;
+			$response['gift'] = $giftmessageModel->getData();
+		}catch(\Exception $e){
+			$response['status'] = false;
+			$response['msg'] = $e->getMessage();
 		}
-		
-		$extrasProduct = $objectManager->get('Infortis\Base\Helper\Data')->getExtrasProduct();
-		$response['status'] = true;
-		$response['extras'] = count($extrasProduct) > 0 ? $extrasProduct : false;
 		$resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 		$resultJson->setData($response);
-        return $resultJson; */
+        return $resultJson;
     }
 }
