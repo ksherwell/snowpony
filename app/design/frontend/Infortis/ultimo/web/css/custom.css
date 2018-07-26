@@ -2460,3 +2460,7 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 #sizeguideModal.modal h4, #sizeguideModal.modal h5 {
     font-family: 'Open Sans', sans-serif!important;
 }
+
+.cart.table-wrapper .gift-content{
+    font-family: 'Open Sans', sans-serif;
+}
