@@ -26,6 +26,10 @@
     $description  = false;
     $imgWidth     = intval($theme->getCfg('category_grid/image_width'));
     $imgHeight    = intval($theme->getCfg('category_grid/image_height'));
+
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $listBlock = $objectManager->get('\Magento\Catalog\Block\Product\ListProduct');
+
     ?>
     <div class="block widget block-products-list <?= /* @noEscape */
     $mode ?>">
@@ -71,7 +75,7 @@
 
                                     <div class="action-box">
                                         <a class="view-product btn-primary"
-                                           href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>">
+                                           href="<?= $listBlock->getAddToCartUrl($_item);?>">
                                             <?php echo __('Buy Now') ?>
                                         </a>
                                     </div>
