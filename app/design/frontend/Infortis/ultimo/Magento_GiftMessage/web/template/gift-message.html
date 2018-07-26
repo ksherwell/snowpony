@@ -4,47 +4,51 @@
  * See COPYING.txt for license details.
  */
 -->
-<!-- ko if: isActive() || hasActiveOptions() -->
-<div class="cart-gift-item">
-    <div class="gift-item-block block"
-         data-collapsible="true">
-        <div class="content" data-role="content">
-            <!-- ko ifnot: resultBlockVisibility() -->
-            <div class="gift-options">
-                <!-- ko foreach: getRegion('additionalOptions') -->
-                    <!-- ko template: getTemplate() --><!-- /ko -->
-                <!-- /ko -->
-                <!-- ko template: formTemplate --><!--/ko-->
+<!-- ko if: isActive() -->
+<div class="gift-message">
+    <div class="gift-options-title">
+        <span data-bind="i18n: 'Add A Message'"></span>
+    </div>
+    <div class="gift-options-content">
+        <fieldset class="fieldset">
+            <div class="field field-to">
+                    <input placeholder="" type="text"
+                           id="gift-message-whole-to"
+                           class="input-text"
+                           data-bind="value: getObservable('recipient'),attr:{ placeholder: $t('Recipient Name')}">
             </div>
-            <!-- /ko -->
-            <div class="gift-summary">
-                <!-- ko if: resultBlockVisibility() -->
-                    <!-- ko foreach: getRegion('additionalOptions') -->
-                         <!--ko template: appliedTemplate --><!-- /ko -->
-                    <!-- /ko -->
 
-                    <!-- ko if: getObservable('message') -->
-                        <div class="gift-message-summary">
-                            <span data-bind="i18n: 'Message:'"></span>
-                            <!-- ko text: getObservable('message') --><!-- /ko -->
-                        </div>
-                    <!-- /ko -->
-                    <div class="actions-toolbar">
-                        <div class="secondary">
-                            <button type="submit"
-                                    class="action action-edit"
-                                    data-bind="attr: {title: $t('Edit')}, click: $data.editOptions.bind($data)">
-                                <span data-bind="i18n: 'Edit'"></span>
-                            </button>
-                            <button class="action action-delete"
-                                    data-bind="attr: {title: $t('Delete')}, click: $data.deleteOptions.bind($data)">
-                                <span data-bind="i18n: 'Delete'"></span>
-                            </button>
-                        </div>
-                    </div>
-                <!-- /ko -->
+            <div class="field field-from">
+                    <input type="text"
+                           id="gift-message-whole-from"
+                           class="input-text"
+                           data-bind="value: getObservable('sender'),attr:{ placeholder: $t('Sender Name')}">
             </div>
-        </div>
+            <div class="field text">
+                <div class="control">
+                    <textarea id="gift-message-whole-message"
+                              class="input-text"
+                              rows="5" cols="10"
+                              data-bind="value: getObservable('message'),attr:{ placeholder: $t('Card Message - Remember to say who it\'s from !')}"></textarea>
+					<small><span class="chars">500</span> <span data-bind="i18n: 'characters left'"></span></small>
+                </div>
+            </div>
+        </fieldset>
+
     </div>
 </div>
 <!-- /ko -->
+<div class="actions-toolbar">
+    <div class="secondary">
+        <button type="submit" class="action secondary action-update" data-bind="
+                    attr: {title: $t('Update')},
+                    click: $data.submitOptions.bind($data)">
+            <span data-bind="i18n: 'Update'"></span>
+        </button>
+        <button class="action action-cancel" data-bind="
+                    attr: {title: $t('Cancel')},
+                    click: $data.hideFormBlock.bind($data)">
+            <span data-bind="i18n: 'Cancel'"></span>
+        </button>
+    </div>
+</div>
