@@ -2172,6 +2172,10 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
     padding: 7px 10px 4px;
 }
 
+.gift-options .actions-toolbar .secondary .action-update{
+    padding: 7px 10px 4px;
+}
+
 .cart .item-info .col.item .product-item-details a.action-edit,
 .cart .item-info .col.item .product-item-details a.action-delete{display:none !important}
 /* Extras */
@@ -2448,4 +2452,14 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 
 #sizeguideModal.modal h4, #sizeguideModal.modal h5 {
     font-family: 'Open Sans', sans-serif!important;
+}
+
+
+/*Hide Newsletter block*/
+#newsletter {
+    display: none;
+}
+
+#onepage-checkout-shipping-method-additional-load > div.opc-wrapper.fieldset{
+    display: none;
 }
