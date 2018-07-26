@@ -1643,7 +1643,7 @@ h1.logo{margin:0}
 .minicart-wrapper .label{color: #60832d;font-size: 21px;padding: 1px 5px 0;}
 .minicart-wrapper .icon-cart{background:url('../img/i-cart.png') no-repeat;width:32px; height:30px;display:inline-block;     margin-top: -13px;}
 .minicart-wrapper .counter {margin-top: -10px; background:#ba1b25 !important;}
-.minicart-wrapper .options {font-family: 'Cabin Sketch', cursive }
+/*.minicart-wrapper .options {font-family: 'Cabin Sketch', cursive }*/
 .minicart-wrapper .options .label{float: left;font-size: 14px;padding: 3px 5px 0 0;}
 .minicart-wrapper .options .label:after{content:":";}
 .breadcrumbs a,.breadcrumbs strong{font-size:14px;color:#fff;font-family: "Open sans" !important;}
@@ -1713,7 +1713,7 @@ h1.logo{margin:0}
 .nav-submenu li{padding:0;}
 .nav-submenu li a { padding: 0 5px;text-transform: initial !important;}
 /* catalog product style */
-.price{font-family: 'Cabin Sketch', cursive }
+/*.price{font-family: 'Cabin Sketch', cursive }*/
 .price-box{color:#000}
 .page-title-wrapper.product .page-title{margin:10px 0 0}
 .gallery-placeholder .fotorama-item{margin-top:-55px;}
@@ -2044,7 +2044,9 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 .payment-method-content .actions-toolbar{display: none;}
 
 .opc-wrapper .opc,.opc .opc-block-summary{background: #eff0e8;color:#000;}
-.minicart-items .product-item-name{font-size:20px;font-family: 'Cabin Sketch', cursive }
+.minicart-items .product-item-name{font-size:20px;
+    /*font-family: 'Cabin Sketch', cursive */
+}
 .minicart-items .qty-item-group{
 	float: left;
     background: #fff;
