@@ -1647,6 +1647,7 @@ h1.logo{margin:0}
 .minicart-wrapper .options .label{float: left;font-size: 14px;padding: 3px 5px 0 0;}
 .minicart-wrapper .options .label:after{content:":";}
 .breadcrumbs a,.breadcrumbs strong{font-size:14px;color:#fff;font-family: "Open sans" !important;}
+.breadcrumbs a:visited{color: white;}
 
 .navi-wrapper, .nav-regular,
 /*.nav-regular > ul > .nav-item  > a{background:transparent !important; color:#fff !important}*/
