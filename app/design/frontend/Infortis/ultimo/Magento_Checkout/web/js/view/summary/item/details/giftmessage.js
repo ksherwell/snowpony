@@ -7,10 +7,9 @@ define([
 	'jquery',
 	'ko',
 	'uiComponent',
-	'Magento_GiftMessage/js/model/gift-message',
-    'Magento_GiftMessage/js/model/gift-options',
-    'Magento_GiftMessage/js/action/gift-options'
-], function ($, ko, Component, GiftMessage, giftOptions, giftOptionsService) {
+	'underscore',
+	'mage/validation'
+], function ($, ko, Component, _) {
     'use strict';
 
     return Component.extend({
@@ -18,51 +17,105 @@ define([
             displayArea: 'after_details',
             template: 'Magento_GiftMessage/custom-gift-message-item-level'
         },
-		model: {},
-		recipient: ko.observable(),      
-		sender: ko.observable(),
-		message: ko.observable(),
-        showBox: ko.observable(false),
-		toggleVisibility: function () { 
-			this.showBox(!this.showBox());
+		toggleVisibility: function (itemId) { 
+			$('#gift-content-'+ itemId).toggle();
 		},
-		formBlockVisibility: null,
-        resultBlockVisibility: null,
         initialize: function () {
             var self = this,
                 model;
             this._super();
-			
-			
-            this.itemId = this.itemId || 'orderLevel';
-            model = new GiftMessage(this.itemId);
-			
-			console.log(model);
-            giftOptions.addOption(model);
-            this.model = model;
-
-            this.model.getObservable('isClear').subscribe(function (value) {
-                if (value == true) { //eslint-disable-line eqeqeq
-                    self.formBlockVisibility(false);
-                    self.model.getObservable('alreadyAdded')(true);
-                }
-            });
-
         },
-        getObservable: function (key) {
-            return this.model.getObservable(key);
+		getItemGift: function(itemId){
+			var message = false;
+			message = window.giftOptionsConfig.giftMessage.hasOwnProperty('itemLevel') &&
+                        window.giftOptionsConfig.giftMessage.itemLevel.hasOwnProperty(itemId) ?
+                            window.giftOptionsConfig.giftMessage.itemLevel[itemId].message :
+                            null;
+			return 	message;	
+		},
+		messageCount: function(itemId){
+			return ko.computed(function () {
+				var messLength = this.getMessage(itemId) != null ? this.getMessage(itemId).length : 0;
+				var countNum = 500 - messLength;
+				console.log('aaaaaaaa');
+				return countNum;
+			}, this);
+		},
+		getRecipient: function(itemId){
+			if (_.isObject(this.getItemGift(itemId))) {
+				return this.getItemGift(itemId).recipient;
+			}
+			return null;
+		},
+		getsender: function(itemId){
+			if (_.isObject(this.getItemGift(itemId))) {
+				return this.getItemGift(itemId).sender;
+			}
+			return null;
+		},
+		getMessage: function(itemId){
+			if (_.isObject(this.getItemGift(itemId))) {
+				return this.getItemGift(itemId).message;
+			}
+			return null;
+		},
+		getIsAvailable: function(itemId){
+			var is_available = false;
+			is_available = window.giftOptionsConfig.giftMessage.hasOwnProperty('itemLevel') &&
+                        window.giftOptionsConfig.giftMessage.itemLevel.hasOwnProperty(itemId) ?
+                            window.giftOptionsConfig.giftMessage.itemLevel[itemId].is_available : null;
+							
+			return is_available;
+		},
+		validateForm: function (form) {
+			return $(form).validation() && $(form).validation('isValid');
+		},     
+        deleteOptions: function (itemId) {
+			var formId =  '#gift-options-form-'+ itemId;
+			if (!($(formId).validation() && $(formId).validation('isValid'))) {
+			   return;
+			}
+            var rqData = $(formId).serialize();
+            rqData = $(formId).serialize() + '&itemId=' + itemId;
+			var rqUrl = '/infortis/giftmessage/delete';
+			$.ajax({
+				url: rqUrl,
+				type: "POST",
+				data: rqData,
+				success: function(response){
+					if(response.status){
+						$('#gift-options-item-'+ itemId).find('.gift-message-summary .message-content').html('');
+						$('#gift-options-item-'+ itemId).find('button.action-delete').hide();
+						$('#gift-options-item-'+ itemId).find('input,textarea').val('');
+						$('#gift-content-'+ itemId).hide();
+					}
+				}
+			});
         },
-        deleteOptions: function () {
-            giftOptionsService(this.model, true);
+        submitOptions: function (itemId) {
+			var formId =  '#gift-options-form-'+ itemId;
+			if (!($(formId).validation() && $(formId).validation('isValid'))) {
+			   return;
+			}
+            var rqData = $(formId).serialize();
+            rqData = $(formId).serialize() + '&itemId=' + itemId;
+			var rqUrl = '/infortis/giftmessage/update';
+			$.ajax({
+				url: rqUrl,
+				type: "POST",
+				data: rqData,
+				success: function(response){
+					if(response.status){
+						var htmlResponse = '<span>Message :</span>' + response.gift.message;
+						$('#gift-options-item-'+ itemId).find('.gift-message-summary .message-content').html(htmlResponse);
+						$('#gift-options-item-'+ itemId).find('button.action-delete').show();
+						$('#gift-content-'+ itemId).hide();
+					}
+				}
+			});
         },
-        isActive: function () {
-            return this.model.isGiftMessageAvailable();
-        },
-        submitOptions: function () {
-            giftOptionsService(this.model);
-        },
-		hideFormBlock: function () {
-            this.showBox(false);
-        },
+		hideBlock: function (itemId) { 
+           $('#gift-content-'+ itemId).hide();
+        }
     });
 });
