@@ -1996,6 +1996,7 @@ button.tocart{
     border: 1px solid #fff;
     border-radius: 6px;
 	font-size: 20px;
+    min-height: 209px;
 }
 .cart-summary > .title,
 .cart-summary > .block.shipping{display:none !important}
