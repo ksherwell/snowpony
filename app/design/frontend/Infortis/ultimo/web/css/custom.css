@@ -2170,6 +2170,7 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 .gift-options .actions-toolbar .secondary .action-cancel{
 	margin: 0 5px 0 0!important;
     padding: 7px 10px 4px;
+    line-height: 32px;
 }
 
 .gift-options .actions-toolbar .secondary .action-update{
