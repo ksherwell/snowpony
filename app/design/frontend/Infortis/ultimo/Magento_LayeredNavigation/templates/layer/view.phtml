@@ -34,13 +34,13 @@
 			<?php if(@$_GET["product_list_limit"] != 'all'): ?>
 			<a class="btn btn-action" style="position: absolute;" href="?product_list_limit=all"><?php echo __('SEE ALL HAMPERS ON ONE PAGE') ?></a>
 			<?php endif; ?>
-		    <?php echo $block->getChildHtml('state') ?>
+		    <?php // echo $block->getChildHtml('state') ?>
 			
-            <?php if ($block->getLayer()->getState()->getFilters()): ?>
-                <div class="block-actions filter-actions">
-                    <a href="<?php /* @escapeNotVerified */ echo $block->getClearUrl() ?>" class="action clear filter-clear"><span><?php /* @escapeNotVerified */ echo __('Clear All') ?></span></a>
-                </div>
-            <?php endif; ?>
+<!--            --><?php //if ($block->getLayer()->getState()->getFilters()): ?>
+<!--                <div class="block-actions filter-actions">-->
+<!--                    <a href="--><?php ///* @escapeNotVerified */ echo $block->getClearUrl() ?><!--" class="action clear filter-clear"><span>--><?php ///* @escapeNotVerified */ echo __('Clear All') ?><!--</span></a>-->
+<!--                </div>-->
+<!--            --><?php //endif; ?>
             <?php $wrapOptions = false; ?>
             <?php foreach ($block->getFilters() as $filter): ?>
                 <?php if ($filter->getItemsCount()): ?>
