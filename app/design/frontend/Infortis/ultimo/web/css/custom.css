@@ -2472,16 +2472,19 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 }
 
 .caddie-popover .tooltip-content {
-    top: -50px;
+    top: -40px;
+    max-width: 290px;
     border: none;
     background: black;
     color: white;
     border-radius: 5px;
-    -webkit-transform: translateX(translateX(calc(-50% - 14px)));
-    -moz-transform: translateX(translateX(calc(-50% - 14px)));
-    -ms-transform: translateX(translateX(calc(-50% - 14px)));
-    -o-transform: translateX(translateX(calc(-50% - 14px)));
-    transform: translateX(translateX(calc(-50% - 14px)));
+    transform: translateY(calc(-50% - 10px));
+    white-space: initial;
+    text-transform: none;
+    width: 210px;
+    font-size: 13px;
+    text-align: center;
+    left: -25px;
 }
 
 .caddie-popover .tooltip-content:after {
@@ -2489,10 +2492,10 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
     top: auto;
     bottom: -10px;
     margin: auto;
-    right: 0;
-    left: 0;
+    left: 29px;
     border-right-color: transparent;
 }
+
 .caddie-popover .tooltip-content:before {
     display: none;
 }
