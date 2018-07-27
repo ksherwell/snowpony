@@ -2469,3 +2469,29 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 .verify-address{
     margin-top: 20px;
 }
+
+.caddie-popover .tooltip-content {
+    top: -50px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    -webkit-transform: translateX(translateX(calc(-50% - 14px)));
+    -moz-transform: translateX(translateX(calc(-50% - 14px)));
+    -ms-transform: translateX(translateX(calc(-50% - 14px)));
+    -o-transform: translateX(translateX(calc(-50% - 14px)));
+    transform: translateX(translateX(calc(-50% - 14px)));
+}
+
+.caddie-popover .tooltip-content:after {
+    border-top-color: black;
+    top: auto;
+    bottom: -10px;
+    margin: auto;
+    right: 0;
+    left: 0;
+    border-right-color: transparent;
+}
+.caddie-popover .tooltip-content:before {
+    display: none;
+}
