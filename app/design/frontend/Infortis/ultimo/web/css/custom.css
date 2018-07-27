@@ -2463,3 +2463,8 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 #onepage-checkout-shipping-method-additional-load > div.opc-wrapper.fieldset{
     display: none;
 }
+
+
+.verify-address{
+    margin-top: 20px;
+}
