@@ -2495,3 +2495,7 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 .caddie-popover .tooltip-content:before {
     display: none;
 }
+
+.ui-datepicker .ui-datepicker-title{
+    margin: 0 1.3em;
+}
