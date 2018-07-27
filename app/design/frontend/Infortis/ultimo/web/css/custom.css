@@ -2503,3 +2503,11 @@ table.totals tbody>tr>td span.price{font-family: 'Cabin Sketch';}
 .ui-datepicker .ui-datepicker-title{
     margin: 0 1.3em;
 }
+
+div[name="shippingAddress.country_id"]{
+    display:none;
+}
+
+div[name="billingAddressshared.country_id"]{
+    display:none;
+}
