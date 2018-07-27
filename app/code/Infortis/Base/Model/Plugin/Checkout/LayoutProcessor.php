@@ -41,7 +41,7 @@ class LayoutProcessor
                 'id' => 'package_address'
             ],
             'dataScope' => 'shippingAddress.package_address',
-            'label' => __('Package Address'),
+            'label' => __('Address'),
             'provider' => 'checkoutProvider',
             'visible' => true,
             'validation' => [],
