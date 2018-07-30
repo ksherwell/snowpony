@@ -2511,3 +2511,8 @@ div[name="shippingAddress.country_id"]{
 div[name="billingAddressshared.country_id"]{
     display:none;
 }
+
+/*Fix multishipping view*/
+.multishipping-checkout-overview .mark{
+    background-color: inherit;
+}
