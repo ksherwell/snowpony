@@ -2512,6 +2512,6 @@ div[name="billingAddressshared.country_id"]{
     display:none;
 }
 
-.minicart-remove-item{
+.minicart-remove-item .modal-inner-wrap {
     max-width: 60px;
 }
