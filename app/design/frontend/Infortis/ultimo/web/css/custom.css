@@ -2511,3 +2511,7 @@ div[name="shippingAddress.country_id"]{
 div[name="billingAddressshared.country_id"]{
     display:none;
 }
+
+.minicart-remove-item{
+    max-width: 60px;
+}
