@@ -137,10 +137,16 @@
     <?php endif; ?>
 
     <?php if($block->getProduct()->getDescription()): ?>   
-        <div class="row product-content-detail">
-            <?php 
-                echo $block->getProduct()->getDescription();
-            ?>
+        <div class="product-content-detail">
+            <p style="font-size: 25px;">
+                <i class="fa fa-gift" aria-hidden="true"></i> More details about this gift
+            </p>
+            <div class="description-wrapper">
+                <?php 
+                    echo $block->getProduct()->getDescription();
+                ?>
+            </div>
+            <p class="note-message">Your personalised gift message will be printed on a Bockers and Pony gift card and included with your gift</p>
         </div>
     <?php endif; ?>
 
@@ -151,11 +157,11 @@
     <!-- // custom shopping block - cms block id : product-shipping -->
 
     <?php if($block->getChildHtml('pro-shipping')): ?>
-    <?php echo $block->getChildHtml('pro-shipping') ?>
+        <?php echo $block->getChildHtml('pro-shipping') ?>
     <?php endif; ?>
     
     <?php if($relatedProductsHtml): ?>
-    <?php echo $relatedProductsHtml ?>
+        <?php echo $relatedProductsHtml ?>
     <?php endif; ?>
 
 </div>

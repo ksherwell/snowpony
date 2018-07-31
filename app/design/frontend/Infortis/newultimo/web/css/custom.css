@@ -3229,3 +3229,23 @@ padding: 10px 30px;
 	.catalogsearch-result-index .home-slider-1 p{font-size: 10px !important}	
 	.footer p{font-size: 11px;padding: 0px 10px;}
 }
+
+#maincontent .product-content-detail {
+	clear: both;
+}
+#maincontent .product-content-detail:after {
+	clear: both;
+	display: block;
+	content: '';
+}
+.product-item-actions .stock.unavailable {
+	line-height: 48px;
+}
+#maincontent .product-content-detail .description-wrapper {
+	padding: 0 15px;
+}
+#maincontent .product-content-detail .note-message {
+	color: #000;
+	font-weight: bold;
+	margin-top: 20px;
+}
