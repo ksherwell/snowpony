@@ -3249,3 +3249,7 @@ padding: 10px 30px;
 	font-weight: bold;
 	margin-top: 20px;
 }
+
+.catalogsearch-result-index .sorter-action {
+	display: none;
+}
