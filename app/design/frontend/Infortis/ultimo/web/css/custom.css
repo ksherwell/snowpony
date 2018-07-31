@@ -2515,3 +2515,8 @@ div[name="billingAddressshared.country_id"]{
 .minicart-remove-item .modal-inner-wrap {
     max-width: 600px;
 }
+
+/*Fix multishipping view*/
+.multishipping-checkout-overview .mark{
+    background-color: inherit;
+}
