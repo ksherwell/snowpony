@@ -37,7 +37,6 @@ define([
 			return ko.computed(function () {
 				var messLength = this.getMessage(itemId) != null ? this.getMessage(itemId).length : 0;
 				var countNum = 500 - messLength;
-				console.log('aaaaaaaa');
 				return countNum;
 			}, this);
 		},
