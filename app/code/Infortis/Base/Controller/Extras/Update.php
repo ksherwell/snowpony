@@ -1,6 +1,10 @@
 <?php
+
 namespace Infortis\Base\Controller\Extras;
+
 use Magento\Framework\Controller\ResultFactory;
+
+
 class Update extends \Magento\Checkout\Controller\Cart
 {
     public function execute()
@@ -11,7 +15,7 @@ class Update extends \Magento\Checkout\Controller\Cart
 		$quote 	= $this->cart->getQuote();
 		$_product = $objectManager->create('Magento\Catalog\Model\Product')->load($productId);
 		$quoteItem = $quote->getItemByProduct($_product);
-		$response['status'] = true;;
+		$response['status'] = true;
 		try{
 			
 		if($quoteItem){
@@ -37,17 +41,8 @@ class Update extends \Magento\Checkout\Controller\Cart
 			$this->cart->addProduct($_product, $params);
 			$this->cart->save();
 			$this->cart->getQuote()->collectTotals();
-			$quoteItem = $quote->getItemByProduct($_product);
 		}
-		$responeData = array(
-			$quoteItem->getId() => array(
-				"src"	=> $objectManager->get('Magento\Catalog\Helper\ImageFactory')->create()->init($_product, 'product_thumbnail_image')->getUrl(),
-				"alt"	=> $_product->getName(),
-				"width"	=>78,
-				"height"=>78
-			)
-		);
-		
+
 		}catch(\Exception $e){
 			$response['status'] = false;
 			$response['message'] = $e->getMessage();

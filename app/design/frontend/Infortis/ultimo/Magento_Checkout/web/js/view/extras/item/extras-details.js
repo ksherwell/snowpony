@@ -84,7 +84,6 @@ define([
 			});
         },
 		ajaxUpdateItem: function(rqUrl, itemId, itemQty){
-			/* setTimeout(function(){ alert("Hello"); }, 3000); */
             fullScreenLoader.startLoader();
 			$.ajax({
 				url: rqUrl,
@@ -101,16 +100,7 @@ define([
 					customerData.invalidate(sections);
 					customerData.reload(sections, true);
 					$('.minicart-items').trigger('change');
-					if (response.extras) {
-						response.extras.forEach(function(item) {
-							$('.caddie-extra-cart input#item_' + item.entity_id).val(item.qtyQuote);
-							setTimeout(function(){ 
-								$('.product-item .product#product_'+ item.itemId +' .product-image-wrapper img').attr('src',item.thumbnail); 
-							}, 800);
-							
-						});
-					}
-					
+
 					if (!response.status) {
 						var bkQty = $('.caddie-extra-cart input#item_' + itemId).val() - 1;
 						$('.caddie-extra-cart input#item_' + itemId).val(bkQty);
