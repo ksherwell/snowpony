@@ -24,10 +24,11 @@ define([
 			self = this;
 			this._super();
 		},
-		imageData: window.checkoutConfig.imageData,
 		getSrc: function (item_id) {
-            if (this.imageData[item_id]) {
-                return this.imageData[item_id].src;
+            var imageData =  window.checkoutConfig.imageData;
+
+            if (imageData[item_id]) {
+                return imageData[item_id].src;
             }
 
             return null;
