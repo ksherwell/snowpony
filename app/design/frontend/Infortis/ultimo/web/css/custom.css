@@ -2520,3 +2520,35 @@ div[name="billingAddressshared.country_id"]{
 .multishipping-checkout-overview .mark{
     background-color: inherit;
 }
+
+#add-gift-options-2090 > legend > span{
+    color: #fff;
+}
+
+/*View of PayWay payment form*/
+#opc-sidebar > div.opc-block-summary > div.items.payment-methods > div > div.payment-method._active > div.payment-method-title.field.choice > label {
+    white-space: inherit;
+}
+
+#payment_form_payway > div.field.type {
+    margin: 0 0 15px;
+}
+
+#payment_form_payway > div.field.type > div > ul{
+    display: flex;
+}
+
+#payment_form_payway > div.field.type > div > ul > li{
+    margin-left: 15px;
+}
+
+/*@media only screen and (max-width: 768px) {*/
+    #payment_form_payway > div.field.number.required, #payway_cc_type_exp_div, #payway_cc_type_cvv_div {
+        margin: 0 0 10px;
+        display: grid;
+    }
+/*}*/
+
+#payway_expiration{
+    width: 103%;
+}
