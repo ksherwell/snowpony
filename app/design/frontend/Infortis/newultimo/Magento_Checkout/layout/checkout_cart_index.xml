@@ -27,5 +27,7 @@
                 </argument>
             </action>
         </referenceBlock>
+
+        <referenceBlock name="checkout.cart.crosssell" remove="true"/>
     </body>
 </page>

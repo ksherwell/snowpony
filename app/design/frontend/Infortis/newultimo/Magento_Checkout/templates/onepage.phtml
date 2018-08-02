@@ -1,0 +1,87 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+$writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
+$logger = new \Zend\Log\Logger();
+$logger->addWriter($writer);
+// @codingStandardsIgnoreFile
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$crossellProduct = $objectManager->get('Infortis\Base\Helper\Data')->getExtrasProduct();
+$giftLayout = $objectManager->get('Magento\GiftMessage\Block\Cart\GiftOptions');
+$quote = $objectManager->get('Magento\Checkout\Model\Session')->getQuote();
+$items = $quote->getAllVisibleItems(); 
+/* $quote = $objectManager->get('Magento\Checkout\Model\Session')->getQuote();
+$items = $quote->getAllVisibleItems(); 
+$crossellIds = array();
+$quoteProductIds = array();
+foreach($items as $_item){
+	$productId = $_item->getProduct()->getId();
+	$quoteProductIds[] = $productId;
+	$_product = $objectManager->create('Magento\Catalog\Model\Product')->load($productId);
+	$crossellIds = array_merge($crossellIds,$_product->getCrossSellProductIds());
+}
+$crossellIds = array_unique($crossellIds, SORT_REGULAR);
+$crossellProduct = array();
+foreach($crossellIds as $_crossellId){
+	$_product = $objectManager->create('Magento\Catalog\Model\Product')->load($_crossellId);
+	if(!in_array($objectManager->create('Magento\Store\Model\StoreManagerInterface')->getStore()->getId(),$_product->getStoreIds())) return;
+	$imageUrl = $objectManager->get('Magento\Catalog\Helper\ImageFactory')->create()->init($_product, 'product_thumbnail_image')->getUrl();
+	$productData = $_product->getData();
+	$productData['thumbnail'] = $imageUrl;
+	if(in_array($_crossellId,$quoteProductIds)){
+		$quoteItem = $quote->getItemByProduct($_product);
+		$productData['qtyQuote'] = $quoteItem->getQty();
+	}else{
+		$productData['qtyQuote'] = 0;
+	}
+	$crossellProduct[] = $productData;
+} */
+?>
+<div id="checkout" data-bind="scope:'checkout'" class="checkout-container">
+    <div id="checkout-loader" data-role="checkout-loader" class="loading-mask" data-mage-init='{"checkoutLoader": {}}'>
+        <div class="loader">
+            <img src="<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+                 alt="<?= /* @escapeNotVerified */ __('Loading...') ?>"
+                 style="position: absolute;">
+        </div>
+    </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#checkout": {
+                "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+    <script>
+        window.checkoutConfig = <?= /* @escapeNotVerified */ $block->getSerializedCheckoutConfig() ?>;
+        window.checkoutConfig.crossellData = <?= /* @escapeNotVerified */ json_encode($crossellProduct); ?>;
+        // Create aliases for customer.js model from customer module
+        window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
+        window.customerData = window.checkoutConfig.customerData;
+    </script>
+    <script>
+        require([
+            'mage/url',
+            'Magento_Ui/js/block-loader'
+        ], function(url, blockLoader) {
+            blockLoader("<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>");
+            return url.setBaseUrl('<?= /* @escapeNotVerified */ $block->getBaseUrl() ?>');
+        })
+    </script>
+	<script>
+        window.giftOptionsConfig = <?= /* @escapeNotVerified */ $giftLayout->getGiftOptionsConfigJson() ?>;
+    </script>
+	<?php 
+		//foreach($items as $_item):
+	?>
+		 <?php
+			/* $block = $block->getChildBlock('actions');
+			$block->setItem($_item);
+			echo $block->toHtml();
+			 */
+		 ?>
+	<?php //endforeach; ?>
+</div>
