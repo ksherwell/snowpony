@@ -237,8 +237,10 @@ define([
         selectShippingMethod: function (shippingMethod) {
             selectShippingMethodAction(shippingMethod);
             checkoutData.setSelectedShippingRate(shippingMethod['carrier_code'] + '_' + shippingMethod['method_code']);
-			
-			
+            try {
+                document.getElementById("s_method_" + shippingMethod['method_code']).checked = true;
+            } catch (e) {
+            }
 			stepNavigator.navigateTo('shipping', 'opc-shipping_method');
 			$('#co-shipping-method-form').find('.action.continue').trigger( 'click' );
 			/* $('#co-shipping-method-form').submit(); */
