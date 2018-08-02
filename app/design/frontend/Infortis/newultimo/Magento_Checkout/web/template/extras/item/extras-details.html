@@ -1,0 +1,23 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<p>
+	<img data-bind="attr: {'src': $parent.thumbnail, 'alt': $parent.name }"/>
+</p>
+<span class="package-item-title" data-bind="text: $parent.name"></span>
+<div class="caddie-extra-cart">
+	<div class="caddie-extra-cart-item extra-item"><input type="input" name="item-qty" data-bind="value: getValue($parent), attr: {'id': 'item_' + $parent.entity_id } "/></div>
+	<div class="caddie-extra-cart-item btn-group">
+		<button type="button" data-bind="click: decreaseExtraItem.bind(this, $parent.entity_id)" class="item-button decrease"><i class="fa fa-minus"></i></button>
+		<button type="button" data-bind="click: increaseExtraItem.bind(this, $parent.entity_id)" class="item-button increase"><i  class="fa fa-plus"></i></button>
+	</div>
+	<div class="caddie-extra-cart-item caddie-extra-price">
+		<!-- ko foreach: getRegion('after_details') -->
+			<!-- ko template: getTemplate() --><!-- /ko -->
+		<!-- /ko -->
+	</div>
+</div>
