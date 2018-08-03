@@ -28,7 +28,7 @@
                     <address><?= /* @escapeNotVerified */ $_address->format('html') ?></address>
                 </div>
             </div>
-            <div class="box">
+            <div class="box box-shipping-rates">
                 <strong class="box-title">
                     <span><?= /* @escapeNotVerified */ __('Shipping Method') ?></span>
                 </strong>
@@ -132,10 +132,14 @@
                         <strong>
                             Authority to leave if no one is at the address?
                         </strong>
-                        <input type="radio" name="authority_to[<?= /* @escapeNotVerified */ $_address->getId() ?>]" value="1" id="authority_to_yes_<?= /* @escapeNotVerified */ $_address->getId() ?>" class="radio" <?php echo ($_address->getAuthorityTo()) ? 'checked' : '' ?>/>
-                        <label for="authority_to_yes">Yes</label>
-                        <input type="radio" name="authority_to[<?= /* @escapeNotVerified */ $_address->getId() ?>]" value="0" id="authority_to_no_<?= /* @escapeNotVerified */ $_address->getId() ?>" class="radio" <?php echo (!$_address->getAuthorityTo()) ? 'checked' : '' ?>/>    
-                        <label for="authority_to_no">No</label>
+                        <div class="field choice">
+                            <input type="radio" name="authority_to[<?= /* @escapeNotVerified */ $_address->getId() ?>]" value="1" id="authority_to_yes_<?= /* @escapeNotVerified */ $_address->getId() ?>" class="radio" <?php echo ($_address->getAuthorityTo()) ? 'checked' : '' ?>/>
+                            <label for="authority_to_yes">Yes</label>
+                        </div>
+                        <div class="field choice">
+                            <input type="radio" name="authority_to[<?= /* @escapeNotVerified */ $_address->getId() ?>]" value="0" id="authority_to_no_<?= /* @escapeNotVerified */ $_address->getId() ?>" class="radio" <?php echo (!$_address->getAuthorityTo()) ? 'checked' : '' ?>/>
+                            <label  for="authority_to_no">No</label>
+                        </div>
                     </div>    
                     <div class="field authority_to required">
                         <strong>
@@ -145,7 +149,7 @@
                     </div>    
                 </fieldset>
             </div>
-            <div class="box box-items">
+            <div class="box box-items shipping-box-items">
                 <strong class="box-title">
                     <span><?= /* @escapeNotVerified */ __('Items') ?></span>
                     <a href="<?= /* @escapeNotVerified */ $block->getItemsEditUrl($_address) ?>" class="action edit"><span><?= /* @escapeNotVerified */ __('Edit Items') ?></span></a>

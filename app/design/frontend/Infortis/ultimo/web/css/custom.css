@@ -2516,14 +2516,6 @@ div[name="billingAddressshared.country_id"]{
     max-width: 600px;
 }
 
-/*Fix multishipping view*/
-.multishipping-checkout-overview .mark{
-    background-color: inherit;
-}
-
-#add-gift-options-2090 > legend > span{
-    color: #fff;
-}
 
 /*View of PayWay payment form*/
 #opc-sidebar > div.opc-block-summary > div.items.payment-methods > div > div.payment-method > div.payment-method-title.field.choice > label{
@@ -2542,11 +2534,100 @@ div[name="billingAddressshared.country_id"]{
     margin-left: 15px;
 }
 
-#payment_form_payway > div.field.number.required, #payway_cc_type_exp_div, #payway_cc_type_cvv_div {
+#payment_form_payway > div.field, #payway_cc_type_exp_div, #payway_cc_type_cvv_div {
     margin: 0 0 10px;
     display: grid;
 }
 
 #payway_expiration{
     width: 103%;
+}
+
+
+/*Fix multishipping view*/
+.form.multicheckout {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.form.multicheckout .box.box-shipping-address {
+    width: 23%;
+    margin-left: 15px;
+}
+
+.form.multicheckout .box.box-shipping-rates {
+    width: 23%;
+    margin-left: 15px;
+}
+
+.form.multicheckout .box.box-delivery-date {
+    width: 23%;
+    margin-left: 15px;
+}
+
+.form.multicheckout .box.box-items.shipping-box-items {
+    width: 23%;
+    margin-left: 15px;
+}
+
+.form.multicheckout .fieldset.gift-message {
+    margin-top: 30px;
+}
+
+.form.multicheckout .fieldset.gift-message .legend span,
+.form.multicheckout .fieldset.gift-message .field.choice .label span,
+.form.multicheckout .fieldset.gift-message .option-items .field.choice .label span {
+    color: #fff;
+}
+
+.form.multicheckout input[type=checkbox],
+.form.multicheckout input[type=radio] {
+    position: inherit;
+    margin: -3px 0 0;
+}
+
+.form.multicheckout .items.methods-shipping .field.choice {
+    display: inline-flex;
+    padding: 0 0 0 10%;
+}
+
+.form.multicheckout .box-delivery-date .field.authority_to {
+    display: grid;
+}
+
+.form.multicheckout .box-delivery-date .field.choice {
+    display: inline-flex;
+}
+
+.form.multicheckout .fieldset.gift-message .field.choice {
+    display: inline-flex;
+}
+
+.form.multicheckout .options-items {
+    display: none;
+}
+
+.multishipping-checkout-overview .mark {
+    background-color: inherit;
+}
+
+.form.multicheckout.billing .box.box-billing-method .legend span {
+    color: #fff;
+}
+
+.form.multicheckout.billing .box.box-billing-method .checkout-payment-method .item-title {
+    display: flex;
+    margin-left: 15px;
+}
+
+.form.multicheckout.billing .box.box-billing-method .checkout-payment-method .fieldset.payment.items.ccard.payway .label {
+    text-align: left;
+}
+
+.form.multicheckout.billing .box.box-billing-method .checkout-payment-method .fieldset.payment.items.ccard.payway .label span{
+    color: #fff;
+}
+
+.form.multicheckout.order-review .load.indicator{
+    position: fixed;
 }
