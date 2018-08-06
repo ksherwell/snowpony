@@ -1,0 +1,64 @@
+<!-- ko if: getIsAvailable($parents[1].item_id) -->
+	<div class="gift-message-summary">
+		<div class="message-content">
+		<!-- ko if: getItemGift($parents[1].item_id) -->
+
+			<span data-bind="i18n: 'Message' + ':'"></span>
+		<!-- ko text: getMessage($parents[1].item_id) --><!-- /ko -->
+		<!-- /ko -->
+		</div>
+	</div>
+	<form action="" method="post" data-bind="attr: {'id': 'gift-options-form-' + $parents[1].item_id } ">
+		<div class="actions-content">
+			<button style="margin-right:10px" type="button" class="action action-editgift" data-bind="click: toggleVisibility($parents[1].item_id)">
+				<span data-bind="i18n: 'Gift Message'"></span>
+			</button>
+			
+			<button type="button" class="action action-delete" data-bind="style: { display: getItemGift($parents[1].item_id) != null ? 'inline' : 'none' } ,
+					click: deleteOptions.bind(this,$parents[1].item_id),
+					attr: {title: $t('Delete')">
+				<span data-bind="i18n: 'Delete'"></span>
+			</button>
+		</div>
+		<div class="gift-content" style="display:none;" data-bind="attr: {'id': 'gift-content-' + $parents[1].item_id } ">
+			<div class="gift-options">
+				<div class="gift-message">
+					<div class="gift-options-title">
+						<span data-bind="i18n: 'Add A Message'"></span>
+					</div>
+					<div class="gift-options-content">
+						<fieldset class="fieldset">
+							<div class="field field-to">
+								<input type="text" name="gift-message-whole-to" class="input-text" data-bind="value: getRecipient($parents[1].item_id),attr:{ placeholder: $t('Recipient Name')}"  data-validate="{'required-entry':true}">
+								
+							</div>
+
+							<div class="field field-from">
+									<input type="text" name="gift-message-whole-from" class="input-text" data-bind="value: getsender($parents[1].item_id),attr:{ placeholder: $t('Sender Name')}"  data-validate="{'required-entry':true}">
+								
+							</div>
+							<div class="field text">
+								<textarea name="gift-message-whole-message" class="input-text" rows="5" cols="10" data-bind="value: getMessage($parents[1].item_id),valueUpdate: 'afterkeydown',limitCharacters: 500,attr:{ placeholder:  $t('Card Message - Remember to say who it\'s from !')}"  data-validate="{'required-entry':true}"></textarea>
+								<small><span class="chars" data-bind="text: messageCount($parents[1].item_id)"></span> <span data-bind="i18n: 'characters left'"></span></small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="actions-toolbar">
+					<div class="secondary">
+						<button type="button" class="action action-update" data-bind="
+							attr: {title: $t('Update')},
+							click: submitOptions.bind(this, $parents[1].item_id)">
+							<span data-bind="i18n: 'Update'"></span>
+						</button>
+						<button type="button" class="action action-cancel" data-bind="
+							attr: {title: $t('Cancel')},
+							click: hideBlock.bind(this, $parents[1].item_id)">
+							<span data-bind="i18n: 'Cancel'"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+<!-- /ko -->

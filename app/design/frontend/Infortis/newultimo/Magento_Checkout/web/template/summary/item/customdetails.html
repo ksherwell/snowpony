@@ -47,6 +47,12 @@
                 <!-- /ko -->
             </dl>
         </div>
+        <div data-bind="attr: {'id': 'gift-options-item-' + $parent.item_id } " class="gift-options-cart-item">
+            <!-- ko foreach: getRegion('after_details') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </div>
     </div>
+
     <!-- /ko -->
 </div>
