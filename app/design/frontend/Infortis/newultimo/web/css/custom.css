@@ -2661,10 +2661,11 @@ font-size:  20px;
     color: #b8b8b8;
     float:  left;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
-.order-bottom-img{position: absolute;width: calc(100% + 2px);bottom: -13px;left: 0;}
+.order-bottom-img{position: absolute;width: calc(100% + 2px);bottom: -13px;left: 0; display: none;}
 
-#opc-sidebar .opc-block-summary .checkout-totals .mark{background-color: #fff;}
+#opc-sidebar .opc-block-summary .checkout-totals .mark{background-color: initial; color: #000;}
 
 #opc-sidebar .actions-toolbar-trigger button{
 	background-color: #000;
@@ -3319,7 +3320,7 @@ padding: 10px 30px;
 .opc-sidebar .opc-block-summary {color: #000;margin: 0;background:transparent;padding: 0;}
 .opc-sidebar .opc-block-summary  .checkout-totals,
 .opc-sidebar .opc-block-summary>.title{background: rgba(226, 210, 210, 0.4);color: #fff;}
-.opc-sidebar .opc-block-summary>.title{border-bottom: 2px solid #000;padding: 10px 15px;}
+.opc-sidebar .opc-block-summary>.title{border-bottom: 2px solid #000;padding: 10px 15px;border-radius: 10px 10px 0px 0px;}
 .opc-sidebar .opc-block-summary .no-payments-block{background: #fff;padding: 10px;}
 .opc-sidebar .opc-block-summary .items-in-cart{display:none;}
 .opc-sidebar .payment-option-content{display:block !important;}
@@ -3381,3 +3382,112 @@ padding: 10px 30px;
 
 .cart .item-info .col.item .product-item-details a.action-edit,
 .cart .item-info .col.item .product-item-details a.action-delete{display:none !important}
+
+.caddie-popover:hover .tooltip-content{
+	display: block;
+}
+
+.caddie-popover {
+  position: relative;
+}
+.caddie-popover .tooltip-content {
+  background: #ffffff;
+  max-width: 360px;
+  min-width: 210px;
+  padding: 12px 16px;
+  z-index: 100;
+  display: none;
+  position: absolute;
+  text-align: left;
+  color: #333333;
+  line-height: 1.4;
+  border: 1px solid #bbbbbb;
+  margin-left: 5px;
+  left: 100%;
+  top: 0;
+}
+.caddie-popover .tooltip-content:after,
+.caddie-popover .tooltip-content:before {
+  border: solid transparent;
+  content: '';
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+.caddie-popover .tooltip-content:after {
+  border-width: 5px;
+  border-color: transparent;
+}
+.caddie-popover .tooltip-content:before {
+  border-width: 6px;
+  border-color: transparent;
+}
+.caddie-popover .tooltip-content:after,
+.caddie-popover .tooltip-content:before {
+  right: 100%;
+}
+.caddie-popover .tooltip-content:after {
+  border-right-color: #ffffff;
+  margin-top: -5px;
+  top: 15px;
+}
+.caddie-popover .tooltip-content:before {
+  border-right-color: #bbbbbb;
+  margin-top: -6px;
+  top: 15px;
+}
+
+.checkout-index-index #maincontent span.tooltip-content{
+	color: #fff;
+}
+
+.caddie-popover .tooltip-content {
+    top: -40px;
+    max-width: 290px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    transform: translateY(calc(-50% - 10px));
+    white-space: initial;
+    text-transform: none;
+    width: 210px;
+    font-size: 13px;
+    text-align: center;
+    left: -25px;
+}
+
+.caddie-popover .tooltip-content:after {
+    border-top-color: black;
+    top: auto;
+    bottom: -10px;
+    margin: auto;
+    left: 29px;
+    border-right-color: transparent;
+}
+
+.caddie-popover .tooltip-content:before {
+    display: none;
+}
+
+.checkout-payment-method .checkout-billing-address .primary .action-update{
+	border-radius: 4px;
+    display: inline-block;
+    margin: 0;
+    padding: 5px 18px;
+    box-shadow: none;
+    text-transform: uppercase;
+    background-color: #678c30;
+    background-image: -webkit-linear-gradient(bottom, rgba(43,50,58,.36), rgba(43,50,58,0)) !important;
+    background-image: -moz-linear-gradient(bottom, rgba(43,50,58,.36), rgba(43,50,58,0)) !important;
+    background-image: -o-linear-gradient(bottom, rgba(43,50,58,.36), rgba(43,50,58,0))!important;
+    background-image: linear-gradient(to top, rgba(43,50,58,.36), rgba(43,50,58,0)) !important;
+    color: white;
+}
+
+.action-cancel {
+    background: #ba1b25 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+}
+
