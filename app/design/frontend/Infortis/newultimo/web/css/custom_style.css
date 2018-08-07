@@ -1,0 +1,23 @@
+#maincontent .product-content-detail {
+	clear: both;
+}
+#maincontent .product-content-detail:after {
+	clear: both;
+	display: block;
+	content: '';
+}
+.product-item-actions .stock.unavailable {
+	line-height: 48px;
+}
+#maincontent .product-content-detail .description-wrapper {
+	padding: 0 15px;
+}
+#maincontent .product-content-detail .note-message {
+	color: #000;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.catalogsearch-result-index .sorter-action {
+	display: none;
+}
