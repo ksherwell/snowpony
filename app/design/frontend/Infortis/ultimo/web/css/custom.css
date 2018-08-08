@@ -1831,9 +1831,7 @@ div.read_more{display:none;}
 .price-box .price-label{display:none;}
 /* product page */
 .product-info-stock-sku{display:none;}
-.product-info-main .product-add-form{/*border:0 !important;*/display: inline-block;width: 100%;padding-bottom: 10px;
-    border: 1px solid #fff;
-    border-radius: 5px;}
+.product-info-main .product-add-form{/*border:0 !important;*/display: inline-block;width: 100%;padding-bottom: 10px;    border: 1px solid #fff;border-radius: 5px;margin: 0px 20px;}
 .product-info-main .box-qty .qty div.mage-error{position: absolute;bottom: -20px;right: 0;}
 .product-info-main .input-text.qty{font-family:'Cabin Sketch', cursive !important;border: 0;background: transparent;box-shadow: none;font-size: 33px;width: 30px;    padding: 0;}
 .product-info-main .input-text.qty.mage-error{border-bottom:1px solid red;}
@@ -1952,7 +1950,7 @@ button.tocart{
 
 .product-postcode .input-group-btn{float:left;}
 
-.product-postcode .input-group .form-control{width: 70px;}
+.product-postcode .input-group .form-control{width: 250px;}
 
 .product-postcode input{    height: 34px;}
 .fotorama__nav.fotorama__nav--thumbs{text-align:center;}
