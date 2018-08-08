@@ -45,7 +45,29 @@ define([
 			var oldValue = parseFloat($('.qty-item-group input#item_' + item_id).val());
 			newVal = oldValue + 1;
 			$('.qty-item-group input#item_' + item_id).val(newVal);
-			return self.ajaxUpdateItem('/infortis/index/update',item_id ,newVal);
+
+            fullScreenLoader.startLoader();
+            $.ajax({
+            	url: '/infortis/index/update',
+            	type: "POST",
+            	data: {itemid: item_id, qty: newVal},
+            	success: function(response){
+            		if (response.extras) {
+            			response.extras.forEach(function(item) {
+            				$('.caddie-extra-cart input#item_' + item.entity_id).val(item.qtyQuote);
+            			});
+            		}
+            		var deferred = $.Deferred();
+            		self.updateamount();
+
+            		var sections = ['cart'];
+            		customerData.invalidate(sections);
+            		customerData.reload(sections, true);
+
+            		fullScreenLoader.stopLoader();
+
+            	}
+            });
         },
 		decreaseItem: function(item_id) {
 			var newVal, candidateNewValue;
@@ -53,7 +75,29 @@ define([
 			newVal = oldValue - 1;
 			if (newVal > 0){
 				$('.qty-item-group input#item_' + item_id).val(newVal);
-				self.ajaxUpdateItem('/infortis/index/update',item_id ,newVal);
+
+                fullScreenLoader.startLoader();
+                $.ajax({
+                    url: '/infortis/index/update',
+                    type: "POST",
+                    data: {itemid: item_id, qty: newVal},
+                    success: function(response){
+                        if (response.extras) {
+                            response.extras.forEach(function(item) {
+                                $('.caddie-extra-cart input#item_' + item.entity_id).val(item.qtyQuote);
+                            });
+                        }
+                        var deferred = $.Deferred();
+                        self.updateamount();
+
+                        var sections = ['cart'];
+                        customerData.invalidate(sections);
+                        customerData.reload(sections, true);
+
+                        fullScreenLoader.stopLoader();
+
+                    }
+                });
 			}else{
 				var rqUrl = '/infortis/index/delete';
 			fullScreenLoader.startLoader();
@@ -62,7 +106,6 @@ define([
 				type: "POST",
 				data: {itemid: item_id},
 				success: function(response){
-					
 					if (response.extras) {
 						response.extras.forEach(function(item) {
 							$('.caddie-extra-cart input#item_' + item.entity_id).val(item.qtyQuote);
@@ -112,31 +155,6 @@ define([
 						
 						fullScreenLoader.stopLoader();
 					}
-				}
-			});
-        },
-		ajaxUpdateItem: function(rqUrl, itemId, itemQty){
-			/* setTimeout(function(){ alert("Hello"); }, 3000); */
-            fullScreenLoader.startLoader();
-			$.ajax({
-				url: rqUrl,
-				type: "POST",
-				data: {itemid: itemId, qty: itemQty},
-				success: function(response){
-					if (response.extras) {
-						response.extras.forEach(function(item) {
-							$('.caddie-extra-cart input#item_' + item.entity_id).val(item.qtyQuote);
-						});
-					}
-					var deferred = $.Deferred();
-					self.updateamount();
-					
-					var sections = ['cart'];
-					customerData.invalidate(sections);
-					customerData.reload(sections, true);
-					
-					fullScreenLoader.stopLoader();
-					
 				}
 			});
         },
