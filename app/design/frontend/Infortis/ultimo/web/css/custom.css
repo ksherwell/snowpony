@@ -1435,6 +1435,7 @@ p, .category-view a{
 
 .size-guide{
     padding-bottom: 10px;
+    padding: 0px 20px;
 }
 .size-guide a{
     color: #fff!important;
@@ -1651,14 +1652,15 @@ h1.logo{margin:0}
 .nav-regular .nav-submenu .nav-item > a{color:white !important}
 .nav-regular .nav-item:hover  > a,
 /*.nav-regular .nav-item.active  > a{color:#678c30 !important}*/
-.nav-regular li.level0>a>span{font-size:31px;}
+.nav-regular li.level0>a>span{font-size: 31px;}
 
 .nav-regular li.level0 > a{
     position: relative;
+    padding: 0px 15px;
 }
 
 .nav-regular li.level0 > a:after {
-    content: ".";
+/*     content: "."; */
     position: absolute;
     z-index: 10;
     /*top: 15%;*/
@@ -1829,7 +1831,9 @@ div.read_more{display:none;}
 .price-box .price-label{display:none;}
 /* product page */
 .product-info-stock-sku{display:none;}
-.product-info-main .product-add-form{border:0 !important;display: inline-block;width: 100%;}
+.product-info-main .product-add-form{/*border:0 !important;*/display: inline-block;width: 100%;padding-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;}
 .product-info-main .box-qty .qty div.mage-error{position: absolute;bottom: -20px;right: 0;}
 .product-info-main .input-text.qty{font-family:'Cabin Sketch', cursive !important;border: 0;background: transparent;box-shadow: none;font-size: 33px;width: 30px;    padding: 0;}
 .product-info-main .input-text.qty.mage-error{border-bottom:1px solid red;}
@@ -1874,7 +1878,7 @@ div.read_more{display:none;}
     background-image: linear-gradient(to top, rgba(43,50,58,.36), rgba(43,50,58,0));
     color: white;
 }
-.qty-button.increase{border-radius: 0 4px 4px 0;}
+.qty-button.increase{border-radius: 0 4px 4px 0; margin-left: 3px;}
 .qty-button.increase:before{font-family: FontAwesome;content: "\f067";line-height: 29px;}
 .qty-button.decrease{border-radius: 4px 0 0 4px;}
 .qty-button.decrease:before{font-family: FontAwesome;content: "\f068";line-height: 29px;}
@@ -1944,7 +1948,7 @@ button.tocart{
 .box-tocart .price-box .normal-price .price-container .price-label{    position: absolute; top: -8px;}
 .box-tocart .box-qty input{color:#fff;}
 .product-social-links{display:none;}
-.product-postcode{border: 0;padding: 10px 0;}
+.product-postcode{border: 0;padding: 10px 20px;}
 
 .product-postcode .input-group-btn{float:left;}
 
