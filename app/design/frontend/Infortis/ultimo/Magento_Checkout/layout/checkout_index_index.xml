@@ -4,7 +4,7 @@
     <body>
     	<referenceBlock name="base-header-container" remove="false" />
     	<referenceBlock name="base-footer-container" remove="false" /> 
-		<referenceBlock name="minicart" remove="false" />
+		<referenceBlock name="minicart" remove="true" />
 		<referenceBlock name="top.search" remove="false" />
 		<!-- <referenceBlock name="catalog.compare.link" remove="false" /> -->
 		<!-- <referenceContainer name="header.panel" remove="false" /> -->
