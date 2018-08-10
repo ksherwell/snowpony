@@ -62,38 +62,26 @@ class Update extends \Magento\Checkout\Controller\Cart
 		$quoteItem = $quote->getItemByProduct($_product);
 		$response['status'] = true;
 
-		try{
-            if($quoteItem){
+        try {
+            if ($quoteItem) {
                 if ($quoteItem->getId()) {
-                    $quoteItem->setQty((double) $qty);
-                    $quoteItem->getProduct()->setIsSuperMode(true);
-                    $quoteItem->save();
-                    $this->cart->getQuote()->collectTotals();
+                    $quoteItem->delete();
                 }
-            }else{
-                $params = array(
-                    'form_key' => $this->formKey->getFormKey(),
-                    'product' => $productId,
-                    'qty'   => 1,
-                );
-
-//                $additionalOptions['print_style'] = [
-//                    'label' => __('Extras Item'),
-//                    'value' => 1,
-//                ];
-//                $_product->addCustomOption(
-//                    'additional_options',
-//                    $this->serializerJson->serialize($additionalOptions)
-//                );
-
-                $this->cart->addProduct($_product, $params);
-                $this->cart->save();
-                $this->cart->getQuote()->collectTotals();
             }
-		}catch(\Exception $e){
-			$response['status'] = false;
-			$response['message'] = $e->getMessage();
-		}
+
+            $params = array(
+                'form_key' => $this->formKey->getFormKey(),
+                'product' => $productId,
+                'qty' => isset($qty) ? $qty : 1,
+            );
+
+            $this->cart->addProduct($_product, $params);
+            $this->cart->save();
+
+        } catch (\Exception $e) {
+            $response['status'] = false;
+            $response['message'] = $e->getMessage();
+        }
 
 		$imageQuoteData = $this->imageProvider->getImages($quote->getId());
 		$extrasProduct = $this->infortisHelperData->getExtrasProduct();
@@ -106,3 +94,4 @@ class Update extends \Magento\Checkout\Controller\Cart
         return $resultJson;
     }
 }
+
